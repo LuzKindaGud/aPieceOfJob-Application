@@ -4,12 +4,21 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 import Navbar from './components/navbar.jsx'
+import Intro from './components/Intro.jsx'
 
 function App() {
   const [count, setCount] = useState(0)
+  const [showIntro, setShowIntro] = useState(true)
+
+  const handleIntroComplete = () => {
+    setTimeout(() => {
+      setShowIntro(false);
+    }, 0);
+  }
 
   return (
     <>
+      {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar />
       <div>
         <a href="https://vite.dev" target="_blank">

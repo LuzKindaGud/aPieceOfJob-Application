@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background: #23074d; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #23074d, #cc5333); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #23074d, #cc5333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.intro-container.fade-out {
+    animation: fadeOut 0.4s ease-out forwards;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.intro-logo-wrapper {
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.intro-logo {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    opacity: 0;
+    transform: scale(0.8);
+    animation: logoAppear 1s ease-in-out forwards;
+}
+
+.intro-logo-fallback {
+    display: none;
+}
+
+/* Inline SVG logo styles */
+.intro-logo-svg {
+    /* let the svg fill the constrained wrapper while keeping aspect ratio */
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    display: block;
+}
+
+/* Path reveal: we'll animate stroke-dashoffset from full length -> 0 as loading progresses
+   Keep styles neutral so inline attributes and JS control color/length/offset. */
+.intro-logo-svg path {
+    stroke-width: 10;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* JS will set stroke-dasharray and stroke-dashoffset based on path length */
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 120ms linear;
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
