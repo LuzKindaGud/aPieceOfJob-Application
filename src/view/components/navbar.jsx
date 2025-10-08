@@ -24,10 +24,11 @@ function Navbar() {
             <img src={pswhitelogo} alt="logo" className="logo-base"/>
             <img src={pswhitenoname} alt="logo hover" className="logo-overlay"/>
           </div>
+          <h2>aPieceOfJob</h2>
         </div>
         <div className="nav-links">
           <a href="#home"><span>Home</span></a>
-          <a href="#about"><span>Products</span></a>
+          <a href="#about"><span>About</span></a>
           <a href="#services"><span>Services</span></a>
           <a href="#contact"><span>Contact</span></a>
           <a href="#profile"> <FontAwesomeIcon icon={faUser} className="nav-user-icon"/> </a>

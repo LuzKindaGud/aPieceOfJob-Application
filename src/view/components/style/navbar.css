@@ -13,7 +13,7 @@
 
 .nav.scrolled {
     background: rgba(30, 30, 30, 0.9);
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(5px);
 }
 
 .nav-content {
@@ -35,6 +35,12 @@
     overflow: hidden;
     padding: -5px 50px 10px 10px;
     margin: -16px 0 -10px -15px;
+}
+.nav-logo h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin: 0 0 0 -30px;
+    padding: 0;
 }
 
 .logo-wrapper {
@@ -97,12 +103,12 @@
 
 .nav-links a::before {
     content: "[";
-    left: 0;
+    left: 10px;
 }
 
 .nav-links a::after {
     content: "]";
-    right: 0;
+    right: 10px;
 }
 
 .nav-links a span {
@@ -124,12 +130,12 @@
 
 .nav-links a:hover::before {
     opacity: 1;
-    left: -10px;
+    left: 1px;
 }
 
 .nav-links a:hover::after {
     opacity: 1;
-    right: -10px;
+    right: 1px;
 }
 
 .nav-links a:hover span::after {
