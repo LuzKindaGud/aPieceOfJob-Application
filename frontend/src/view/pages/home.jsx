@@ -1,8 +1,13 @@
 import React from 'react';
 import './pages-style/home.css';
-function Home() {
+import homepagevideo from '/src/assets/video/home-pages.mp4';
+function Home({style}) {
   return (
-    <div className="home-container">
+    <div className="home-container" style={style}>
+        <video className="background-video" autoPlay loop muted>
+            <source src={homepagevideo} type="video/mp4" />
+            Your browser does not support the video tag.
+        </video>
         <div className="home-content">
             <h1>Welcome to aPieceOfJob</h1>
             <p>We got job for you, let's get started</p>

@@ -1,0 +1,11 @@
+.commerce-container {
+    font-family: "Share Tech", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center;     /* Centers horizontally */
+    background-color: #121212ff; /* Fallback color */
+    height: 100vh;
+    width: 100vw;
+    overflow-x: hidden; /* ngăn scroll ngang */
+}

@@ -3,6 +3,8 @@ import { useState } from 'react'
 import Navbar from './components/navbar.jsx'
 import Intro from './components/Intro.jsx'
 import Home from './pages/home.jsx'
+import Commerce from './pages/commerce.jsx'
+
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 
 function App() {
@@ -22,7 +24,14 @@ function App() {
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route 
+          path="/" 
+          element={
+            <>
+              <Home />
+              <Commerce style={{zIndex: 10}}/>
+            </> 
+        }/>
       </Routes>
     </>
   )
