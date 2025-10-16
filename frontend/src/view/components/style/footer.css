@@ -1,0 +1,75 @@
+.footer-container {
+    background-color: #1a1a1a;
+    color: #a7a7a7;
+    padding: 40px 20px;
+    font-family: "Share Tech", sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    position: relative;
+    bottom: 0;
+    z-index: 20;
+}
+
+.footer-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    text-align: left;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    padding: 0 15px;
+}
+
+.footer-section h2, .footer-section h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.footer-section p {
+    line-height: 1.6;
+}
+
+.footer-section.links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section.links ul li a {
+    color: #a7a7a7;
+    text-decoration: none;
+    line-height: 2;
+    transition: color 0.3s ease;
+}
+
+.footer-section.links ul li a:hover {
+    color: #ffffff;
+}
+
+.footer-section.social .social-links a {
+    color: #a7a7a7;
+    margin-right: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section.social .social-links a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}

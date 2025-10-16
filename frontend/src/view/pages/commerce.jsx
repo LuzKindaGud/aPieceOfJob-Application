@@ -1,9 +1,9 @@
 import './pages-style/commerce.css';
 import Card from '../components/Card.jsx';
-import cardData from './data.json'; 
+import cardData from './data/data.json'; 
 
 function Commerce({ style }) {
-  // ✅ xử lý khi chọn card
+  // xử lý khi chọn card
   const handleSelect = (id) => {
     console.log("Card selected:", id);
     // có thể mở modal, điều hướng, v.v.

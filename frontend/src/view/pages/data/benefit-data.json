@@ -1,0 +1,32 @@
+[
+  {
+    "icon": "faStar",
+    "title": "Top Talent",
+    "description": "Discover trusted experts by browsing their portfolios and reading feedback shared on their profiles."
+  },
+  {
+    "icon": "faRocket",
+    "title": "Fast Quotes",
+    "description": "Receive fast, no‑obligation quotes from experienced freelancers. 80% of jobs get quoted within 60 seconds."
+  },
+  {
+    "icon": "faCheckCircle",
+    "title": "Quality Work",
+    "description": "With over 60 million professionals on aPieceOfJob, you'll find quality talent to complete the work you need."
+  },
+  {
+    "icon": "faMobileAlt",
+    "title": "Stay in Control",
+    "description": "Stay in the loop while on the move. Communicate with your freelancer and get real‑time updates via our mobile app — anytime, anywhere."
+  },
+  {
+    "icon": "faHandshake",
+    "title": "Trusted Partnerships",
+    "description": "Build long-term relationships with reliable freelancers and agencies for recurring or large-scale projects."
+  },
+  {
+    "icon": "faLightbulb",
+    "title": "Inspiration & Ideas",
+    "description": "Explore creative solutions and innovative approaches from professionals across multiple disciplines."
+  }
+]
