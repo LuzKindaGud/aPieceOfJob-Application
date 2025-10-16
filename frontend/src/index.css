@@ -31,6 +31,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  items-content: center;
+  justify-content: center;
 }
 
 h1 {
@@ -39,18 +41,19 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 8px;   
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #373737ff;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.1s ease-in-out;
 }
 button:hover {
-  border-color: #646cff;
+  background-color: #000000ff;
+  transform: scale(1.02);
 }
 button:focus,
 button:focus-visible {

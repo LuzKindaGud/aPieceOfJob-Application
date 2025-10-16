@@ -1,14 +1,17 @@
 import { useState } from 'react'
-import './App.css'
 
 import Navbar from './components/navbar.jsx'
 import Intro from './components/Intro.jsx'
+import Home from './pages/home.jsx'
 import {Route, Routes, BrowserRouter as Router} from "react-router-dom";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true)
 
   const handleIntroComplete = () => {
+    // mark intro finished so page animations can start
+    document.body.classList.add('intro-finished');
+    // then hide the Intro component (keeps a tick for layout)
     setTimeout(() => {
       setShowIntro(false);
     }, 0);
@@ -19,10 +22,7 @@ function App() {
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar />
       <Routes>
-        <Route path="/about" element={<div>About</div>} />
-        <Route path="/services" element={<div>Services</div>} />
-        <Route path="/contact" element={<div>Contact</div>} />
-        <Route path="/profile" element={<div>Profile</div>} />
+        <Route path="/" element={<Home />} />
       </Routes>
     </>
   )
