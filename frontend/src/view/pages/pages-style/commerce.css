@@ -1,11 +1,47 @@
 .commerce-container {
+    position: relative;
     font-family: "Share Tech", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centers vertically */
-    align-items: center;     /* Centers horizontally */
-    background-color: #121212ff; /* Fallback color */
-    height: 100vh;
+    background-color: #121212;
+    min-height: 100vh;
     width: 100vw;
-    overflow-x: hidden; /* ngăn scroll ngang */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
 }
+.commerce-contant {
+    width: 0%;
+    max-width: 80vw;                    
+    justify-content: center;      /* căn giữa ngang */
+    align-items: flex-start;      /* top align */
+    padding: 20px 0;
+}
+.commerce-content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    width: 80%;
+}
+
+@keyframes imageReveal {
+    from {
+        filter: saturate(0) contrast(4) brightness(.1) blur(20px);
+        opacity: 0;
+        scale: 0.95;
+        translate: 0 4rem;
+    }
+    to {
+        filter: none;
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
+    }
+}
+
+.commerce-content.visible {
+    clip-path: inset(0 0 0 0); /*Sử dụng clip-path để hiện*/
+}
+
