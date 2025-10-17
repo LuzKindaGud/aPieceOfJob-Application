@@ -15,6 +15,7 @@ import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import CTA from './pages/cta.jsx';
+import Contact from './pages/contact.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -105,6 +106,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer style={{ zIndex: 0}}/>
       </main>
