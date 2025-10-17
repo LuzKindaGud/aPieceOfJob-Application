@@ -64,6 +64,7 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: popIn 0.5s ease-out forwards;
+    animation-timeline: view(100% 10%);
     opacity: 0; /* Start hidden for animation */
 }
 
@@ -102,6 +103,11 @@
     text-align: center;
     animation: fadeInUp 1s ease-in-out 1s forwards;
     opacity: 0;
+}
+.benefits-footer p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: fadeInUp both;
 }
 
 /* Keyframe Animations */

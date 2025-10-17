@@ -6,7 +6,6 @@ function Home({style}) {
     <div className="home-container" style={style}>
         <video className="background-video" autoPlay loop muted>
             <source src={homepagevideo} type="video/mp4" />
-            Your browser does not support the video tag.
         </video>
         <div className="home-content">
             <h1>Welcome to aPieceOfJob</h1>

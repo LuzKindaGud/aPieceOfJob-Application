@@ -6,6 +6,7 @@ import "./style/navbar.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,11 +29,11 @@ function Navbar() {
           <h2>aPieceOfJob</h2>
         </div>
         <div className="nav-links">
-          <a href="#home"><span>Home</span></a>
-          <a href="#about"><span>About</span></a>
-          <a href="#services"><span>Services</span></a>
-          <a href="#contact"><span>Contact</span></a>
-          <a href="#profile"> <FontAwesomeIcon icon={faUser} className="nav-user-icon"/> </a>
+          <Link to="/" ><span>Home</span></Link>
+          <Link to="/jobs"><span>Jobs</span></Link>
+          <Link to="/about"><span>About</span></Link>
+          <Link to="/contact"><span>Contact</span></Link>
+          <Link to="/login"> <FontAwesomeIcon icon={faUser} className="nav-user-icon"/> </Link>
         </div>
       </div>
     </nav>
