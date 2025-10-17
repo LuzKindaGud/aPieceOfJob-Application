@@ -13,7 +13,6 @@
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    overflow-x: hidden;
 }
 
 .benefits-header {
@@ -29,11 +28,24 @@
     background: linear-gradient(to right, #e85d41, #d44a7f);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    animation: slideLeft both;
+    animation-timeline: view(50% 0%);
+}
+
+@keyframes slideLeft {
+    from {
+        clip-path: inset(0 100% 0 0);
+    } 
+    to {
+        clip-path: inset(0 0 0 0);
+    }
 }
 
 .benefits-header p {
     font-size: 1.4rem;
     color: rgba(255, 255, 255, 0.7);
+    animation: slideLeft both;
+    animation-timeline: view(50% 10%);
 }
 
 .benefits-grid {

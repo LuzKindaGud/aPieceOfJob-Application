@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
 
 html, body {
-    overflow-x: hidden; /* ngăn scroll ngang */
+    overflow-x: clip;
 }
 
 .home-container {
@@ -15,7 +15,6 @@ html, body {
     margin-top: 5.6rem;
     height: 100vh;
     width: 100vw;
-    overflow: hidden;
 }
 
 .background-video {
@@ -27,7 +26,6 @@ html, body {
     padding-top: 5.6rem; /* To avoid overlap with fixed navbar */
     object-fit: cover;
     z-index: -2; /* Ensure the video is behind other content */
-    overflow-x: hidden;
 }
 
 .home-content {
@@ -35,7 +33,6 @@ html, body {
     text-align: center; 
     width: 100%;
     height: auto;
-    overflow-x: hidden;
     padding-bottom: 10rem;
     z-index: 0;
 }

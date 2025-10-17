@@ -4,19 +4,12 @@
     background-color: #121212;
     min-height: 100vh;
     width: 100vw;
-
+    contain: paint;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow-x: hidden;
 }
-.commerce-contant {
-    width: 0%;
-    max-width: 80vw;                    
-    justify-content: center;      /* căn giữa ngang */
-    align-items: flex-start;      /* top align */
-    padding: 20px 0;
-}
+
 .commerce-content {
     display: flex;
     flex-direction: row;
@@ -24,4 +17,24 @@
     gap: 12px;
     justify-content: center;
     width: 80%;
+
+    animation: fadesIn both;    /* Sử dụng animation fadesIn và both để animation mượt hơn*/
+    animation-timeline: view(70% 10%); /*Animation bắt đầu ở 10% màn hình và kết thúc ở 70% màn hình (Đừng để mấy cái body của full page là overflow: hidden mà hãy để là clip*/
+}
+
+
+
+@keyframes fadesIn {
+    from {
+        filter: saturate(0) contrast(4) brightness(.1) blur(5px);
+        opacity: 0;
+        scale: 0.95;
+        translate: 0 4rem;
+    }
+    to {
+        filter: none;
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
+    }
 }
