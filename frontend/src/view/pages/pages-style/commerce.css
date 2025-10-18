@@ -6,6 +6,7 @@
     width: 100vw;
     contain: paint;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -22,7 +23,25 @@
     animation-timeline: view(70% 10%); /*Animation bắt đầu ở 10% màn hình và kết thúc ở 70% màn hình (Đừng để mấy cái body của full page là overflow: hidden mà hãy để là clip*/
 }
 
+.commerce-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    background: -webkit-linear-gradient(to right, #e85d41, #d44a7f);
+    background: linear-gradient(to right, #e85d41, #d44a7f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideLeft both;
+    animation-timeline: view(50% 0%);
+}
 
+@keyframes slideLeft {
+    from {
+        clip-path: inset(0 100% 0 0);
+    } 
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
 
 @keyframes fadesIn {
     from {

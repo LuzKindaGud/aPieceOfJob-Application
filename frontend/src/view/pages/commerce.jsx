@@ -11,6 +11,7 @@ function Commerce({ style }) {
 
   return (
     <div className="commerce-container" style={style}>
+      <h2 className="commerce-title">Explore Our Commerce Solutions</h2>
       <div className="commerce-content">
         {cardData.map((item) => (
           <Card

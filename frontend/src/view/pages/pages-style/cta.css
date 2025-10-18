@@ -42,7 +42,7 @@
     border: 2px solid transparent;
     cursor: pointer;
     animation: fadesIn both;
-    animation-timeline: view(70% 30%);
+    animation-timeline: view(70% 10%);
 }
 
 /* Nút chính - Dành cho người thuê */
