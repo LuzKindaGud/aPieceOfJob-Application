@@ -1,0 +1,124 @@
+.auth-container {
+    font-family: "Share Tech", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(to right, #c31432, #240b36, #240b36, #c31432);
+    padding-top: 5.6rem; /* Khoảng trống cho navbar */
+    box-sizing: border-box;
+}
+
+.auth-form-wrapper {
+    background: rgba(20, 20, 20, 0)85);
+    padding: 1.5rem;           /* giảm padding */
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    width: 100%;
+    max-width: 360px;         /* nhỏ hơn trước */
+    height: auto;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 1);
+}
+
+.auth-form h2 {
+    font-size: 1.8rem;        /* nhỏ hơn */
+    margin-bottom: 0.4rem;
+    color: #ffffff;
+}
+
+.auth-form p {
+    color: #a7a7a7;
+    margin-bottom: 1.25rem;   /* giảm margin */
+    font-size: 0.95rem;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 1.5rem;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #a7a7a7;
+    font-size: 0.85rem;       /* nhỏ hơn */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.6rem 0.25rem;  /* giảm padding */
+    border-radius: 6px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #fff;
+    font-size: 0.95rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+
+.auth-button {
+    width: 100%;
+    padding: 0.75rem;         /* nhỏ hơn */
+    font-size: 1rem;          /* nhỏ hơn */
+    border-radius: 8px;
+    background: linear-gradient(to right, #c31432, #9a1127);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: all 0.22s ease;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(195, 20, 50, 0.4);
+}
+
+.auth-switch {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.auth-switch a {
+    color: #e85d41;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-switch a:hover {
+    text-decoration: underline;
+}
+
+.auth-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    color: #a7a7a7;
+}
+
+.auth-options .remember {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.auth-options .forgot-link {
+    color: #a7a7a7;
+    text-decoration: none;
+}
+
+.auth-options .forgot-link:hover,
+.back-to-login:hover {
+    text-decoration: underline;
+}
+
+.back-to-login {
+    color: #a7a7a7;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 1rem;
+}

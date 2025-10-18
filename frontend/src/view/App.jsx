@@ -11,11 +11,18 @@ import Infbar from './components/infbar.jsx';
 import Home from './pages/home.jsx';
 import Commerce from './pages/commerce.jsx'; 
 import About from './pages/benefits.jsx';
+import Login from './pages/Login.jsx';
+import Register from './pages/Register.jsx';
+import ForgotPassword from './pages/ForgotPassword.jsx';
+import CTA from './pages/cta.jsx';
+import Contact from './pages/contact.jsx';
+import Terms from './pages/Terms.jsx';
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 function App() {
   const [showIntro, setShowIntro] = useState(true);
+  const location = useLocation();
 
   const handleIntroComplete = () => {
     document.body.classList.add('intro-finished');
@@ -24,6 +31,11 @@ function App() {
     }, 0);
   };
 
+  useEffect(() => {
+    // Cuộn cửa sổ về vị trí (0, 0) mỗi khi `location.pathname` thay đổi
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+  
   useEffect(() => {
     // Khởi tạo Lenis để làm scroll mượt
     const lenis = new Lenis({
@@ -75,6 +87,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <div className="page-transition-overlay" key={location.pathname}></div>
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar />
       <main className="main-content">
@@ -87,9 +100,16 @@ function App() {
                 <Infbar />
                 <About />
                 <Commerce />
+                <CTA />
               </>
             }
           />
+          <Route path="/about" element={<About />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
         <Footer style={{ zIndex: 0}}/>
       </main>

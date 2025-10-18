@@ -1,5 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faRocket, faCheckCircle, faMobileAlt, faHandshake, faLightbulb } from '@fortawesome/free-solid-svg-icons';
+import { Link } from 'react-router-dom';
+
 import benefitsData from './data/benefit-data.json';
 import './pages-style/benefits.css';
 
@@ -36,7 +38,10 @@ function Benefits({ style }) {
         ))}
       </div>
       <div className="benefits-footer">
-        <button className="cta-button">Get Started</button>
+        <p>Ready to get started? Join thousands of businesses and freelancers making things happen on aPieceOfJob.</p>
+        <Link to="/register" className="cta-button-link">
+          <button className="cta-button">Get Started</button>
+        </Link>
       </div>
     </div>
   );
