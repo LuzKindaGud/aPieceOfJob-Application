@@ -16,6 +16,7 @@ import Register from './pages/Register.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import CTA from './pages/cta.jsx';
 import Contact from './pages/contact.jsx';
+import Terms from './pages/Terms.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -86,6 +87,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <div className="page-transition-overlay" key={location.pathname}></div>
       {showIntro && <Intro onComplete={handleIntroComplete} />}
       <Navbar />
       <main className="main-content">
@@ -107,6 +109,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
         <Footer style={{ zIndex: 0}}/>
       </main>

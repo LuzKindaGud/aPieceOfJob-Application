@@ -61,11 +61,12 @@
 .footer-section.social .social-links a {
     color: #a7a7a7;
     font-size: 1rem;
-    margin-right: 15px;
+    margin-left: 0px;
     text-decoration: none;
     transition: color 0.3s ease;
     
 }
+
 
 .footer-logo img {
     height: 60px;
