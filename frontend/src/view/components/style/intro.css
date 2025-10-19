@@ -39,6 +39,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    position: relative;
 }
 
 .intro-logo {
@@ -56,10 +58,11 @@
 /* Inline SVG logo styles */
 .intro-logo-svg {
     /* let the svg fill the constrained wrapper while keeping aspect ratio */
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 300px;
     overflow: visible;
     display: block;
+    margin: 0 auto;
 }
 
 /* Path reveal: we'll animate stroke-dashoffset from full length -> 0 as loading progresses
@@ -90,3 +93,115 @@
     }
 }
 
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .intro-logo-svg {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .intro-content {
+        width: 100%;
+    }
+
+    .intro-logo-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .intro-logo-svg {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 8;
+    }
+}
+
+@media (max-width: 640px) {
+    .intro-container {
+        padding: 0 0.5rem;
+    }
+
+    .intro-logo-svg {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 7;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-container {
+        width: 100vw;
+        height: 100svh;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .intro-content {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .intro-logo-wrapper {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .intro-logo-svg {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        left: 18%;
+        transform: translateX(0);
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 6;
+    }
+}
+
+@media (max-width: 360px) {
+    .intro-logo-svg {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 5;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .intro-container {
+        height: 100svh;
+        padding: 0 1rem;
+    }
+
+    .intro-logo-svg {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 6;
+    }
+}

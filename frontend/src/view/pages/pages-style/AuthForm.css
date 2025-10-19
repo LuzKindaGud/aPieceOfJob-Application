@@ -6,12 +6,13 @@
     min-height: 100vh;
     width: 100vw;
     background: linear-gradient(to right, #c31432, #240b36, #240b36, #c31432);
-    padding-top: 5.6rem; /* Khoảng trống cho navbar */
+    padding-top: 4.6rem; /* Khoảng trống cho navbar */
+    padding-bottom: 4rem;
     box-sizing: border-box;
 }
 
 .auth-form-wrapper {
-    background: rgba(20, 20, 20, 0)85);
+    background: rgba(20, 20, 20, 0);
     padding: 1.5rem;           /* giảm padding */
     border-radius: 10px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
@@ -21,6 +22,12 @@
     height: auto;
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 1);
+}
+
+/* Register form có width lớn hơn */
+.auth-form-wrapper.register-form {
+    max-width: 480px;
+    padding: 2rem;
 }
 
 .auth-form h2 {
@@ -121,4 +128,131 @@
     text-decoration: none;
     display: inline-block;
     margin-top: 1rem;
+}
+
+/* Role Selection Styles */
+.role-selection {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.75rem;
+}
+
+.role-option {
+    flex: 1;
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 2px solid #444;
+    background: #2a2a2a;
+    padding: 1.25rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.role-option:hover {
+    border-color: #666;
+    background: #333;
+    transform: translateY(-2px);
+}
+
+.role-option.active {
+    border-color: #e85d41;
+    background: linear-gradient(135deg, rgba(232, 93, 65, 0.15), rgba(212, 74, 127, 0.15));
+    box-shadow: 0 4px 12px rgba(232, 93, 65, 0.3);
+}
+
+.role-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.role-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.role-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.25rem;
+}
+
+.role-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #ffffff;
+    display: block;
+}
+
+.role-description {
+    font-size: 0.8rem;
+    color: #a7a7a7;
+    display: block;
+    line-height: 1.4;
+}
+
+.role-option.active .role-title {
+    color: #e85d41;
+}
+
+.role-option.active .role-description {
+    color: #d0d0d0;
+}
+
+/* Responsive cho role selection */
+@media (max-width: 640px) {
+    .auth-form-wrapper.register-form {
+        max-width: 400px;
+        padding: 1.75rem;
+    }
+
+    .role-selection {
+        gap: 0.875rem;
+    }
+
+    .role-option {
+        padding: 1rem 0.875rem;
+    }
+
+    .role-icon {
+        font-size: 2.25rem;
+    }
+
+    .role-title {
+        font-size: 0.95rem;
+    }
+
+    .role-description {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-form-wrapper.register-form {
+        max-width: 360px;
+        padding: 1.5rem;
+    }
+
+    .role-selection {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .role-option {
+        padding: 1rem;
+    }
+
+    .role-icon {
+        font-size: 2rem;
+    }
+
+    .role-title {
+        font-size: 0.9rem;
+    }
+
+    .role-description {
+        font-size: 0.7rem;
+    }
 }

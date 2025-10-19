@@ -13,10 +13,13 @@ import Commerce from './pages/commerce.jsx';
 import About from './pages/benefits.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
+import Jobs from './pages/Jobs.jsx';
+import JobApplication from './pages/JobApplication.jsx';
 import ForgotPassword from './pages/ForgotPassword.jsx';
 import CTA from './pages/cta.jsx';
 import Contact from './pages/contact.jsx';
 import Terms from './pages/Terms.jsx';
+import AlterJobs from './pages/Alter-jobs.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -100,6 +103,7 @@ function App() {
                 <Infbar />
                 <About />
                 <Commerce />
+                <AlterJobs />
                 <CTA />
               </>
             }
@@ -108,6 +112,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/job-application" element={<JobApplication />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
         </Routes>

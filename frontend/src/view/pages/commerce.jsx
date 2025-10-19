@@ -1,12 +1,16 @@
 import './pages-style/commerce.css';
 import Card from '../components/Card.jsx';
-import cardData from './data/data.json'; 
+import cardData from './data/data.json';
+import { useNavigate } from 'react-router-dom';
 
 function Commerce({ style }) {
+  const navigate = useNavigate();
+
   // xử lý khi chọn card
   const handleSelect = (id) => {
     console.log("Card selected:", id);
-    // có thể mở modal, điều hướng, v.v.
+    // Điều hướng đến trang jobs
+    navigate('/jobs');
   };
 
   return (

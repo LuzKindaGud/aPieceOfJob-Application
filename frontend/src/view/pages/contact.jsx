@@ -2,7 +2,7 @@ import React from 'react';
 import './pages-style/contact.css';
 import memberData from './data/member-data.json';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faLinkedin, faGithub, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faTwitter, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
 function Contact() {
   return (
@@ -21,9 +21,9 @@ function Contact() {
               <h3>{member.name}</h3>
               <p>{member.role}</p>
               <div className="social-links">
-                <a href={member.socialLinks.linkedin} aria-label="LinkedIn"><FontAwesomeIcon icon={faLinkedin} /></a>
-                <a href={member.socialLinks.github} aria-label="GitHub"><FontAwesomeIcon icon={faGithub} /></a>
-                <a href={member.socialLinks.twitter} aria-label="Twitter"><FontAwesomeIcon icon={faTwitter} /></a>
+                <a href={member.socialLinks.facebook} aria-label="Facebook" target='blank'><FontAwesomeIcon icon={faFacebook} /></a>
+                <a href={member.socialLinks.github} aria-label="GitHub" target='blank'><FontAwesomeIcon icon={faGithub} /></a>
+                <a href={member.socialLinks.twitter} aria-label="Twitter" target='blank'><FontAwesomeIcon icon={faTwitter} /></a>
               </div>
             </div>
           </div>

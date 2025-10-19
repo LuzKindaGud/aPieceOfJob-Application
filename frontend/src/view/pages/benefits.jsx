@@ -30,10 +30,12 @@ function Benefits({ style }) {
       </div>
       <div className="benefits-grid">
         {benefits.map((benefit, index) => ( //Benefits duyệt hết tất cả các phần tử trong mảng benefits, benefit là từng phần tử trong JSON, index là chỉ số của phần tử đó trong mảng.
-          <div key={index} className="benefit-card">
-            <FontAwesomeIcon icon={benefit.icon} className="benefit-icon" />
-            <h3>{benefit.title}</h3>
-            <p>{benefit.description}</p>
+          <div class="benefit-card-wrapper">
+            <div key={index} className="benefit-card">
+              <FontAwesomeIcon icon={benefit.icon} className="benefit-icon" />
+              <h3>{benefit.title}</h3>
+              <p>{benefit.description}</p>
+            </div>
           </div>
         ))}
       </div>

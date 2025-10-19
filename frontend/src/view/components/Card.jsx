@@ -1,4 +1,5 @@
 import './style/Card.css';
+import { Link } from 'react-router-dom';
 function Card({ id, card, title, description, onSelect }) {
 
     return (
@@ -7,14 +8,16 @@ function Card({ id, card, title, description, onSelect }) {
             <div className="card-content">
                 <h2>{title}</h2>
                 <p>{description}</p>
-                <button
-                    type="button"
-                    data-id={id}
-                    onClick={() => onSelect?.(id)}
-                    aria-label={`Learn more about ${title}`}
-                >
-                    Learn More
-                </button>
+                <Link to="/jobs">
+                    <button
+                        type="button"
+                        data-id={id}
+                        onClick={() => navigate('/jobs')}
+                        aria-label={`Learn more about ${title}`}
+                    >
+                        Learn More
+                    </button>
+                </Link>
             </div>
         </div>
     );

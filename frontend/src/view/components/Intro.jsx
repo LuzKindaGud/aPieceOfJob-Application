@@ -12,13 +12,13 @@ function Intro({ onComplete }) {
   useEffect(() => {
     // độ trễ trước khi logo/vẽ đường bắt đầu (ms). Tăng giá trị để logo xuất hiện muộn hơn.
     const LOGO_START_DELAY_MS = 400;
-    let interval = null;
-    const startTimeout = setTimeout(() => {
-      interval = setInterval(() => {
-        setProgress((prev) => {
-          const next = prev + 1;
-          if (next >= 50) {
-            if (interval) clearInterval(interval);
+    let interval = null;  // để lưu ID interval
+    const startTimeout = setTimeout(() => { // bắt đầu sau độ trễ
+      interval = setInterval(() => {  // lặp tập trung tiến độ
+        setProgress((prev) => { // cập nhật tiến độ
+          const next = prev + 1;  // tăng 1% mỗi lần
+          if (next >= 50) { // khi đạt 50%
+            if (interval) clearInterval(interval);  // dừng interval
             // bắt đầu animation mờ dần (fade-out)
             setIsFading(true);
             try {
@@ -44,15 +44,17 @@ function Intro({ onComplete }) {
       if (interval) clearInterval(interval);
     };
   }, [onComplete]);
-  useEffect(() => {
-    const path = pathRef.current;
-    if (!path) return;
-    try {
-      const len = path.getTotalLength();
-      pathLengthRef.current = len;
-      path.style.strokeDasharray = len;
+  
+  // khởi tạo dasharray và dashoffset khi component mount
+  useEffect(() => { // chạy một lần khi mount
+    const path = pathRef.current; // lấy tham chiếu đến phần tử đường dẫn SVG
+    if (!path) return;  // nếu không có, thoát
+    try { // một số SVG có thể gây lỗi khi lấy chiều dài; bỏ qua và giữ mặc định 
+      const len = path.getTotalLength();  // lấy chiều dài toàn bộ đường dẫn
+      pathLengthRef.current = len;  // lưu chiều dài vào ref
+      path.style.strokeDasharray = len; // đặt dasharray bằng chiều dài đường dẫn
       // đặt dashoffset ban đầu theo tiến độ hiện tại
-      path.style.strokeDashoffset = String(len * (1 - progress / 100));
+      path.style.strokeDashoffset = String(len * (1 - progress / 100)); // bắt đầu từ 100% (ẩn hoàn toàn)
       // cho phép chuyển tiếp mượt khi tiến độ thay đổi
       path.style.transition = "stroke-dashoffset linear";
     } catch (e) {
@@ -62,12 +64,12 @@ function Intro({ onComplete }) {
 
   // cập nhật dashoffset khi progress thay đổi
   useEffect(() => {
-    const path = pathRef.current;
-    const len = pathLengthRef.current || 0;
-    if (!path || !len) return;
+    const path = pathRef.current; // lấy tham chiếu đến phần tử đường dẫn SVG
+    const len = pathLengthRef.current || 0; // lấy chiều dài đã lưu
+    if (!path || !len) return;  // nếu không có, thoát
     // làm mềm chuyển động bằng transition trong CSS/inline style
-    path.style.strokeDashoffset = String(len * (1 - progress / 100));
-  }, [progress]);
+    path.style.strokeDashoffset = String(len * (1 - progress / 100)); // cập nhật dashoffset theo tiến độ
+  }, [progress]); // chạy mỗi khi progress thay đổi
 
   return (
     <div ref={containerRef} className={"intro-container" + (isFading ? " fade-out" : "")}>
