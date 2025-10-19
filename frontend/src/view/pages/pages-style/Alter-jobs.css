@@ -1,0 +1,321 @@
+.alter-jobs-container {
+    position: relative;
+    font-family: "Share Tech", sans-serif;
+    background: linear-gradient(to bottom, #121212, #e85d41);
+    color: rgba(255, 255, 255, 0.87);
+    min-height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: clip;
+}
+
+
+.alter-jobs-header {
+    text-align: left;
+    padding-left: 1rem;
+    margin-bottom: 3rem;
+    background: linear-gradient(to right, #e85d41, #d44a7f);
+    height: 300px;
+    width: 250px;
+}
+
+.alter-jobs-image {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-top: 1rem;
+    box-sizing: border-box;
+}
+
+.alter-jobs-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* row: chỉ để căn giữa card */
+.alter-jobs-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 2400px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0 2rem;
+    min-height: 600px;
+}
+
+/* side image columns - ABSOLUTE positioning */
+.alter-jobs-image-content {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 400px;
+    height: 450px;
+}
+
+.alter-jobs-image-content.left-image {
+    left: 2%;
+}
+
+.alter-jobs-image-content.right-image {
+    right: 2%;
+}
+
+/* Wrapper cho overlay-box */
+.overlay-box {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* WRAPPER CHO ẢNH - ÁP DỤNG ANIMATION Ở ĐÂY */
+.image-wrapper {
+    position: absolute;
+    width: 100%;
+}
+
+/* LEFT - Wrapper cho ảnh thứ nhất */
+.overlay-box.first .image-wrapper:nth-child(1) {
+    top: -50%;
+    left: -40%;
+    z-index: 2;
+    animation: slideeLeft both;
+    animation-timeline: view(100% 0%);
+}
+
+/* LEFT - Wrapper cho ảnh thứ hai */
+.overlay-box.first .image-wrapper:nth-child(2) {
+    top: 30%;
+    left: 0%;
+    z-index: 1;
+    animation: slideeLeft both;
+    animation-timeline: view(100% -80%);
+}
+
+/* RIGHT - Wrapper cho ảnh thứ nhất */
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(1) {
+    top: -30%;
+    right: -15%;
+    z-index: 2;
+    animation: slideeRight both;
+    animation-timeline: view(100% 0%);
+}
+
+/* RIGHT - Wrapper cho ảnh thứ hai */
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(2) {
+    top: 40%;
+    right: 20%;
+    z-index: 1;
+    animation: slideeRight both;
+    animation-timeline: view(100% -100%);
+}
+
+/* Base style cho IMG - CHỈ DÙNG TRANSITION, KHÔNG ANIMATION */
+.alter-jobs-image-content img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* LEFT IMAGE - Đặt transform mặc định */
+.overlay-box.first .image-wrapper:nth-child(1) img {
+    transform: rotate(0deg);
+    transform-origin: bottom right;
+}
+
+.overlay-box.first .image-wrapper:nth-child(2) img {
+    transform: rotate(0deg);
+    transform-origin: bottom right;
+}
+
+/* RIGHT IMAGE - Đặt transform mặc định */
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(1) img {
+    transform: rotate(0deg);
+    transform-origin: bottom left;
+}
+
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(2) img {
+    transform: rotate(0deg);
+    transform-origin: bottom left;
+}
+
+/* LEFT IMAGE - Hover effects CHỈ DÙNG TRANSITION */
+.overlay-box.first .image-wrapper:nth-child(1):hover {
+    z-index: 10;
+}
+
+.overlay-box.first .image-wrapper:nth-child(1):hover img {
+    transform: scale(1.1) rotate(5deg) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(232, 93, 65, 0.5);
+}
+
+.overlay-box.first .image-wrapper:nth-child(2):hover {
+    z-index: 10;
+}
+
+.overlay-box.first .image-wrapper:nth-child(2):hover img {
+    transform: scale(1.1) rotate(5deg) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(232, 93, 65, 0.5);
+}
+
+/* RIGHT IMAGE - Hover effects CHỈ DÙNG TRANSITION */
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(1):hover {
+    z-index: 10;
+}
+
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(1):hover img {
+    transform: scale(1.1) rotate(-5deg) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(212, 74, 127, 0.5);
+}
+
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(2):hover {
+    z-index: 10;
+}
+
+.alter-jobs-image-content.right-image .image-wrapper:nth-child(2):hover img {
+    transform: scale(1.1) rotate(-5deg) translateY(-10px);
+    box-shadow: 0 15px 40px rgba(212, 74, 127, 0.5);
+}
+
+/* Card ở giữa - LUÔN Ở TRUNG TÂM */
+.alter-jobs-container > .alter-jobs-row > .alter-card,
+.alter-jobs-row > .altercard,
+.alter-jobs-row > .Altercard,
+.alter-jobs-row > .alter-jobs-card {
+    flex: 0 0 auto;
+    max-width: 600px;
+    z-index: 10;
+    position: relative;
+}
+
+@keyframes slideeLeft {
+    from {
+        transform: translateX(-100%) rotate(0deg);
+    }
+    to {
+        transform: translateX(0) rotate(45deg);
+    }
+}
+
+@keyframes slideeRight {
+    from {
+        transform: translateX(100%) rotate(0deg);
+    }
+    to {
+        transform: translateX(0%) rotate(-20deg);
+    }
+}
+
+@keyframes wipesLeft {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 1400px) {
+    .alter-jobs-image-content {
+        width: 250px;
+        height: 400px;
+    }
+    
+    .alter-jobs-image-content.left-image {
+        left: 1%;
+    }
+    
+    .alter-jobs-image-content.right-image {
+        right: 1%;
+    }
+    
+    .overlay-box.first .image-wrapper:nth-child(1) {
+        left: -80%;
+    }
+    
+    .alter-jobs-image-content.right-image .image-wrapper:nth-child(1) {
+        right: -40%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .alter-jobs-image-content {
+        width: 200px;
+        height: 350px;
+    }
+    
+    .overlay-box.first .image-wrapper:nth-child(1) {
+        left: -60%;
+    }
+    
+    .overlay-box.first .image-wrapper:nth-child(2) {
+        left: -40%;
+    }
+    
+    .alter-jobs-image-content.right-image .image-wrapper:nth-child(1) {
+        right: -30%;
+    }
+    
+    .alter-jobs-image-content.right-image .image-wrapper:nth-child(2) {
+        right: -5%;
+    }
+}
+
+@media (max-width: 768px) {
+    .alter-jobs-row {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 0 1rem;
+        min-height: auto;
+    }
+
+    .alter-jobs-image-content {
+        position: relative;
+        transform: none;
+        left: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .overlay-box {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+        height: auto;
+    }
+
+    .image-wrapper {
+        position: relative;
+        width: 48%;
+        top: auto;
+        left: auto;
+        right: auto;
+        animation: none;
+    }
+
+    .alter-jobs-image-content img {
+        transform: none;
+    }
+    
+    .alter-jobs-image-content img:hover {
+        transform: scale(1.05);
+    }
+}

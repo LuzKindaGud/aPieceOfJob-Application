@@ -17,6 +17,7 @@ import ForgotPassword from './pages/ForgotPassword.jsx';
 import CTA from './pages/cta.jsx';
 import Contact from './pages/contact.jsx';
 import Terms from './pages/Terms.jsx';
+import AlterJobs from './pages/Alter-jobs.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -100,6 +101,7 @@ function App() {
                 <Infbar />
                 <About />
                 <Commerce />
+                <AlterJobs />
                 <CTA />
               </>
             }
