@@ -76,3 +76,169 @@ body.intro-finished .cta-button {
     clip-path: inset(0 0 0 0);
     transition-delay: 1s;
 }
+
+/* CTA Button Styles */
+.cta-button-link {
+    text-decoration: none;
+}
+
+.cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #e85d41, #d44a7f);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Share Tech", sans-serif;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(232, 93, 65, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .home-content h1 {
+        font-size: 5rem;
+    }
+
+    .home-content p {
+        font-size: 1.35rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 2.25rem;
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        margin-top: 4.5rem;
+    }
+
+    .background-video {
+        padding-top: 4.5rem;
+    }
+
+    .home-content {
+        padding: 0 2rem;
+        padding-bottom: 8rem;
+    }
+
+    .home-content h1 {
+        font-size: 4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 0.85rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-content h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .home-content p {
+        font-size: 1.1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.75rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        margin-top: 4rem;
+        height: 100svh;
+    }
+
+    .background-video {
+        padding-top: 4rem;
+        height: 100svh;
+    }
+
+    .home-content {
+        padding: 0 1.5rem;
+        padding-bottom: 6rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .home-content p {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .home-container {
+        height: 100svh;
+    }
+
+    .background-video {
+        height: 100svh;
+    }
+
+    .home-content {
+        padding-bottom: 3rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
