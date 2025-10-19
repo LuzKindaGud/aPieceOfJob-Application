@@ -5,41 +5,41 @@
     "role": "Frontend",
     "imageUrl": "https://scontent.fdad3-1.fna.fbcdn.net/v/t1.15752-9/534524354_736705535850990_2208898481257174186_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=9f807c&_nc_ohc=UhOX8QW-LYAQ7kNvwHGIDUw&_nc_oc=AdlkRNpVGHngXDuzN67Sq_2jZPw7Isea-E5tsIVgFXBoEPQJ9sW7yNHDb0uFLoo2mz4&_nc_zt=23&_nc_ht=scontent.fdad3-1.fna&oh=03_Q7cD3gFnjaFbKGO0xmwPWfzN_4E2pE4yYQz3RtVNG99ZaVMfWg&oe=6919DCB9",
     "socialLinks": {
-      "linkedin": "#",
-      "github": "#",
+      "facebook": "https://www.facebook.com/luz.kinda.gud",
+      "github": "https://github.com/LuzKindaGud",
       "twitter": "#"
     }
   },
   {
     "id": 2,
-    "name": "Khánh",
+    "name": "Khanh",
     "role": "Frontend",
     "imageUrl": "https://scontent.fdad3-5.fna.fbcdn.net/v/t1.15752-9/550171958_755632730434285_8904227884208722489_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=9f807c&_nc_ohc=SIQS0SvNhtQQ7kNvwG63lcG&_nc_oc=AdmNAYZRMphsox7w9pREVWStABSi2jjMu1WiVJW3VX1of3_1xYIMsqBU3sGCvYLl5J0&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&oh=03_Q7cD3gEzU7rmKj7A-FSfrq4lwmdgE0r38QMTGsozMKguz1zBQA&oe=6919B543",
     "socialLinks": {
-      "linkedin": "#",
-      "github": "#",
+      "facebook": "https://www.facebook.com/vanvo.khanh.3950/",
+      "github": "https://github.com/cobalts-theon",
       "twitter": "#"
     }
   },
   {
     "id": 3,
-    "name": "Trường",
+    "name": "Truong",
     "role": "Backend",
     "imageUrl": "https://scontent.fdad3-4.fna.fbcdn.net/v/t1.15752-9/552153723_1355442289500978_269523747583555933_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=9f807c&_nc_ohc=ddlj2NEWjtgQ7kNvwHleb_5&_nc_oc=AdkFdbvE7iZegITGvXCJXhmlqBNzAZCRH-vm_JgehIWUN2j46TYLqC6urCd4nudzTAE&_nc_zt=23&_nc_ht=scontent.fdad3-4.fna&oh=03_Q7cD3gH2uHGqcX0OVWv9Azs4bcpkko0EYCkDadZq2XUdyFnf1w&oe=6919C3ED",
     "socialLinks": {
-      "linkedin": "#",
-      "github": "#",
+      "facebook": "https://www.facebook.com/riyaki.truong",
+      "github": "https://github.com/baotruong2040",
       "twitter": "#"
     }
   },
   {
     "id": 4,
-    "name": "Thống",
+    "name": "Thong",
     "role": "Backend",
     "imageUrl": "https://scontent.fdad3-5.fna.fbcdn.net/v/t1.15752-9/548748269_1283363870191091_7012160633631912514_n.jpg?stp=dst-jpg_p480x480_tt6&_nc_cat=106&ccb=1-7&_nc_sid=0024fc&_nc_ohc=irO9L_v1OCcQ7kNvwENlsra&_nc_oc=Adn5YtIehnQSRP2gx8CojUj7VdiunliOEXUou3Ws71l3q599dngLa9czwuggIKvjCow&_nc_ad=z-m&_nc_cid=0&_nc_zt=23&_nc_ht=scontent.fdad3-5.fna&oh=03_Q7cD3gGDmNiKFI_jO8APRc0tR34VdBrPNb2kwYUSUmg5IXicXg&oe=6919B44C",
     "socialLinks": {
-      "linkedin": "#",
-      "github": "#",
+      "facebook": "https://www.facebook.com/kimthong.huynh.75",
+      "github": "https://github.com/mimic0n",
       "twitter": "#"
     }
   }

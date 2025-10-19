@@ -1,0 +1,360 @@
+/* Job Application Page Styles */
+.application-container {
+  min-height: 100vh;
+  background: #1a1a1a;
+  padding: 8rem 2rem 4rem;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.application-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Back Button */
+.back-btn {
+  background: #2d2d2d;
+  color: #e0e0e0;
+  border: 2px solid #404040;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.back-btn:hover {
+  background: #404040;
+  border-color: #555555;
+  transform: translateX(-4px);
+}
+
+/* Job Info Card */
+.job-info-card {
+  background: #2d2d2d;
+  border-radius: 12px;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  border: 2px solid #404040;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.job-info-header {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.company-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 12px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.job-info-details h2 {
+  font-size: 1.75rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+}
+
+.company-name {
+  font-size: 1.1rem;
+  color: #b0b0b0;
+  margin: 0 0 1rem 0;
+}
+
+.job-info-meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.job-info-meta span {
+  background: #1a1a1a;
+  color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+
+/* Application Form Container */
+.application-form-container {
+  background: #2d2d2d;
+  border-radius: 12px;
+  padding: 2.5rem;
+  border: 2px solid #404040;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.application-form-container h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin: 0 0 0.5rem 0;
+  background: linear-gradient(to right, #e85d41, #d44a7f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.form-description {
+  color: #b0b0b0;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+}
+
+/* Form Styles */
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  color: #e0e0e0;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: #1a1a1a;
+  border: 2px solid #404040;
+  border-radius: 8px;
+  padding: 0.875rem 1rem;
+  color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #e85d41;
+  box-shadow: 0 0 0 3px rgba(232, 93, 65, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: #666666;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.form-group input.error,
+.form-group textarea.error,
+.file-upload-btn.error {
+  border-color: #ef4444;
+}
+
+.error-message {
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: -0.25rem;
+}
+
+/* File Upload */
+.file-upload-group small {
+  color: #888888;
+  font-size: 0.85rem;
+}
+
+.file-upload-wrapper {
+  position: relative;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-upload-btn {
+  background: #1a1a1a;
+  border: 2px dashed #404040;
+  border-radius: 8px;
+  padding: 1.5rem;
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+}
+
+.file-upload-btn:hover {
+  border-color: #e85d41;
+  background: rgba(232, 93, 65, 0.05);
+}
+
+.file-upload-btn svg {
+  font-size: 1.2rem;
+}
+
+/* Submit Button */
+.submit-btn {
+  background: linear-gradient(135deg, #e85d41, #d44a7f);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(232, 93, 65, 0.4);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Success Container */
+.success-container {
+  background: #2d2d2d;
+  border-radius: 16px;
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 2px solid #404040;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.5s ease;
+}
+
+.success-icon {
+  font-size: 5rem;
+  color: #10b981;
+  margin-bottom: 1.5rem;
+  animation: scaleIn 0.5s ease;
+}
+
+.success-container h1 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #10b981, #059669);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.success-container p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.redirect-message {
+  color: #888888 !important;
+  font-size: 0.95rem !important;
+  font-style: italic;
+}
+
+/* Animations */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .application-container {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .job-info-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .company-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .job-info-meta {
+    justify-content: center;
+  }
+
+  .application-form-container {
+    padding: 1.5rem;
+  }
+
+  .application-form-container h1 {
+    font-size: 1.5rem;
+  }
+
+  .success-container {
+    padding: 3rem 1.5rem;
+  }
+
+  .success-icon {
+    font-size: 4rem;
+  }
+
+  .success-container h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .submit-btn {
+    width: 100%;
+  }
+}
+
