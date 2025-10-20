@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './style/JobCard.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 function JobCard({ job }) {
-  const [isExpanded, setIsExpanded] = useState(false);
   const navigate = useNavigate();
 
   const formatDate = (dateString) => {
@@ -52,28 +51,6 @@ function JobCard({ job }) {
           <span className="job-category">{job.category}</span>
           <span className="job-posted">Posted {formatDate(job.posted)}</span>
         </div>
-
-        {isExpanded && (
-          <div className="job-details">
-            <div className="requirements-section">
-              <h4>Requirements:</h4>
-              <ul>
-                {job.requirements.map((req, index) => (
-                  <li key={index}>{req}</li>
-                ))}
-              </ul>
-            </div>
-            
-            <div className="benefits-section">
-              <h4>Benefits:</h4>
-              <ul>
-                {job.benefits.map((benefit, index) => (
-                  <li key={index}>{benefit}</li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        )}
       </div>
 
       <div className="job-card-footer">
@@ -82,12 +59,6 @@ function JobCard({ job }) {
           onClick={() => navigate('/job-application', { state: { job } })}
         >
           Apply Now
-        </button>
-        <button 
-          className="details-btn"
-          onClick={() => setIsExpanded(!isExpanded)}  // setIsExpanded: function để set trạng thái của isExpanded
-        >
-          {isExpanded ? 'Show Less' : 'View Details'}
         </button>
       </div>
     </div>

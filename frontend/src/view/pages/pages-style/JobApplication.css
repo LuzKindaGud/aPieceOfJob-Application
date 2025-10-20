@@ -84,6 +84,94 @@
   font-size: 0.9rem;
 }
 
+/* Job Details Section */
+.job-details-section {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid #404040;
+}
+
+.detail-group {
+  margin-bottom: 2rem;
+}
+
+.detail-group:last-child {
+  margin-bottom: 0;
+}
+
+.detail-group h3 {
+  font-size: 1.3rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #e85d41, #d44a7f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.detail-group p {
+  color: #e0e0e0;
+  line-height: 1.8;
+  font-size: 1rem;
+}
+
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-list li {
+  color: #e0e0e0;
+  padding: 0.75rem 0;
+  padding-left: 1.5rem;
+  position: relative;
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+.detail-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #e85d41;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.additional-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  background: #1a1a1a;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #404040;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.info-label {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.info-value {
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: linear-gradient(to right, #e85d41, #d44a7f);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 /* Application Form Container */
 .application-form-container {
   background: #2d2d2d;
