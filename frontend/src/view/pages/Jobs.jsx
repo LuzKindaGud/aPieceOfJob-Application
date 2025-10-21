@@ -4,10 +4,12 @@ import jobsData from './data/jobs.json';
 import JobCard from '../components/JobCard.jsx';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 function Jobs() {
   const [jobs] = useState(jobsData);
+  const navigate = useNavigate();
 
   // Lấy giá trị unique cho các filter options (chỉ để hiển thị)
   const categories = [...new Set(jobs.map(job => job.category))];
@@ -149,6 +151,12 @@ function Jobs() {
               </div>
               
               <div className="results-controls">
+                <button 
+                  className="add-job-btn"
+                  onClick={() => navigate('/add-job')}
+                >
+                  <FontAwesomeIcon icon={faPlus} /> Post a Job
+                </button>
                 <div className="sort-controls">
                   <label htmlFor="sort-select">Sort by:</label>
                   <select

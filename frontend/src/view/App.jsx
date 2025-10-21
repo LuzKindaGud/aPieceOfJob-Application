@@ -20,6 +20,7 @@ import CTA from './pages/cta.jsx';
 import Contact from './pages/contact.jsx';
 import Terms from './pages/Terms.jsx';
 import AlterJobs from './pages/Alter-jobs.jsx';
+import AddJob from './pages/AddJob.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -116,6 +117,7 @@ function App() {
           <Route path="/job-application" element={<JobApplication />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/add-job" element={<AddJob />} />
         </Routes>
         <Footer style={{ zIndex: 0}}/>
       </main>

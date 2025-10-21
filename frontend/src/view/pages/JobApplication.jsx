@@ -205,6 +205,51 @@ function JobApplication() {
               </div>
             </div>
           </div>
+
+          {/* Job Details Section */}
+          <div className="job-details-section">
+            {/* Description */}
+            <div className="detail-group">
+              <h3>Job Description</h3>
+              <p>{job.description}</p>
+            </div>
+
+            {/* Requirements */}
+            <div className="detail-group">
+              <h3>Requirements</h3>
+              <ul className="detail-list">
+                {job.requirements.map((req, index) => (
+                  <li key={index}>{req}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Benefits */}
+            <div className="detail-group">
+              <h3>Benefits</h3>
+              <ul className="detail-list">
+                {job.benefits.map((benefit, index) => (
+                  <li key={index}>{benefit}</li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Additional Info */}
+            <div className="detail-group additional-info">
+              <div className="info-item">
+                <span className="info-label">Category:</span>
+                <span className="info-value">{job.category}</span>
+              </div>
+              <div className="info-item">
+                <span className="info-label">Experience Level:</span>
+                <span className="info-value">{job.experience}</span>
+              </div>
+              <div className="info-item">
+                <span className="info-label">Job Type:</span>
+                <span className="info-value">{job.type}</span>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Container chứa form application */}
