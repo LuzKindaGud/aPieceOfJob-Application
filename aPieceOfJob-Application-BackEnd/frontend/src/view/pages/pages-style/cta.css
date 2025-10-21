@@ -1,0 +1,85 @@
+.cta-container {
+    font-family: "Share Tech", sans-serif;
+    position: relative;
+    background: linear-gradient(to right, #c31432, #240b36, #240b36, #c31432);
+    padding: 5rem 2rem;
+    text-align: center;
+    color: #fff;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cta-content h2 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    animation: fadesIn both;
+    animation-timeline: view(70% 10%);
+}
+
+.cta-content .cta-description {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2.5rem auto;
+    animation: fadesIn both;
+    animation-timeline: view(70% 10%);
+}
+
+.ctaa-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên màn hình nhỏ */
+}
+
+.ctaa-button {
+    padding: 0.8rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: 50px; /* Bo tròn cạnh */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    animation: fadesIn both;
+    animation-timeline: view(70% 10%);
+}
+
+/* Nút chính - Dành cho người thuê */
+#primary-cta {
+    background-color: #fff;
+    color: #c31432;
+}
+
+#primary-cta:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.05);
+}
+
+/* Nút phụ - Dành cho người tìm việc */
+#secondary-cta{
+    background-color: transparent;
+    color: #fff;
+    border-color: #fff;
+}
+
+#secondary-cta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+
+@keyframes fadesIn {
+    from {
+        filter: saturate(0) contrast(4) brightness(.1) blur(5px);
+        opacity: 0;
+        scale: 0.95;
+        translate: 0 4rem;
+    }
+    to {
+        filter: none;
+        opacity: 1;
+        scale: 1;
+        translate: 0 0;
+    }
+}
+

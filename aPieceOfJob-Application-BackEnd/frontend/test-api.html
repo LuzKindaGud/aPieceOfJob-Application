@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test API aPieceOfJob</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        input,
+        button {
+            margin: 5px 0;
+            padding: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        .response {
+            background: #f5f5f5;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 3px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Test API aPieceOfJob</h1>
+
+    <!-- Đăng ký -->
+    <div class="section">
+        <h2>1. Đăng ký</h2>
+        <input type="text" id="reg-username" placeholder="Username">
+        <input type="email" id="reg-email" placeholder="Email">
+        <input type="password" id="reg-password" placeholder="Password">
+        <input type="text" id="reg-fullname" placeholder="Full Name">
+        <input type="tel" id="reg-phone" placeholder="Phone">
+        <button onclick="register()">Đăng ký</button>
+        <div class="response" id="reg-response"></div>
+    </div>
+
+    <!-- Đăng nhập -->
+    <div class="section">
+        <h2>2. Đăng nhập</h2>
+        <input type="email" id="login-email" placeholder="Email">
+        <input type="password" id="login-password" placeholder="Password">
+        <button onclick="login()">Đăng nhập</button>
+        <div class="response" id="login-response"></div>
+    </div>
+
+    <!-- Lấy Profile -->
+    <div class="section">
+        <h2>3. Lấy Profile (cần token)</h2>
+        <input type="text" id="token" placeholder="Paste token từ đăng nhập">
+        <button onclick="getProfile()">Lấy Profile</button>
+        <div class="response" id="profile-response"></div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+
+        async function register() {
+            const data = {
+                username: document.getElementById('reg-username').value,
+                email: document.getElementById('reg-email').value,
+                password: document.getElementById('reg-password').value,
+                full_name: document.getElementById('reg-fullname').value,
+                phone: document.getElementById('reg-phone').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                document.getElementById('reg-response').textContent =
+                    JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('reg-response').textContent =
+                    'Error: ' + error.message;
+            }
+        }
+
+        async function login() {
+            const data = {
+                email: document.getElementById('login-email').value,
+                password: document.getElementById('login-password').value
+            };
+
+            try {
+                const response = await fetch(`${API_URL}/auth/login`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                document.getElementById('login-response').textContent =
+                    JSON.stringify(result, null, 2);
+
+                // Auto fill token
+                if (result.token) {
+                    document.getElementById('token').value = result.token;
+                }
+            } catch (error) {
+                document.getElementById('login-response').textContent =
+                    'Error: ' + error.message;
+            }
+        }
+
+        async function getProfile() {
+            const token = document.getElementById('token').value;
+
+            try {
+                const response = await fetch(`${API_URL}/auth/profile`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                });
+
+                const result = await response.json();
+                document.getElementById('profile-response').textContent =
+                    JSON.stringify(result, null, 2);
+            } catch (error) {
+                document.getElementById('profile-response').textContent =
+                    'Error: ' + error.message;
+            }
+        }
+    </script>
+</body>
+
+</html>

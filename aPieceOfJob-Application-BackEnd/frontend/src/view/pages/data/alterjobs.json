@@ -1,0 +1,27 @@
+[
+    {
+        "id": "1",
+        "jobsTitle": "Barista",
+        "jobsImg": "https://www.shutterstock.com/image-vector/barman-barista-pixel-art-old-260nw-1299192448.jpg"
+    },
+    {
+        "id": "2",
+        "jobsTitle": "Worker",
+        "jobsImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXICz0BQA7zkSDn3lFZGtR6xBzdBQl35hJoQ&s"
+    },
+    {
+        "id": "-3",
+        "jobsTitle": "Chef",
+        "jobsImg": "https://thumbs.dreamstime.com/z/chef-pixel-art-isolated-white-background-cook-game-style-illustration-vector-design-funny-bit-people-character-icon-86619903.jpg"
+    },
+    {
+        "id": "4",
+        "jobsTitle": "Engineer",
+        "jobsImg": "https://media.istockphoto.com/id/1046266640/vi/vec-to/ki%E1%BA%BFn-tr%C3%BAc-s%C6%B0-pixel-ngh%E1%BB%87-thu%E1%BA%ADt-tr%C3%AAn-n%E1%BB%81n-tr%E1%BA%AFng-minh-h%E1%BB%8Da-vect%C6%A1.jpg?s=612x612&w=0&k=20&c=M7E9z97EbHE2sIOE6VEmF9Z6a_de_uw3FnjXUbniPoU="
+    },
+    {
+        "id": "5",
+        "jobsTitle": "Jobs",
+        "jobsImg": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1-4EVmpyQam15r4ELUDKjVPoVRg4GFPNTSQ&s"
+    }
+]

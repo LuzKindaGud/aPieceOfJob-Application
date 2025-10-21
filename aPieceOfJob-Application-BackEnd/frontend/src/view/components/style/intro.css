@@ -1,0 +1,207 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 100%;
+    background: #23074d; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #23074d, #cc5333); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #23074d, #cc5333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.intro-container.fade-out {
+    animation: fadeOut 0.4s ease-out forwards;
+}
+
+.intro-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.intro-logo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+}
+
+.intro-logo {
+    object-fit: contain;
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+    opacity: 0;
+    transform: scale(0.8);
+    animation: logoAppear 1s ease-in-out forwards;
+}
+
+.intro-logo-fallback {
+    display: none;
+}
+
+/* Inline SVG logo styles */
+.intro-logo-svg {
+    /* let the svg fill the constrained wrapper while keeping aspect ratio */
+    width: 300px;
+    height: 300px;
+    overflow: visible;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Path reveal: we'll animate stroke-dashoffset from full length -> 0 as loading progresses
+   Keep styles neutral so inline attributes and JS control color/length/offset. */
+.intro-logo-svg path {
+    stroke-width: 10;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    /* JS will set stroke-dasharray and stroke-dashoffset based on path length */
+    stroke-dasharray: 0;
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 120ms linear;
+}
+
+@keyframes logoAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) rotate(-10deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(1.05) rotate(5deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .intro-logo-svg {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 768px) {
+    .intro-container {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .intro-content {
+        width: 100%;
+    }
+
+    .intro-logo-wrapper {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .intro-logo-svg {
+        width: 250px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 8;
+    }
+}
+
+@media (max-width: 640px) {
+    .intro-container {
+        padding: 0 0.5rem;
+    }
+
+    .intro-logo-svg {
+        width: 220px;
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 7;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro-container {
+        width: 100vw;
+        height: 100svh;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    .intro-content {
+        width: 100%;
+        padding: 0 1rem;
+    }
+
+    .intro-logo-wrapper {
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .intro-logo-svg {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        left: 18%;
+        transform: translateX(0);
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 6;
+    }
+}
+
+@media (max-width: 360px) {
+    .intro-logo-svg {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 5;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .intro-container {
+        height: 100svh;
+        padding: 0 1rem;
+    }
+
+    .intro-logo-svg {
+        width: 180px;
+        height: 180px;
+        margin: 0 auto;
+    }
+
+    .intro-logo-svg path {
+        stroke-width: 6;
+    }
+}

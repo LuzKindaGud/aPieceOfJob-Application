@@ -1,0 +1,25 @@
+
+✅ Authentication System
+
+    Đăng ký user với các role: user, employer, admin
+    Đăng nhập với JWT token
+    Xác thực và phân quyền người dùng
+
+✅ Job Management
+
+    Lấy danh sách công việc (public)
+    Xem chi tiết công việc (public)
+    Tạo công việc mới (chỉ employer/admin)
+    Cập nhật công việc (chỉ employer/admin)
+    Xóa công việc (chỉ employer/admin)
+
+✅ Database
+
+    Kết nối MySQL thành công
+    Bảng users và jobs hoạt động tốt
+
+✅ Security
+
+    Mã hóa password với bcrypt
+    JWT token authentication
+    Role-based access control

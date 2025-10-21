@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+.benefits-container {
+    position: relative;
+    font-family: "Share Tech", sans-serif;
+    background-color: #1a1a1a;
+    color: rgba(255, 255, 255, 0.87);
+    min-height: 100vh;
+    width: 100vw;
+    padding: 7rem 2rem 3rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.benefits-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: slideDown 0.8s ease-in-out;
+}
+
+.benefits-header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0.5rem;
+    background: -webkit-linear-gradient(to right, #e85d41, #d44a7f);
+    background: linear-gradient(to right, #e85d41, #d44a7f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: slideLeft both;
+    animation-timeline: view(50% 0%);
+}
+
+.benefits-header p {
+    font-size: 1.4rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: slideLeft both;
+    animation-timeline: view(50% 10%);
+}
+
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    width: 100%;
+}
+
+/* Wrapper để xử lý scroll animation */
+.benefit-card-wrapper {
+    height: 80%;
+    animation: popInn both;
+    animation-timeline: view(80% 10%);
+    animation-duration: 0.8s;
+}
+
+/* Staggered animation */
+.benefit-card-wrapper:nth-child(1) { animation-delay: 0.2s; }
+.benefit-card-wrapper:nth-child(2) { animation-delay: 0.6s; }
+.benefit-card-wrapper:nth-child(3) { animation-delay: 1s; }
+.benefit-card-wrapper:nth-child(4) { animation-delay: 2s; }
+.benefit-card-wrapper:nth-child(5) { animation-delay: 1.8s; }
+.benefit-card-wrapper:nth-child(6) { animation-delay: 1.4s; }
+
+/* Card chính - xử lý hover */
+.benefit-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 1);
+    transform-origin: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    height: 100%;
+}
+
+.benefit-card:hover {
+    transform: rotate(5deg) scale(1.03);
+    border-color: #e85d41;
+}
+
+.benefit-icon {
+    font-size: 3rem;
+    color: #e85d41;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.benefit-card h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #fff;
+    transition: color 0.2s ease-in-out;
+}
+
+.benefit-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.8);
+    transition: color 0.2s ease-in-out;
+}
+
+.benefit-card:hover h3,
+.benefit-card:hover p {
+    color: #e85d41;
+}
+
+.benefit-card:hover .benefit-icon {
+    filter:drop-shadow(0 0 10px #e85d416a);
+    transform: scale(1.1);
+}
+
+.benefits-footer {
+    margin-top: 3rem;
+    text-align: center;
+    animation: fadeInUp 1s ease-in-out 1s forwards;
+    opacity: 0;
+}
+
+.benefits-footer p {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.7);
+    animation: slideLeft both;
+    animation-timeline: view(70% 10%);
+}
+
+.benefits-footer button {
+    animation: slideLeft both;
+    animation-timeline: view(70% 10%);
+}
+
+/* Keyframe Animations */
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes popInn {
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotate(0deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideLeft {
+    from {
+        clip-path: inset(0 100% 0 0);
+    } 
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
