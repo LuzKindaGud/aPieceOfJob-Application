@@ -166,6 +166,14 @@
   transition: all 0.1s ease;
 }
 
+/* Trạng thái disabled cho nút Clear Filters */
+.clear-filters-btn:disabled {
+  background: #2a2a2a;
+  color: #666666;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
 /* Filter Sections */
 .filter-section {
   margin-bottom: 2rem;
@@ -428,14 +436,20 @@
 }
 
 
-/* No Jobs State */
-.no-jobs {
+/* No Jobs State - Trạng thái khi không có công việc */
+.no-jobs, .no-jobs-found {
   grid-column: 1 / -1;
   text-align: center;
   padding: 4rem 2rem;
   background: #2d2d2d;
   border-radius: 16px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.no-jobs-found p {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  margin: 0;
 }
 
 .no-jobs-icon {
