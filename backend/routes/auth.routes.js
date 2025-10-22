@@ -1,16 +1,14 @@
-// routes/auth.routes.js
 import express from 'express';
-import * as authController from '../controllers/auth.controller.js';
+import { register, login, getProfile } from '../controllers/auth.controller.js';
+import { authenticateToken } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-// POST /api/auth/register -> Đăng ký
-router.post('/register', authController.register);
+// Public routes
+router.post('/register', register);
+router.post('/login', login);
 
-// POST /api/auth/login -> Đăng nhập
-router.post('/login', authController.login);
-
-// GET /api/auth/logout -> Logout (chủ yếu chỉ là thông báo cho client)
-router.get('/logout', authController.logout); 
+// Protected routes
+router.get('/profile', authenticateToken, getProfile);
 
 export default router;

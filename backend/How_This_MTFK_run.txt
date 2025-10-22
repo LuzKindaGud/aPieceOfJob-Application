@@ -1,0 +1,22 @@
+backend/
+├── index.js                 # Entry point
+├── src/
+│   ├── config/
+│   │   └── database.js      # Cấu hình database (legacy)
+│   ├── controllers/         # Xử lý logic nghiệp vụ
+│   ├── middleware/          # Xử lý xác thực, phân quyền
+│   ├── models/
+│   │   └── db.js           # Kết nối MySQL
+│   ├── routes/             # Định nghĩa API endpoints
+│   └── utils/
+│       └── validation.js   # Validation helpers
+
+
+index.js : KHỞI ĐỘNG SERVER
+
+Request → CORS middleware → JSON parser
+Routes → Determine endpoint
+Middleware → Authenticate & Authorize
+Controller → Business logic
+Database → CRUD operations
+Response → JSON format

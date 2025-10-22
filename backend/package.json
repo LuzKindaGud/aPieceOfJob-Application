@@ -1,24 +1,32 @@
 {
-  "name": "backend",
+  "name": "web-simulation-project-backend",
   "version": "1.0.0",
+  "description": "Backend for web simulation project with user authentication",
   "main": "index.js",
-  "scripts": {
-    "dev": "nodemon index.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "type": "module",
-  "description": "",
-  "devDependencies": {
-    "nodemon": "^3.1.10"
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "bcrypt": "^6.0.0",
+    "axios": "^1.12.2",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2",
-    "mysql2": "^3.15.2"
-  }
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  },
+  "keywords": [
+    "job-board",
+    "backend",
+    "api"
+  ],
+  "author": "Your Name",
+  "license": "ISC"
 }

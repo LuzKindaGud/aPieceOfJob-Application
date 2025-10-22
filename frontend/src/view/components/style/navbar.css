@@ -227,6 +227,96 @@
     flex: 1;
 }
 
+/* User Section and Profile Dialog */
+.nav-user-section {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-user-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  color: white;
+}
+
+.nav-user-btn .nav-user-icon {
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.nav-user-btn:hover .nav-user-icon {
+  color: var(--primary-color);
+}
+
+.profile-dialog {
+  position: absolute;
+  top: 150%; /* Position below the icon */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 220px;
+  z-index: 1000;
+  color: #333;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.profile-info .profile-name {
+  font-weight: 600;
+  font-size: 1rem;
+  margin: 0;
+  color: #000;
+}
+
+.profile-info .profile-email,
+.profile-info .profile-role {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0;
+  text-transform: capitalize;
+}
+
+.profile-logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  text-align: left;
+  color: #d9534f;
+  transition: background-color 0.2s ease;
+}
+
+.profile-logout-btn:hover {
+  background-color: #f1f3f5;
+}
+
+.mobile-logout-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+
 /* Responsive Design */
 @media (max-width: 1024px) {
     .nav-logo h2 {

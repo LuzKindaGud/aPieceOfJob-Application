@@ -5,99 +5,178 @@ import db from '../models/db.js';
 // @route   GET /api/jobs
 export const getJobList = async (req, res) => {
     try {
-        // Query JOIN cơ bản để lấy tên công ty và logo
-        const sql = `
-            SELECT 
-                j.job_id, j.title, j.job_level, j.job_type, j.location, 
-                j.min_salary, j.max_salary, j.salary_currency, j.posted_at, j.is_featured,
-                c.name as company_name, c.logo_url
-            FROM Jobs j
-            JOIN Companies c ON j.company_id = c.company_id
-            WHERE j.status = 'Active'
-            ORDER BY j.is_featured DESC, j.posted_at DESC
-            LIMIT 50
-        `;
-        const [jobs] = await db.query(sql);
-        
-        res.status(200).json({ success: true, count: jobs.length, data: jobs });
+        const [jobs] = await db.query(
+            'SELECT * FROM jobs ORDER BY created_at DESC'
+        );
+
+        res.json({
+            success: true,
+            count: jobs.length,
+            jobs
+        });
     } catch (error) {
-        console.error("GET Job List Error:", error.message);
-        res.status(500).json({ success: false, message: 'Server error fetching jobs.' });
+        console.error('Get job list error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Lỗi khi lấy danh sách công việc',
+            error: error.message
+        });
     }
 };
 
 // @desc    Lấy chi tiết công việc
 // @route   GET /api/jobs/:id
 export const getJobDetails = async (req, res) => {
-    const { id } = req.params;
     try {
-        const sql = `
-            SELECT 
-                j.*, c.name as company_name, c.logo_url
-            FROM Jobs j
-            JOIN Companies c ON j.company_id = c.company_id
-            WHERE j.job_id = ? AND j.status = 'Active'
-        `;
-        const [results] = await db.query(sql, [id]);
+        const { id } = req.params;
 
-        if (results.length === 0) {
-            return res.status(404).json({ success: false, message: "Job not found." });
+        const [jobs] = await db.query(
+            'SELECT * FROM jobs WHERE id = ?',
+            [id]
+        );
+
+        if (jobs.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Không tìm thấy công việc'
+            });
         }
-        res.status(200).json({ success: true, data: results[0] }); 
+
+        res.json({
+            success: true,
+            job: jobs[0]
+        });
     } catch (error) {
-        console.error("GET Job Details Error:", error.message);
-        res.status(500).json({ success: false, message: 'Server error fetching job details.' });
+        console.error('Get job details error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Lỗi khi lấy chi tiết công việc',
+            error: error.message
+        });
     }
 };
 
 // @desc    Tạo bài đăng công việc (Recruiter phải đăng nhập)
 // @route   POST /api/jobs
 export const createJob = async (req, res) => {
-    const recruiterId = req.user.id; // Lấy ID Recruiter từ middleware
-    const { companyName, logoUrl, jobData } = req.body;
-    
-    // --- B1: Xử lý Công ty ---
-    let companyId;
     try {
-        // Giả sử logic kiểm tra/tạo công ty được thực hiện ở đây:
-        // 1. Kiểm tra Công ty đã tồn tại chưa (theo tên)
-        const [existingCompany] = await db.query('SELECT company_id FROM Companies WHERE name = ?', [companyName]);
-        
-        if (existingCompany.length > 0) {
-            companyId = existingCompany[0].company_id;
-        } else {
-            // 2. Nếu chưa, tạo công ty mới
-            const insertSql = 'INSERT INTO Companies (name, logo_url, added_by_user_id) VALUES (?, ?, ?)';
-            const [result] = await db.query(insertSql, [companyName, logoUrl, recruiterId]);
-            companyId = result.insertId;
+        // 1. Thêm các trường mới vào destructuring
+        const { title, company, location, salary, type, category, experience, description, requirements, benefits, image, featured } = req.body;
+        const employerId = req.user.id; // Lấy từ token
+
+        // Validate
+        if (!title || !company || !location) {
+            return res.status(400).json({
+                success: false,
+                message: 'Title, company và location là bắt buộc'
+            });
         }
-    } catch (error) {
-        return res.status(500).json({ message: "Failed to process company information." });
-    }
 
-    // --- B2: Tạo Bài đăng Công việc ---
-    try {
-        const { title, jobLevel, jobType, location, shortDescription, fullRequirements, minSalary, maxSalary, salaryCurrency } = jobData;
-        
-        const jobSql = `
-            INSERT INTO Jobs (company_id, recruiter_id, title, job_level, job_type, location, short_description, full_requirements, min_salary, max_salary, salary_currency, posted_at, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW(), 'Active')
-        `;
-        const jobValues = [
-            companyId, recruiterId, title, jobLevel, jobType, location, 
-            shortDescription, fullRequirements, minSalary, maxSalary, salaryCurrency
-        ];
-        
-        const [jobResult] = await db.query(jobSql, jobValues);
+        // 2. Cập nhật câu lệnh INSERT
+        const [result] = await db.query(
+            'INSERT INTO jobs (title, company, location, salary, type, category, experience, description, requirements, benefits, image, featured, employer_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            // 3. Thêm các biến mới vào mảng tham số
+            [title, company, location, salary || null, type || null, category || null, experience || null, description || null, requirements || null, benefits || null, image || null, featured || false, employerId]
+        );
 
-        res.status(201).json({ 
-            success: true, 
-            message: "Job posted successfully.", 
-            job_id: jobResult.insertId 
+        res.status(201).json({
+            success: true,
+            message: 'Tạo công việc thành công',
+            jobId: result.insertId
+            
         });
-
     } catch (error) {
-        console.error("Create Job Error:", error.message);
-        res.status(500).json({ message: 'Server error when posting job.' });
+        console.error('Create job error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Lỗi khi tạo công việc',
+            error: error.message
+        });
+    }
+};
+
+// Xóa job (chỉ employer/admin)
+export const deleteJob = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const employerId = req.user.id;
+
+        // Kiểm tra job có tồn tại không
+        const [jobs] = await db.query('SELECT * FROM jobs WHERE id = ?', [id]);
+
+        if (jobs.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Không tìm thấy công việc'
+            });
+        }
+
+        // Kiểm tra quyền sở hữu
+        if (req.user.role !== 'admin' && jobs[0].employer_id !== employerId) {
+            return res.status(403).json({
+                success: false,
+                message: 'Bạn không có quyền xóa công việc này'
+            });
+        }
+
+        await db.query('DELETE FROM jobs WHERE id = ?', [id]);
+
+        res.json({
+            success: true,
+            message: 'Xóa công việc thành công'
+        });
+    } catch (error) {
+        console.error('Delete job error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Lỗi khi xóa công việc',
+            error: error.message
+        });
+    }
+};
+
+export const updateJob = async (req, res) => {
+    try {
+        const { id } = req.params;
+        // 1. Thêm các trường mới vào destructuring
+        const { title, company, location, salary, type, category, experience, description, requirements, benefits, image, featured } = req.body;
+        const employerId = req.user.id;
+
+        // Kiểm tra job có tồn tại không
+        const [jobs] = await db.query('SELECT * FROM jobs WHERE id = ?', [id]);
+
+        if (jobs.length === 0) {
+            return res.status(404).json({
+                success: false,
+                message: 'Không tìm thấy công việc'
+            });
+        }
+
+        // Kiểm tra quyền sở hữu (chỉ employer tạo job hoặc admin mới được sửa)
+        if (req.user.role !== 'admin' && jobs[0].employer_id !== employerId) {
+            return res.status(403).json({
+                success: false,
+                message: 'Bạn không có quyền cập nhật công việc này'
+            });
+        }
+
+        // 2. Cập nhật câu lệnh UPDATE
+        await db.query(
+            'UPDATE jobs SET title = ?, company = ?, location = ?, salary = ?, type = ?, category = ?, experience = ?, description = ?, requirements = ?, benefits = ?, image = ?, featured = ? WHERE id = ?',
+            // 3. Thêm các biến mới vào mảng tham số
+            [title, company, location, salary, type, category, experience, description, requirements, benefits, image, featured, id]
+        );
+
+        res.json({
+            success: true,
+            message: 'Cập nhật công việc thành công'
+        });
+    } catch (error) {
+        console.error('Update job error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Lỗi khi cập nhật công việc',
+            error: error.message
+        });
     }
 };

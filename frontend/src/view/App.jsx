@@ -21,6 +21,7 @@ import Contact from './pages/contact.jsx';
 import Terms from './pages/Terms.jsx';
 import AlterJobs from './pages/Alter-jobs.jsx';
 import AddJob from './pages/AddJob.jsx';
+import UpdateJob from './pages/UpdateJob.jsx';
 
 import { Route, Routes, useLocation } from "react-router-dom";
 
@@ -118,6 +119,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/terms" element={<Terms />} />
           <Route path="/add-job" element={<AddJob />} />
+          <Route path="/update-job/:id" element={<UpdateJob />} />
         </Routes>
         <Footer style={{ zIndex: 0}}/>
       </main>

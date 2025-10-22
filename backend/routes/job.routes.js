@@ -13,8 +13,22 @@ router.get('/:id', jobController.getJobDetails);
 router.post(
     '/', 
     protect, 
-    restrictTo('Recruiter'), 
+    restrictTo('employer', 'admin'), 
     jobController.createJob
 ); 
+
+router.put(
+    '/:id',
+    protect,
+    restrictTo('employer', 'admin'),  // ← Sửa đây
+    jobController.updateJob
+);
+
+router.delete(
+    '/:id',
+    protect,
+    restrictTo('employer', 'admin'),  // ← Sửa đây
+    jobController.deleteJob
+);
 
 export default router;

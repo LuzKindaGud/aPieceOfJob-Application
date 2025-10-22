@@ -7,6 +7,14 @@ import { useNavigate } from 'react-router-dom';
 function JobCard({ job }) {
   const navigate = useNavigate();
 
+  // 1. Lấy thông tin người dùng từ localStorage
+  const userData = localStorage.getItem('user');
+  const user = userData ? JSON.parse(userData) : null;
+
+  // 2. Kiểm tra xem người dùng đã đăng nhập có phải là chủ của công việc này không
+  // Thêm điều kiện kiểm tra user.role === 'admin' nếu bạn muốn admin cũng có thể sửa
+  const isOwner = user && (user.id === job.employer_id || user.role === 'admin');
+
   const formatDate = (dateString) => {
     const date = new Date(dateString);  // 2024-01-15
     const now = new Date();
@@ -22,7 +30,7 @@ function JobCard({ job }) {
   return (
     // job-card: class name của job card
     <div className={`job-card ${job.featured ? 'featured' : ''}`}> 
-      {job.featured && <div className="featured-badge">Featured</div>}
+      {job.featured ? <div className="featured-badge">Featured</div> : null}
       
       <div className="job-card-header">
         <div className="job-image">
@@ -49,7 +57,7 @@ function JobCard({ job }) {
 
         <div className="job-tags">
           <span className="job-category">{job.category}</span>
-          <span className="job-posted">Posted {formatDate(job.posted)}</span>
+          <span className="job-posted">Posted {formatDate(job.created_at)}</span>
         </div>
       </div>
 
@@ -60,6 +68,16 @@ function JobCard({ job }) {
         >
           Apply Now
         </button>
+        
+        {/* 3. Chỉ hiển thị nút Edit nếu isOwner là true */}
+        {isOwner && (
+          <button 
+            className="edit-btn"
+            onClick={() => navigate(`/update-job/${job.id}`, { state: { job } })}
+          >
+            Edit
+          </button>
+        )}
       </div>
     </div>
   );

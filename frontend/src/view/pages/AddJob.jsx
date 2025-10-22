@@ -3,6 +3,7 @@ import './pages-style/AddJob.css';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft, faUpload, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 function AddJob() {
   const navigate = useNavigate();
@@ -27,6 +28,8 @@ function AddJob() {
 
   // State để theo dõi trạng thái submit
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // State để track image input type: 'url' hoặc 'file'
   const [imageInputType, setImageInputType] = useState('url');
@@ -144,47 +147,56 @@ function AddJob() {
   };
 
   // Hàm xử lý submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setApiError('');
 
     if (validateForm()) {
-      // Lọc bỏ các requirements và benefits rỗng
+      setIsSubmitting(true);
+
+      // 1. Lọc bỏ các mục rỗng
       const filteredRequirements = requirements.filter(req => req.trim() !== '');
       const filteredBenefits = benefits.filter(ben => ben.trim() !== '');
 
-      // Xử lý image dựa trên type
-      let imageData;
-      if (imageInputType === 'url') {
-        imageData = formData.image;
-      } else {
-        // Trong thực tế, bạn sẽ upload file lên server và lấy URL
-        // Hiện tại chỉ tạo URL tạm từ file
-        imageData = imageFile ? URL.createObjectURL(imageFile) : '';
-      }
+      // 2. Chuyển mảng thành chuỗi, ngăn cách bởi dấu phẩy và dấu cách
+      const requirementsString = filteredRequirements.join(', ');
+      const benefitsString = filteredBenefits.join(', ');
 
+      // Chuẩn bị dữ liệu để gửi
       const jobData = {
         ...formData,
-        image: imageData,
-        imageFile: imageInputType === 'file' ? imageFile?.name : null, // Lưu tên file nếu là file upload
-        requirements: filteredRequirements,
-        benefits: filteredBenefits,
-        posted: new Date().toISOString().split('T')[0], // Format: YYYY-MM-DD
-        id: Date.now(), // Generate simple ID
+        requirements: requirementsString,
+        benefits: benefitsString,
       };
 
-      console.log('Job Data:', jobData);
-      console.log('Image Type:', imageInputType);
-      if (imageFile) console.log('Image File:', imageFile);
-      
-      // Ở đây bạn có thể gọi API để lưu job data
-      // Nếu là file, bạn cần dùng FormData để upload
-      // const formDataToSend = new FormData();
-      // formDataToSend.append('image', imageFile);
-      // ... append other fields
+      try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+          setApiError('Authentication error. Please log in again.');
+          setIsSubmitting(false);
+          return;
+        }
 
-      alert('Job posted successfully! (This is UI only)');
-      // Có thể redirect về trang jobs
-      // navigate('/jobs');
+        const response = await axios.post(
+          'http://localhost:5000/api/jobs',
+          jobData,
+          {
+            headers: {
+              'Authorization': `Bearer ${token}`
+            }
+          }
+        );
+
+        if (response.data.success) {
+          alert('Job posted successfully!');
+          navigate('/jobs');
+        }
+      } catch (err) {
+        const message = err.response?.data?.message || 'An unexpected error occurred.';
+        setApiError(message);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -204,6 +216,13 @@ function AddJob() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="add-job-form">
+          {/* Hiển thị lỗi từ API */}
+          {apiError && (
+            <div className="form-section">
+              <p className="error-message api-error">{apiError}</p>
+            </div>
+          )}
+
           {/* Basic Information Section */}
           <div className="form-section">
             <h2 className="section-title">Basic Information</h2>
@@ -493,8 +512,8 @@ function AddJob() {
             <button type="button" className="cancellation-btn" onClick={() => navigate('/jobs')}>
               Cancel
             </button>
-            <button type="submit" className="submit-btn">
-              Post Job
+            <button type="submit" className="submit-btn" disabled={isSubmitting}>
+              {isSubmitting ? 'Posting...' : 'Post Job'}
             </button>
           </div>
         </form>

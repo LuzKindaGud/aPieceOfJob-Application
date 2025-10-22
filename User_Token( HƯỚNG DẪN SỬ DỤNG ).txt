@@ -1,0 +1,87 @@
+Hướng dân sử dụng test API trên postman sử dụng JWT token : 
+
+Lấy danh sách jobs (GET - không cần token)
+GET http://localhost:5000/api/jobs
+
+5. Lấy chi tiết job (GET - không cần token)
+GET http://localhost:5000/api/jobs/1 (1 = ID)
+
+6. Cập nhật job (PUT - cần token)
+PUT http://localhost:5000/api/jobs/1
+
+Tạo user , job :
+Bước 1: Mở Postman
+Bước 2: Tạo request mới
+Click New → HTTP Request
+Chọn method: POST
+Nhập URL: http://localhost:5000/api/auth/register (cho register)
+          http://localhost:5000/api/auth/login (cho login)
+          http://localhost:5000/api/jobs (cho cho add job)
+
+Bước 3: Thêm Headers
+Click tab Headers, thêm:
+Content-Type: application/json
+
+Bước 4: Thêm Body
+Click tab Body
+Chọn raw
+Chọn JSON (dropdown bên phải)
+Paste đoạn JSON:
+
+{
+  "username": "recruiter1",
+  "email": "recruiter@company.com",
+  "password": "123456",
+  "full_name": "Nhà tuyển dụng",
+  "role": "Employer"
+} => Dành cho register muốn cho login hoặc add jobs thì xem phía dưới
+
+Bước 5: Click Send
+
+http://localhost:5000/api/auth/register :
+
+ Tạo user mới 
+{
+  "username": "Employer",
+  "email": "Employer@company.com",
+  "password": "123456",
+  "full_name": "Nhà tuyển dụng",
+  "role": "Employer"
+}
+
+http://localhost:5000/api/auth/login : Dùng cái này để lấy token Của User
+
+ĐĂNG NHẬP USER :
+
+{
+  "email": "recruiter@company.com",
+  "password": "123456"
+}
+
+{
+  "email": "recruiter123@company.com",
+  "password": "123456"
+}
+
+{
+  "email": "employer@company.com",
+  "password": "123456"
+}
+
+ http://localhost:5000/api/jobs 
+ (CHÚ Ý : Tạo request mới (ví dụ: tạo job):
+Method: POST
+URL: http://localhost:5000/api/jobs
+Click tab Headers
+Thêm header mới:
+Key: Authorization
+Value: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9... (paste token vừa copy)
+Lưu ý: Phải có chữ Bearer và một khoảng trắng trước token! )
+
+{
+  "title": "Senior Developer",
+  "company": "ABC Company",
+  "location": "Hà Nội",
+  "salary": "20-30 triệu",
+  "description": "Mô tả công việc..."
+}

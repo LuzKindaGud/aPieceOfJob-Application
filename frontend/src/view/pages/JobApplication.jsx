@@ -218,7 +218,8 @@ function JobApplication() {
             <div className="detail-group">
               <h3>Requirements</h3>
               <ul className="detail-list">
-                {job.requirements.map((req, index) => (
+                {/* Kiểm tra nếu là chuỗi thì tách ra, nếu là mảng thì dùng trực tiếp */}
+                {(typeof job.requirements === 'string' ? job.requirements.split(', ') : job.requirements || []).map((req, index) => (
                   <li key={index}>{req}</li>
                 ))}
               </ul>
@@ -228,7 +229,8 @@ function JobApplication() {
             <div className="detail-group">
               <h3>Benefits</h3>
               <ul className="detail-list">
-                {job.benefits.map((benefit, index) => (
+                {/* Tương tự cho benefits */}
+                {(typeof job.benefits === 'string' ? job.benefits.split(', ') : job.benefits || []).map((benefit, index) => (
                   <li key={index}>{benefit}</li>
                 ))}
               </ul>

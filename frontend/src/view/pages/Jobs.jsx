@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios'; // 1. Import axios
 import './pages-style/Jobs.css';
-import jobsData from './data/jobs.json';
+// import jobsData from './data/jobs.json'; // 2. Xóa data tĩnh
 import JobCard from '../components/JobCard.jsx';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,14 +9,35 @@ import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 
 function Jobs() {
-  const [jobs] = useState(jobsData);
+  // 3. Khởi tạo state để lưu jobs, loading và error
+  const [jobs, setJobs] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const navigate = useNavigate();
 
+  // 4. Dùng useEffect để gọi API với axios khi component được render
+  useEffect(() => {
+    const fetchJobs = async () => {
+      try {
+        // Gọi API bằng axios. Dữ liệu trả về nằm trong response.data
+        const response = await axios.get('http://localhost:5000/api/jobs');
+        setJobs(response.data.jobs); // Backend trả về { success, count, jobs }
+      } catch (err) {
+        setError(err.message);
+        console.error("Error fetching jobs:", err);
+      } finally {
+        setLoading(false); // Dừng loading dù thành công hay thất bại
+      }
+    };
+
+    fetchJobs();
+  }, []); // Mảng rỗng `[]` đảm bảo useEffect chỉ chạy 1 lần
+
   // Lấy giá trị unique cho các filter options (chỉ để hiển thị)
-  const categories = [...new Set(jobs.map(job => job.category))];
-  const locations = [...new Set(jobs.map(job => job.location))];
-  const types = [...new Set(jobs.map(job => job.type))];
-  const experiences = [...new Set(jobs.map(job => job.experience))];
+  const categories = [...new Set(jobs.map(job => job.category).filter(Boolean))];
+  const locations = [...new Set(jobs.map(job => job.location).filter(Boolean))];
+  const types = [...new Set(jobs.map(job => job.type).filter(Boolean))];
+  const experiences = [...new Set(jobs.map(job => job.experience).filter(Boolean))];
 
   // Các hàm không hoạt động (này trong backend. Maybe?)
   const handleFilterChange = () => {
@@ -41,6 +63,15 @@ function Jobs() {
   const setShowFilters = () => {
     // Để không vì anh thích thế 
   };
+
+  // 5. Xử lý các trạng thái UI: loading và error
+  if (loading) {
+    return <div className="jobs-container"><p>Loading jobs...</p></div>;
+  }
+
+  if (error) {
+    return <div className="jobs-container"><p>Error loading jobs: {error}</p></div>;
+  }
 
   return (
     <div className="jobs-container">
