@@ -89,12 +89,12 @@ function Navbar() {
           {/* Thay đổi icon user */}
           <div className="nav-user-section" ref={profileRef}>
             {isLoggedIn ? (
-              <button onClick={toggleProfileDialog} className="nav-user-btn">
-                <FontAwesomeIcon icon={faUser} className="nav-user-icon"/>
-              </button>
+              <a onClick={toggleProfileDialog} style={{cursor: 'pointer'}}>
+                <FontAwesomeIcon icon={faUser} className="nav-user-icon logged-in"/>
+              </a>
             ) : (
               <Link to="/login">
-                <FontAwesomeIcon icon={faUser} className="nav-user-icon"/>
+                <FontAwesomeIcon icon={faUser} className="nav-user-icon" />
               </Link>
             )}
 
