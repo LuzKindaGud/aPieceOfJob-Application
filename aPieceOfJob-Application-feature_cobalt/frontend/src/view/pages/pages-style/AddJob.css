@@ -1,0 +1,727 @@
+/* Add Job Page Styles - Enhanced Modern Design */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+:root {
+  --aj-primary: #ff6b4a;
+  --aj-secondary: #d946ef;
+  --aj-accent: #22d3ee;
+  --aj-success: #10b981;
+  --aj-warning: #f59e0b;
+  --aj-danger: #ef4444;
+  --aj-bg-dark: #0a0a0f;
+  --aj-bg-card: rgba(20, 20, 35, 0.8);
+  --aj-border: rgba(255, 255, 255, 0.08);
+  --aj-text: #e8e8f0;
+  --aj-text-muted: #8b8b9e;
+}
+
+.add-job-container {
+  min-height: 100vh;
+  font-family: 'Share Tech', sans-serif;
+  padding: 8rem 2rem 4rem;
+  color: var(--aj-text);
+  position: relative;
+  overflow: hidden;
+  
+  /* Animated gradient background */
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% -20%, rgba(255, 107, 74, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(217, 70, 239, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0f 0%, #12121f 50%, #0a0a0f 100%);
+}
+
+/* Animated grid pattern overlay */
+.add-job-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+.add-job-content {
+  max-width: 900px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Back Button */
+.back-btn {
+  position: relative;
+  background: var(--aj-bg-card);
+  backdrop-filter: blur(10px);
+  color: var(--aj-text);
+  border: 1px solid var(--aj-border);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.back-btn:hover {
+  background: rgba(255, 107, 74, 0.1);
+  border-color: var(--aj-primary);
+  transform: translateX(-4px);
+  box-shadow: 0 4px 20px rgba(255, 107, 74, 0.2);
+}
+
+/* Header */
+.add-job-header {
+  position: relative;
+  background: linear-gradient(135deg, rgba(255, 107, 74, 0.08) 0%, rgba(217, 70, 239, 0.05) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid var(--aj-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  overflow: hidden;
+}
+
+.add-job-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--aj-primary), var(--aj-secondary), var(--aj-accent));
+}
+
+.add-job-header h1 {
+  font-size: 2.5rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 800;
+  letter-spacing: -1px;
+  background: linear-gradient(135deg, #fff 0%, var(--aj-primary) 50%, var(--aj-secondary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmerText 3s ease infinite;
+}
+
+@keyframes shimmerText {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.header-description {
+  color: var(--aj-text-muted);
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Form */
+.add-job-form {
+  background: var(--aj-bg-card);
+  backdrop-filter: blur(20px);
+  border-radius: 24px;
+  padding: 2.5rem;
+  border: 1px solid var(--aj-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  animation: fadeSlideUp 0.6s ease-out;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Form Sections */
+.form-section {
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--aj-border);
+}
+
+.form-section:last-of-type {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin: 0 0 1.5rem 0;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #fff;
+}
+
+.section-title::before {
+  content: '';
+  width: 4px;
+  height: 24px;
+  background: linear-gradient(180deg, var(--aj-primary), var(--aj-secondary));
+  border-radius: 2px;
+}
+
+/* Form Row */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-row:last-child {
+  margin-bottom: 0;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group:last-child {
+  margin-bottom: 0;
+}
+
+.form-group label {
+  color: var(--aj-text);
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--aj-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--aj-primary);
+  background: rgba(255, 107, 74, 0.05);
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.1), 0 0 20px rgba(255, 107, 74, 0.1);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--aj-text-muted);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.form-group select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%238b8b9e'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1.2rem;
+  padding-right: 3rem;
+}
+
+.form-group select option {
+  background: #1a1a2e;
+  color: var(--aj-text);
+}
+
+.form-group input.error,
+.form-group textarea.error {
+  border-color: var(--aj-danger);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.error-message {
+  color: var(--aj-danger);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.error-message::before {
+  content: '⚠';
+}
+
+.api-error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}
+
+/* Checkbox Group */
+.checkbox-group {
+  margin-bottom: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aj-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.checkbox-label:hover {
+  background: rgba(255, 107, 74, 0.05);
+  border-color: var(--aj-primary);
+}
+
+.checkbox-label input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  accent-color: var(--aj-primary);
+  border-radius: 6px;
+}
+
+.checkbox-label span {
+  color: var(--aj-text);
+  font-size: 0.95rem;
+}
+
+/* Radio Buttons for Image Type Selector */
+.image-type-selector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.radio-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  padding: 0.75rem 1.25rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--aj-border);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.radio-label:hover {
+  background: rgba(255, 107, 74, 0.05);
+}
+
+.radio-label input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--aj-primary);
+}
+
+.radio-label span {
+  color: var(--aj-text-muted);
+  font-size: 0.9rem;
+}
+
+.radio-label input[type="radio"]:checked + span {
+  color: var(--aj-primary);
+  font-weight: 600;
+}
+
+/* Input Hints */
+.input-hint {
+  color: var(--aj-text-muted);
+  font-size: 0.8rem;
+  font-style: italic;
+  margin-top: 0.5rem;
+  display: block;
+}
+
+/* File Upload */
+.form-group .file-upload-wrapper {
+  position: relative;
+}
+
+.form-group .file-input {
+  display: none;
+}
+
+.form-group .file-upload-btn {
+  background: rgba(255, 255, 255, 0.02);
+  border: 2px dashed var(--aj-border);
+  border-radius: 16px;
+  padding: 2rem;
+  color: var(--aj-text);
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  font-family: 'Share Tech', sans-serif;
+  min-height: 120px;
+}
+
+.form-group .file-upload-btn:hover {
+  border-color: var(--aj-primary);
+  background: rgba(255, 107, 74, 0.05);
+}
+
+.form-group .file-upload-btn.error {
+  border-color: var(--aj-danger);
+}
+
+.form-group .file-upload-btn svg {
+  font-size: 2rem;
+  color: var(--aj-primary);
+}
+
+/* Image Preview */
+.image-preview {
+  margin-top: 1rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--aj-border);
+  max-width: 100%;
+  position: relative;
+}
+
+.image-preview img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  max-height: 300px;
+}
+
+/* Dynamic Fields */
+.dynamic-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dynamic-field-group {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.dynamic-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--aj-border);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
+  color: #fff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.dynamic-input:focus {
+  outline: none;
+  border-color: var(--aj-primary);
+  background: rgba(255, 107, 74, 0.05);
+  box-shadow: 0 0 0 3px rgba(255, 107, 74, 0.1);
+}
+
+.dynamic-input::placeholder {
+  color: var(--aj-text-muted);
+}
+
+.remove-btn {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--aj-danger);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  padding: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+}
+
+.remove-btn:hover {
+  background: var(--aj-danger);
+  color: #fff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(239, 68, 68, 0.4);
+}
+
+.add-field-btn {
+  background: transparent;
+  color: var(--aj-text-muted);
+  border: 2px dashed var(--aj-border);
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.add-field-btn:hover {
+  border-color: var(--aj-primary);
+  color: var(--aj-primary);
+  background: rgba(255, 107, 74, 0.05);
+}
+
+/* Form Actions */
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--aj-border);
+}
+
+.add-job-container .cancellation-btn-jobs {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--aj-text);
+  border: 1px solid var(--aj-border);
+  padding: 1rem 2rem;
+  margin-top: 1rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.add-job-container .cancellation-btn-jobs:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.add-job-container .submit-btn {
+  position: relative;
+  background: linear-gradient(135deg, var(--aj-primary) 0%, var(--aj-secondary) 100%);
+  color: white;
+  border: none;
+  padding: 1rem 2.5rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Share Tech', sans-serif;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(255, 107, 74, 0.3);
+}
+
+.add-job-container .submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.add-job-container .submit-btn:hover::before {
+  left: 100%;
+}
+
+.add-job-container .submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255, 107, 74, 0.5);
+}
+
+.add-job-container .submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.add-job-container .delete-btn {
+  background: transparent;
+  color: var(--aj-danger);
+  border: 1px solid var(--aj-danger);
+  margin-top: 1rem;
+  border-radius: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.add-job-container .delete-btn:hover {
+  background: var(--aj-danger);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(239, 68, 68, 0.4);
+}
+
+.image-input-type-selector {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.image-input-type-selector button {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--aj-border);
+  border-radius: 12px;
+  padding: 0.875rem 1.5rem;
+  color: var(--aj-text-muted);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Share Tech', sans-serif;
+}
+
+.image-input-type-selector button:hover {
+  background: rgba(255, 107, 74, 0.05);
+  border-color: var(--aj-primary);
+  color: var(--aj-text);
+}
+
+.image-input-type-selector button.active {
+  background: linear-gradient(135deg, rgba(255, 107, 74, 0.15) 0%, rgba(217, 70, 239, 0.1) 100%);
+  border-color: var(--aj-primary);
+  color: var(--aj-primary);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(255, 107, 74, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .add-job-container {
+    padding: 7rem 1rem 2rem;
+  }
+
+  .add-job-header {
+    padding: 2rem;
+  }
+
+  .add-job-header h1 {
+    font-size: 2rem;
+  }
+
+  .add-job-form {
+    padding: 1.5rem;
+    border-radius: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+
+  .add-job-container .cancellation-btn-jobs,
+  .add-job-container .submit-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .image-type-selector {
+    flex-direction: column;
+  }
+
+  .image-input-type-selector {
+    flex-direction: column;
+  }
+
+  .image-input-type-selector button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-job-header {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .add-job-header h1 {
+    font-size: 1.75rem;
+  }
+
+  .add-job-form {
+    padding: 1.25rem;
+    border-radius: 16px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea,
+  .dynamic-input {
+    padding: 0.875rem 1rem;
+  }
+
+  .back-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+html, body {
+    overflow-x: clip;
+}
+
+.home-container {
+    position: relative;
+    font-family: "Share Tech", sans-serif;
+    background: #12121273; /* Fallback color */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers vertically */
+    align-items: center;     /* Centers horizontally */
+    margin-top: 5.6rem;
+    height: 100vh;
+    width: 100vw;
+}
+
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding-top: 5.6rem; /* To avoid overlap with fixed navbar */
+    object-fit: cover;
+    z-index: -2; /* Ensure the video is behind other content */
+}
+
+.home-content {
+    position: fixed;
+    text-align: center; 
+    width: 100%;
+    height: auto;
+    padding-bottom: 10rem;
+    z-index: 0;
+}
+
+.home-content h1 {
+    font-size: 6rem;
+    margin-bottom: -10px;
+    /* start hidden; will reveal after intro finishes */
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 700ms cubic-bezier(.2,.9,.2,1);
+    transition-delay: 0s;
+}
+
+.home-content p {
+    font-size: 1.5rem;
+    /* start hidden; will reveal after intro finishes */
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 700ms cubic-bezier(.2,.9,.2,1);
+    transition-delay: 0s;
+}
+
+.cta-button {
+    /* start hidden; will reveal after intro finishes */
+    clip-path: inset(100% 0 0 0);
+    transition: clip-path 700ms cubic-bezier(.2,.9,.2,1);
+    transition-delay: 0s;
+}
+
+/* reveal only after intro finishes; apply staggered delays */
+body.intro-finished .home-content h1 {
+    clip-path: inset(0 0 0 0);
+    transition-delay: 0.5s;
+}
+
+body.intro-finished .home-content p {
+    clip-path: inset(0 0 0 0);
+    transition-delay: 0.85s;
+}
+
+body.intro-finished .cta-button {
+    clip-path: inset(0 0 0 0);
+    transition-delay: 1s;
+}
+
+/* CTA Button Styles */
+.cta-button-link {
+    text-decoration: none;
+}
+
+.cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #e85d41, #d44a7f);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: "Share Tech", sans-serif;
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(232, 93, 65, 0.4);
+}
+
+.cta-button:active {
+    transform: translateY(-1px);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .home-content h1 {
+        font-size: 5rem;
+    }
+
+    .home-content p {
+        font-size: 1.35rem;
+    }
+
+    .cta-button {
+        padding: 0.9rem 2.25rem;
+        font-size: 1.15rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .home-container {
+        margin-top: 4.5rem;
+    }
+
+    .background-video {
+        padding-top: 4.5rem;
+    }
+
+    .home-content {
+        padding: 0 2rem;
+        padding-bottom: 8rem;
+    }
+
+    .home-content h1 {
+        font-size: 4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-content p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+        padding: 0.85rem 2rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .home-content h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .home-content p {
+        font-size: 1.1rem;
+    }
+
+    .cta-button {
+        padding: 0.8rem 1.75rem;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-container {
+        margin-top: 4rem;
+        height: 100svh;
+    }
+
+    .background-video {
+        padding-top: 4rem;
+        height: 100svh;
+    }
+
+    .home-content {
+        padding: 0 1.5rem;
+        padding-bottom: 6rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .cta-button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .home-content h1 {
+        font-size: 2rem;
+    }
+
+    .home-content p {
+        font-size: 0.9rem;
+    }
+
+    .cta-button {
+        padding: 0.7rem 1.25rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .home-container {
+        height: 100svh;
+    }
+
+    .background-video {
+        height: 100svh;
+    }
+
+    .home-content {
+        padding-bottom: 3rem;
+    }
+
+    .home-content h1 {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .home-content p {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-button {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": "Sang",
+    "role": "Frontend",
+    "imageUrl": "/src/assets/image/Sang.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/luz.kinda.gud",
+      "github": "https://github.com/LuzKindaGud",
+      "twitter": "#"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Khanh",
+    "role": "Frontend",
+    "imageUrl": "/src/assets/image/Khanh.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/vanvo.khanh.3950/",
+      "github": "https://github.com/cobalts-theon",
+      "twitter": "#"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Truong",
+    "role": "Backend",
+    "imageUrl": "/src/assets/image/Truong.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/riyaki.truong",
+      "github": "https://github.com/baotruong2040",
+      "twitter": "#"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Thong",
+    "role": "Backend",
+    "imageUrl": "/src/assets/image/Thong.jpg",
+    "socialLinks": {
+      "facebook": "https://www.facebook.com/kimthong.huynh.75",
+      "github": "https://github.com/mimic0n",
+      "twitter": "#"
+    }
+  }
+]

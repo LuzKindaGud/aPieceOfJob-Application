@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "card": "https://preciseirondoors.com/wp-content/uploads/2021/12/modern-house-with-garage-and-car.jpg",
+    "title": "Modern Garage",
+    "description": "Design this garage and you will get 1000$"
+  },
+  {
+    "id": 2,
+    "card": "https://istarmax.com/wp-content/uploads/2024/04/Starmax-Product-Range-Summer-2024-2.png",
+    "title": "Smart Watch",
+    "description": "Design smart watch 3d model and receive 500$"
+  },
+  {
+    "id": 3,
+    "card": "https://media.gq-magazine.co.uk/photos/65eb06044746dd9c9499edec/16:9/w_2560%2Cc_limit/Best-happy-albums-hp.jpg",
+    "title": "Colorful Music Album",
+    "description": "Design a colorful music album cover with 300$"
+  },
+  {
+    "id": 4,
+    "card": "https://img.freepik.com/premium-vector/street-culture-graphic-t-shirt_136545-304.jpg",
+    "title": "Street Culture T-Shirt",
+    "description": "Design an awsome t-shirt and get 200$"
+  },
+  {
+    "id": 5,
+    "card": "https://www.gadgetmatch.com/wp-content/uploads/2025/09/chainsaw-man-the-movie-reze-arc-utada-hikaru-first-trailer.jpg",
+    "title": "Moive Poster",
+    "description": "Looking for a creative poster designer for a $500 project!"
+  },
+  {
+    "id": 6,
+    "card": "https://i.ytimg.com/vi/Djtsw5k_DNc/maxresdefault.jpg",
+    "title": "Game Development",
+    "description": "Need a game developer with $2000 budget!"
+  }
+]

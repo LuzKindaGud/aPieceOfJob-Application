@@ -1,0 +1,527 @@
+/* Benefits/About Page Styles - Enhanced */
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+
+/* CSS Variables */
+:root {
+  --benefits-primary: #ff6b4a;
+  --benefits-secondary: #d946ef;
+  --benefits-accent: #22d3ee;
+  --benefits-success: #10b981;
+  --benefits-bg-card: rgba(20, 20, 35, 0.7);
+  --benefits-border: rgba(255, 255, 255, 0.08);
+  --benefits-text: #e8e8f0;
+  --benefits-text-muted: #8b8b9e;
+}
+
+.benefits-container {
+  position: relative;
+  font-family: "Share Tech", sans-serif;
+  color: var(--benefits-text);
+  min-height: 100vh;
+  width: 100%;
+  padding: 8rem 2rem 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: clip;
+  
+  /* Animated gradient background */
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% -20%, rgba(255, 107, 74, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 20%, rgba(217, 70, 239, 0.12) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 50% 100%, rgba(34, 211, 238, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, #0a0a0f 0%, #12121f 50%, #0a0a0f 100%);
+}
+
+/* Animated grid pattern overlay */
+.benefits-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(60px); }
+}
+
+/* Floating orbs decoration */
+.benefits-container::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 107, 74, 0.1), transparent 70%);
+  top: 10%;
+  right: -10%;
+  animation: floatOrb 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes floatOrb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 30px) scale(1.1); }
+}
+
+.benefits-header {
+  text-align: center;
+  margin-bottom: 4rem;
+  animation: slideDown 0.8s ease-in-out;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-header h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #fff 0%, var(--benefits-primary) 50%, var(--benefits-secondary) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Scroll-driven animation */
+  animation: slideLeft both;
+  animation-timeline: view(50% 0%);
+}
+
+@keyframes shimmerText {
+  0%, 100% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+}
+
+.benefits-header p {
+  font-size: 1.5rem;
+  color: var(--benefits-text-muted);
+  /* Scroll-driven animation */
+  animation: slideLeft both;
+  animation-timeline: view(50% 10%);
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1300px;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* Wrapper cho scroll animation */
+.benefit-card-wrapper {
+  height: 100%;
+  /* Scroll-driven animation */
+  animation: popInn both;
+  animation-timeline: view(80% 10%);
+  animation-duration: 0.8s;
+}
+
+/* Staggered animation delays */
+.benefit-card-wrapper:nth-child(1) { animation-delay: 0.2s; }
+.benefit-card-wrapper:nth-child(2) { animation-delay: 0.6s; }
+.benefit-card-wrapper:nth-child(3) { animation-delay: 1s; }
+.benefit-card-wrapper:nth-child(4) { animation-delay: 2s; }
+.benefit-card-wrapper:nth-child(5) { animation-delay: 1.8s; }
+.benefit-card-wrapper:nth-child(6) { animation-delay: 1.4s; }
+
+@keyframes popInn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotate(0deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* Card chính - Glass Morphism */
+.benefit-card {
+  position: relative;
+  padding: 2.5rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  
+  /* Glass morphism */
+  background: var(--benefits-bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--benefits-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Different accent colors for each card */
+.benefit-card-wrapper:nth-child(1) .benefit-card {
+  background: linear-gradient(135deg, rgba(255, 107, 74, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+.benefit-card-wrapper:nth-child(2) .benefit-card {
+  background: linear-gradient(135deg, rgba(217, 70, 239, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+.benefit-card-wrapper:nth-child(3) .benefit-card {
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+.benefit-card-wrapper:nth-child(4) .benefit-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+.benefit-card-wrapper:nth-child(5) .benefit-card {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+.benefit-card-wrapper:nth-child(6) .benefit-card {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(20, 20, 35, 0.8) 100%);
+}
+
+/* Glow line at top of card */
+.benefit-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--benefits-primary), var(--benefits-secondary), transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.benefit-card:hover::before {
+  opacity: 1;
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 60px rgba(255, 107, 74, 0.1);
+}
+
+/* Icon container */
+.benefit-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  padding: 10px;
+  margin: 0 auto 1.5rem;
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, var(--benefits-primary), var(--benefits-secondary));
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(255, 107, 74, 0.35);
+}
+
+/* Different icon colors for each card */
+.benefit-card-wrapper:nth-child(1) .benefit-icon {
+  background: linear-gradient(135deg, #ff6b4a, #ff8a6b);
+  box-shadow: 0 8px 24px rgba(255, 107, 74, 0.35);
+}
+
+.benefit-card-wrapper:nth-child(2) .benefit-icon {
+  background: linear-gradient(135deg, #d946ef, #e879f9);
+  box-shadow: 0 8px 24px rgba(217, 70, 239, 0.35);
+}
+
+.benefit-card-wrapper:nth-child(3) .benefit-icon {
+  background: linear-gradient(135deg, #22d3ee, #67e8f9);
+  box-shadow: 0 8px 24px rgba(34, 211, 238, 0.35);
+}
+
+.benefit-card-wrapper:nth-child(4) .benefit-icon {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.35);
+}
+
+.benefit-card-wrapper:nth-child(5) .benefit-icon {
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.35);
+}
+
+.benefit-card-wrapper:nth-child(6) .benefit-icon {
+  background: linear-gradient(135deg, #ef4444, #f87171);
+  box-shadow: 0 8px 24px rgba(239, 68, 68, 0.35);
+}
+
+.benefit-card:hover .benefit-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.benefit-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.benefit-card p {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--benefits-text-muted);
+  transition: color 0.3s ease;
+}
+
+.benefit-card:hover p {
+  color: var(--benefits-text);
+}
+
+.benefits-footer {
+  margin-top: 5rem;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.benefits-footer p {
+  font-size: 1.2rem;
+  color: var(--benefits-text-muted);
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  /* Scroll-driven animation */
+  animation: slideLeft both;
+  animation-timeline: view(70% 10%);
+}
+
+.cta-button-link {
+  text-decoration: none;
+}
+
+.cta-button {
+  position: relative;
+  background: linear-gradient(135deg, var(--benefits-primary), var(--benefits-secondary));
+  color: white;
+  border: none;
+  padding: 1.25rem 3rem;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 1.1rem;
+  font-family: 'Share Tech', sans-serif;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 25px rgba(255, 107, 74, 0.4);
+  /* Scroll-driven animation */
+  animation: slideLeft both;
+  animation-timeline: view(70% 10%);
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.cta-button:hover::before {
+  left: 100%;
+}
+
+.cta-button:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 
+    0 8px 35px rgba(255, 107, 74, 0.5),
+    0 0 40px rgba(255, 107, 74, 0.3);
+}
+
+.cta-button:active {
+  transform: translateY(-2px) scale(0.98);
+}
+
+/* Keyframe Animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    clip-path: inset(0 100% 0 0);
+  } 
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .benefits-header h1 {
+    font-size: 3rem;
+  }
+  
+  .benefits-header p {
+    font-size: 1.3rem;
+  }
+  
+  .benefits-grid {
+    gap: 1.5rem;
+  }
+  
+  .benefit-card {
+    padding: 2rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .benefits-container {
+    padding: 6rem 1.5rem 3rem;
+  }
+  
+  .benefits-header h1 {
+    font-size: 2.5rem;
+  }
+  
+  .benefits-header p {
+    font-size: 1.1rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .benefit-icon {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.4rem;
+  }
+  
+  .benefits-footer {
+    margin-top: 3rem;
+  }
+  
+  .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .benefits-container {
+    padding: 5rem 1rem 2rem;
+  }
+  
+  .benefits-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .benefits-header h1 {
+    font-size: 2rem;
+  }
+  
+  .benefits-header p {
+    font-size: 1rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .benefit-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 16px;
+  }
+  
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+    border-radius: 16px;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.25rem;
+  }
+  
+  .benefit-card p {
+    font-size: 0.9rem;
+  }
+  
+  .benefits-footer p {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+  }
+  
+  .cta-button {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 360px) {
+  .benefits-header h1 {
+    font-size: 1.75rem;
+  }
+  
+  .benefits-header p {
+    font-size: 0.9rem;
+  }
+  
+  .benefit-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .benefit-icon {
+    width: 55px;
+    height: 55px;
+    font-size: 1.5rem;
+  }
+  
+  .benefit-card h3 {
+    font-size: 1.15rem;
+  }
+}
