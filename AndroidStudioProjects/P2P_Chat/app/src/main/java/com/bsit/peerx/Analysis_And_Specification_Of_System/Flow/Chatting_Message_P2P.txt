@@ -1,0 +1,109 @@
+Step By Step When Implement :
+
+Giai đoạn 1: Thiết lập và Quản lý Kênh Giao tiếp (Socket)
+
+Đây là nền tảng kỹ thuật quan trọng nhất. Chúng ta cần một cơ chế để khởi tạo và quản lý kết nối `Socket` sau khi Wi-Fi Direct đã kết nối thành công.
+
+Bước 1.1: Nâng cấp `SocketMessageTransport` để xử lý kết nối Wi-Fi Direct.**
+Mục tiêu: `SocketMessageTransport` không chỉ dùng cho kết nối thủ công nữa, mà phải có khả năng tự động khởi tạo Server/Client dựa trên thông tin từ Wi-Fi Direct.
+Hành động:
+        1.  Tạo một hàm mới trong `SocketMessageTransport`, ví dụ: `startCommunicationFrom(p2pInfo: WifiP2pInfo)`.
+        2.  Bên trong hàm này, kiểm tra `p2pInfo.isGroupOwner`:
+            Nếu `true` (là Chủ nhóm), gọi hàm `startServer()`.
+            Nếu `false` (là Client), lấy địa chỉ IP của chủ nhóm (`p2pInfo.groupOwnerAddress.hostAddress`) và gọi hàm `connectToServer(ip)`.
+
+Bước 1.2: Tích hợp `SocketMessageTransport` vào `WifiDirectManager`.
+    Mục tiêu: Khi `WifiDirectManager` phát hiện kết nối thành công, nó phải ra lệnh cho `SocketMessageTransport` bắt đầu giao tiếp.
+    Hành động:
+        1.  Inject `SocketMessageTransport` vào trong `WifiDirectManager`.
+        2.  Trong `WifiDirectManager`, tại callback `onConnectionChanged`, sau khi bạn lấy được `info` và xác nhận `info.groupFormed == true`, hãy gọi hàm `socketTransport.startCommunicationFrom(info)`.
+
+Bước 1.3: Xử lý ngắt kết nối.
+    Mục tiêu: Khi kết nối Wi-Fi Direct bị mất, `Socket` cũng phải được đóng lại.
+    Hành động:
+        1. Trong `WifiDirectManager`, tại callback `onConnectionChanged`, nếu bạn phát hiện kết nối bị ngắt (ví dụ: `networkInfo.isConnected` là `false`), hãy gọi hàm `socketTransport.disconnect()`.
+        2. Trong `MainActivity` hoặc nơi bạn quản lý vòng đời, khi `onDestroy` được gọi, hãy đảm bảo `wifiDirectManager.unregisterReceiver()` và `socketTransport.disconnect()` được gọi để dọn dẹp tài nguyên.
+
+Giai đoạn 2: Hoàn thiện Luồng Dữ liệu Gửi Tin Nhắn
+
+Luồng đi: `ChatScreen (UI)` -> `ChatViewModel` -> `ChatRepository` -> `SocketMessageTransport` -> Mạng.
+
+Bước 2.1: Cập nhật `ChatViewModel` để gửi tin nhắn.
+    Mục tiêu: `ChatViewModel` phải có một hàm để người dùng gọi khi nhấn nút gửi.
+    Hành động:
+        1. Inject `ChatRepository` vào `ChatViewModel`.
+        2. Tạo hàm `sendMessage(text: String)`.
+        3. Bên trong hàm này, gọi `repository.sendMessage(peerAddress, text)` qua `viewModelScope`. `peerAddress` là địa chỉ của người đang chat cùng (bạn cần truyền nó vào `ChatViewModel` khi điều hướng tới).
+
+Bước 2.2: Đảm bảo `ChatRepository` sử dụng `SocketMessageTransport`.**
+    Mục tiêu: `ChatRepository` phải gọi đúng `MessageTransport` để gửi tin nhắn ra mạng.
+    Hành động:
+        1. Trong `ChatRepositoryImpl`, bạn đã inject `MessageTransport`. Hãy đảm bảo rằng dependency injection (Hilt/Koin/thủ công) cung cấp đúng instance của `SocketMessageTransport` (chứ không phải `InMemoryMessageTransport`).
+        2. Hàm `sendMessage` của bạn đã gọi `transport.send(...)`, bước này chỉ cần đảm bảo `transport` là đúng đối tượng.
+
+Giai đoạn 3: Hoàn thiện Luồng Dữ liệu Nhận Tin Nhắn
+
+Luồng đi: Mạng -> `SocketMessageTransport` -> `ChatRepository` -> `Room Database` -> `ChatViewModel` -> `ChatScreen (UI)`.
+
+Bước 3.1: Hoàn thiện `ChatRepositoryImpl` để lắng nghe và lưu tin nhắn đến.**
+    Mục tiêu: `ChatRepository` phải liên tục lắng nghe các tin nhắn đến từ `SocketMessageTransport` và lưu chúng vào cơ sở dữ liệu.
+    Hành động:
+        1. Trong `ChatRepositoryImpl`, bạn đã có một `init` block để `collect` từ `transport.incomingMessages()`.
+        2. Khi nhận được một tin nhắn `(peerAddress, text)`, bạn đang tạo một `ChatMessageEntity` với `senderType = SenderType.RECEIVED.name`. Điều này là chính xác.
+        3. Bạn gọi `local.insert(...)` để lưu tin nhắn vào Room. Điều này cũng chính xác.
+
+Bước 3.2: Đảm bảo `ChatViewModel` hiển thị tin nhắn mới.**
+    Mục tiêu: Khi có tin nhắn mới được lưu vào Room, `ChatViewModel` phải tự động nhận được và cập nhật UI.
+    Hành động:
+        1. Trong `ChatViewModel`, hàm `observeMessages` của bạn đang `collect` từ `repository.observeMessages(peerAddress)`.
+        2. `repository.observeMessages` lại lấy dữ liệu từ `dao.observeMessages`, vốn là một `Flow` từ Room.
+        3. Đây chính là sức mạnh của `Flow` và Room:** Ngay khi `ChatRepository` insert một tin nhắn mới vào database ở Bước 3.1, `Flow` trong `ChatViewModel` sẽ tự động phát ra danh sách tin nhắn mới. Bạn chỉ cần cập nhật `_uiState` với danh sách này. Luồng này về cơ bản đã hoàn chỉnh trong code của bạn.
+
+Giai đoạn 4: Tinh chỉnh và Hoàn thiện**
+
+Bước 4.1: Truyền `peerAddress` vào `ChatScreen`.**
+    Mục tiêu: `ChatScreen` và `ChatViewModel` cần biết chúng đang chat với ai.
+    Hành động:
+        1. Khi điều hướng từ `DiscoveryScreen` đến `ChatScreen`, hãy truyền địa chỉ IP của Group Owner (hoặc ID "manual\_test\_chat") làm đối số (argument) trong navigation graph.
+        2. Trong `ChatViewModel`, nhận đối số này thông qua `SavedStateHandle`.
+
+Bước 4.2: Xử lý vòng đời trong `MainActivity`.**
+    Mục tiêu: Đăng ký và hủy đăng ký `BroadcastReceiver` một cách chính xác.
+    Hành động:
+        1. Trong `MainActivity`, inject `WifiDirectManager`.
+        2. Gọi `wifiDirectManager.registerReceiver()` trong `onResume()`.
+        3. Gọi `wifiDirectManager.unregisterReceiver()` trong `onPause()`.
+        4. Gọi `socketTransport.disconnect()` trong `onDestroy()` để đảm bảo dọn dẹp sạch sẽ.
+
+Đặc tả Use Case (Use Case Specification) :
+1. Use Case: Gửi và Nhận Tin nhắn P2P (Send and Receive P2P Message)
+ID: UC-02
+Mô tả tóm tắt: Use case này mô tả quá trình hai người dùng, đã kết nối với nhau, trao đổi tin nhắn văn bản trực tiếp trong màn hình trò chuyện.
+Tác nhân (Actors):
+    Người gửi (Sender)
+    Người nhận (Receiver)
+Điều kiện tiên quyết (Preconditions):
+    Một kết nối P2P (Wi-Fi Direct hoặc Socket thủ công) đã được thiết lập thành công giữa hai thiết bị (từ UC-01).
+    Một kênh giao tiếp (Socket) đã được mở và đang hoạt động giữa hai thiết bị.
+    Cả hai người dùng đều đang ở trên màn hình ChatScreen.
+Luồng sự kiện chính (Main Flow):
+    1.Người gửi (Sender) nhập nội dung tin nhắn vào ô nhập liệu trên ChatScreen.
+    2.Người gửi nhấn nút "Gửi".
+    3.Giao diện (ChatScreen) gọi hàm sendMessage(text) của ChatViewModel.
+    4.ChatViewModel gọi hàm sendMessage(peerAddress, text) của ChatRepository.
+    5.ChatRepository gọi hàm send(peerAddress, text) của MessageTransport (triển khai bởi SocketMessageTransport).
+    6.SocketMessageTransport ghi nội dung tin nhắn vào OutputStream của Socket đang hoạt động. Dữ liệu được truyền qua mạng P2P đến thiết bị của Người nhận.
+    7.Đồng thời, ChatRepository lưu một bản sao của tin nhắn vào cơ sở dữ liệu cục bộ (Room) thông qua ChatLocalDataSource với trạng thái là SENT (nếu gửi qua socket thành công) hoặc FAILED (nếu thất bại).
+    8.ChatViewModel (đang theo dõi observeMessages từ ChatRepository) nhận được tin nhắn mới từ cơ sở dữ liệu và cập nhật uiState. Giao diện của Người gửi hiển thị tin nhắn vừa gửi.
+    9.Trên thiết bị của Người nhận (Receiver), SocketMessageTransport đang lắng nghe trên InputStream của Socket.
+    10.SocketMessageTransport đọc được dữ liệu tin nhắn mới, sau đó phát (emit) tin nhắn này qua incomingMessages Flow.
+    11.ChatRepository (đã khởi tạo và đang lắng nghe incomingMessages Flow) nhận được tin nhắn.
+    12.ChatRepository lưu tin nhắn này vào cơ sở dữ liệu cục bộ (Room) thông qua ChatLocalDataSource với trạng thái là RECEIVED.
+    13.ChatViewModel của Người nhận (cũng đang theo dõi observeMessages) nhận được tin nhắn mới từ cơ sở dữ liệu và cập nhật uiState.
+    14.Giao diện (ChatScreen) của Người nhận hiển thị tin nhắn mới nhận được.
+Luồng sự kiện thay thế (Alternative Flows):
+    6a.Gửi tin nhắn qua Socket thất bại: Nếu SocketMessageTransport không thể ghi vào OutputStream (ví dụ: kết nối đã mất), nó sẽ trả về Result.failure.
+    7a.Lưu tin nhắn với trạng thái FAILED: ChatRepository nhận được kết quả thất bại, nó sẽ lưu tin nhắn vào cơ sở dữ liệu với trạng thái FAILED. Giao diện của Người gửi sẽ hiển thị tin nhắn này với một biểu tượng lỗi.
+Điều kiện kết thúc (Postconditions):
+    Thành công: Tin nhắn của Người gửi được hiển thị trên giao diện của cả hai người dùng. Tin nhắn được lưu vào cơ sở dữ liệu cục bộ trên cả hai thiết bị với các trạng thái tương ứng (SENT và RECEIVED).
+    Thất bại: Tin nhắn của Người gửi được hiển thị trên giao diện của chính họ với trạng thái lỗi. Không có tin nhắn nào được gửi đến Người nhận.

@@ -1,0 +1,231 @@
+﻿
+> Configure project :app
+WARNING: The option setting 'android.disallowKotlinSourceSets=false' is experimental.
+The current default is 'true'.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preDebugBuild UP-TO-DATE
+> Task :app:generateDebugResources UP-TO-DATE
+> Task :app:packageDebugResources UP-TO-DATE
+> Task :app:processDebugNavigationResources UP-TO-DATE
+> Task :app:parseDebugLocalResources UP-TO-DATE
+> Task :app:generateDebugRFile UP-TO-DATE
+> Task :app:kspDebugKotlin UP-TO-DATE
+
+> Task :app:compileDebugKotlin FAILED
+.\gradlew.bat : e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/AppContainer.kt:58:31 
+Unresolved reference 'PeerX'.
+At line:3 char:1
++ .\gradlew.bat compileDebugKotlin 2>&1 | Tee-Object -FilePath compile_ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (e: file:///C:/U...erence 'PeerX'.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/MainActivity.kt:26:25 
+Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/MainActivity.kt:46:12 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/MainActivity.kt:52:16 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/lock/LockScreen.kt:22:25 
+Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/lock/LockScreen.kt:106:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/lock/LockScreen.kt:107:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:84:25 
+Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:549:25 
+Unresolved reference 'PeerX'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:550:25 
+Unresolved reference 'PeerX'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:551:25 
+Unresolved reference 'PeerX'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:552:25 
+Unresolved reference 'PeerX'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:553:25 
+Unresolved reference 'PeerX'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:728:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:729:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:744:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:745:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:763:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:764:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:784:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:785:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:809:4 
+Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/chat/ChatScreen.kt:810:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/AdminLogoIcon.k
+t:21:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/AdminLogoIcon.k
+t:48:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/AdminLogoIcon.k
+t:49:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBackground
+.kt:21:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBackground
+.kt:82:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBackground
+.kt:83:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBanner.kt:
+21:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBanner.kt:
+72:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberBanner.kt:
+73:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberButton.kt:
+31:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberButton.kt:
+118:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberButton.kt:
+119:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberNavItem.kt
+:36:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberNavItem.kt
+:89:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberNavItem.kt
+:90:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberProgressSt
+eps.kt:29:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberProgressSt
+eps.kt:91:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberProgressSt
+eps.kt:92:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberRing.kt:25
+:25 Unresolved reference 'Theme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberRing.kt:68:4 
+Unresolved reference 'PeerXTheme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberRing.kt:69:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberTextField.
+kt:35:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberTextField.
+kt:97:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberTextField.
+kt:98:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberTextField.
+kt:112:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/CyberTextField.
+kt:113:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/GlassCard.kt:14
+:25 Unresolved reference 'Theme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/GlassCard.kt:38:4 
+Unresolved reference 'PeerXTheme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/GlassCard.kt:39:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/NeonTopBar.kt:3
+3:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/NeonTopBar.kt:9
+2:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/NeonTopBar.kt:9
+3:8 @Composable invocations can only happen from the context of a @Composable function
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/OtpInput.kt:30:25 
+Unresolved reference 'Theme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/OtpInput.kt:85:4 
+Unresolved reference 'PeerXTheme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/OtpInput.kt:86:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatCard.kt:38:25 
+Unresolved reference 'Theme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatCard.kt:102:4 
+Unresolved reference 'PeerXTheme'.
+e: 
+file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatCard.kt:103:8 
+@Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatusBadge.kt:
+19:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatusBadge.kt:
+51:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/components/StatusBadge.kt:
+52:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:74:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:802:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:803:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:820:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:821:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:842:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:843:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:863:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/discovery/DiscoveryScreen.
+kt:864:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/ForgotPasswor
+dScreen.kt:33:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/ForgotPasswor
+dScreen.kt:127:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/ForgotPasswor
+dScreen.kt:128:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/LoginScreen.k
+t:33:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/LoginScreen.k
+t:121:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/LoginScreen.k
+t:122:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/RegisterScree
+n.kt:32:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/RegisterScree
+n.kt:120:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/auth/RegisterScree
+n.kt:121:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Customer
+sScreen.kt:41:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Customer
+sScreen.kt:175:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Customer
+sScreen.kt:176:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Dashboar
+dScreen.kt:56:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Dashboar
+dScreen.kt:303:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Dashboar
+dScreen.kt:304:8 @Composable invocations can only happen from the context of a @Composable function
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Products
+Screen.kt:44:25 Unresolved reference 'Theme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Products
+Screen.kt:177:4 Unresolved reference 'PeerXTheme'.
+e: file:///C:/Users/Admin/AndroidStudioProjects/P2P_Chat/app/src/main/java/com/bsit/peerx/ui/screens/dashboard/Products
+Screen.kt:178:8 @Composable invocations can only happen from the context of a @Composable function
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':app:compileDebugKotlin'.
+> A failure occurred while executing 
+org.jetbrains.kotlin.compilerRunner.GradleCompilerRunnerWithWorkers$GradleKotlinCompilerWorkAction
+   > Compilation error. See log for more details
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3s
+7 actionable tasks: 1 executed, 6 up-to-date

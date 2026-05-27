@@ -1,0 +1,3 @@
+Cấu trúc hệ thống :
+    P2P Chat được xây dựng dựa trên mô hình Peer-to-Peer (P2P), trong đó mỗi người dùng (peer) có thể đóng vai trò là cả máy chủ và khách hàng. Hệ thống được thiết kế để cho phép người dùng giao tiếp trực tiếp với nhau mà không cần thông qua một máy chủ trung gian.
+    Về mặt kiến trúc tổng thể, ứng dụng của bạn là P2P (Peer-to-Peer) / Phi tập trung (Decentralized) vì nó không dựa vào một máy chủ trung tâm cố định.

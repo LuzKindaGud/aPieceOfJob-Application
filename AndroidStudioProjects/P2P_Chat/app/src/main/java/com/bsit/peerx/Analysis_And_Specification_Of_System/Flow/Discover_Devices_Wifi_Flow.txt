@@ -1,0 +1,6 @@
+1.Từ UI (Activity/Composable): Người dùng nhấn nút "Scan".
+2.ViewModel: UI sẽ gọi một hàm trong ViewModel : discoverPeers().
+3.WifiDirectManager: ViewModel sẽ sử dụng WifiDirectManager để bắt đầu quá trình tìm kiếm thiết bị.
+4.Khi quét thấy thiết bị xung quanh, hệ thống Android dùng sóng Wi-Fi phát lệnh (WIFI_P2P_PEERS_CHANGED_ACTION).
+5.Cập nhật StateFlow: WifiDirectManager tìm thấy các thiết bị và cập nhật peersFlow.
+6.Hiển thị trên UI: UI lắng nghe sự thay đổi từ peersFlow (thông qua ViewModel) và hiển thị danh sách các thiết bị tìm thấy.

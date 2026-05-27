@@ -1,0 +1,62 @@
+TỔNG QUAN ĐÁNH GIÁ (SYSTEM ASSESSMENT)
+Trạng thái hiện tại: Ứng dụng đã xử lý được luồng Core (Kết nối Wi-Fi Direct, mở Socket, hiển thị UI bằng Compose, gửi text đơn giản lưu vào Room DB).
+Mức độ khả thi: Các tính năng đề xuất trong file PTTKHT cực kỳ đúng đắn và phù hợp với tiêu chuẩn bảo mật P2P hiện đại (ngang chuẩn với các app như Signal hay Briar). Tuy nhiên, độ khó kĩ thuật rất cao, đặc biệt ở phần Mã hóa Socket đa luồng (Multiplexing) và Streaming.
+Chiến lược: Phải làm theo nguyên tắc "Tầng dưới lên tầng trên" (Bottom-Up). Tuyệt đối không làm UI/Media trước khi phần Giao thức gói tin và Xác thực được xây dựng xong.
+
+DANH SÁCH CHI TIẾT CÁC CHỨC NĂNG CẦN HOÀN THÀNH (Hành động Code cụ thể)
+
+PHASE 1: BẢO MẬT & ĐỊNH DANH (Cốt lõi không thể thiếu)
+Đây là nền móng thay thế hoàn toàn cấu trúc "Dùng MAC Address làm ID hiện tại". Nếu không làm bước này, mọi tính năng phía sau sẽ bị lỗi Database.
+1.Thiết kế Khóa Màn hình (App Lock)
+     Cài đặt dependency androidx.biometric:biometric.
+     Tạo ProcessLifecycleOwner quan sát ON_STOP và ON_START để ghi nhận thời gian background. Quá timeout (vd: 10 giây) -> chuyển state isLocked = true.
+     Code UI LockScreen bọc bên ngoài NavHost. Khi isLocked == true, che toàn bộ app và gọi BiometricPrompt (cho phép dùng Vân tay + PIN).
+2.Khởi tạo Danh tính Cục bộ (Local Identity)
+     Thêm thư viện mã hóa (vd: com.google.crypto.tink:tink-android hoặc dùng chuẩn java.security.KeyPairGenerator với thuật toán Elliptic Curve/Ed25519).
+     Viết KeyStoreManager để tự tạo Private Key (chỉ gọi 1 lần lưu vào Hardware-backed Keystore) và trích xuất Public Key.
+     Sửa Database: PeerEntity đổi Primary Key từ chuỗi MAC sang hàm băm của Public Key (Global ID).
+3.Bắt tay Xác thực Khóa Nhúng (Cryptographic Handshake)
+     Can thiệp vào SocketMessageTransport: Ngay khi socket.accept() thành công, khóa luồng ghi/đọc tạm thời chưa đẩy ra UI.
+     Thực hiện trao đổi Giai đoạn 1: Bắn gói tin chứa Public Key + Profile qua trước.
+     Thực hiện trao đổi Giai đoạn 2 & 3: Bắn Nonce (chuỗi ngẫu nhiên) -> Yêu cầu bên kia lấy Private Key ký (Sign) -> Nhận lại và verify bằng Public Key.
+     PASS -> Báo ConnectionStatus.CONNECTED_AND_VERIFIED, lưu Public Key đối phương vào RoomDB -> Cho phép ChatViewModel điều hướng.
+
+
+PHASE 2: CẤU TRÚC LẠI LUỒNG TRUYỀN DỮ LIỆU (Data Protocol & Multiplexing)
+Để thay thế việc gửi text thô hiện tại bằng chuỗi dữ liệu an toàn.
+1.Định dạng Gói tin (Packet Framing)
+    Định nghĩa cấu trúc byte ( Length-Prefix): 4 byte đầu tiên luôn báo cho biết độ lớn của gói tin tiếp theo (Ngăn chặn lỗi phân mảnh TCP).
+    Chuẩn hóa payload (sử dụng JSON tối ưu hoặc Protobuf). Phân chia Enum Type: TEXT, ACK_RECEIPT, PROFILE_EXCHANGE, AUTH_CHALLENGE, TYPING_STATUS.
+2.Luồng Trạng thái Thời gian thực (Messaging Optimization)
+    Code luồng nhận ACK: Thiết bị B lưu DB xong -> bắn gói báo ACK_RECEIPT kèm ID tin nhắn -> Thiết bị A nhận được -> update RoomDB trạng thái tin đó từ SENT thành DELIVERED/READ.
+    Gửi gói tin TYPING_STATUS(bool) khi ô EditText ở ChatScreen thay đổi -> Hiện dòng "..." ở giao diện người nhận.
+    Thay thế luồng đọc/ghi socket (hiện đang dùng PrintWriter / BufferedReader) sang cơ chế DataOutputStream / DataInputStream để xử lý mảng Byte chuẩn xác.\
+
+PHASE 3: TRUYỀN NHẬN FILE (Media Sharing)
+1.Tách luồng xử lý File (Port Multiplexing)
+     Viết thêm một Socket riêng (ví dụ Port 8989) chuyên chạy File Server/Client để không block luồng text ở port 8988.
+2.Truyền File chia nhỏ (Chunking) & Cache Management
+     Lấy URI file qua ActivityResultContracts.GetContent().
+     Viết thuật toán đọc FileInputStream thành các chunk byte nhỏ (4KB - 8KB) đẩy xuống Socket.
+     Tính toán tiến trình (Byte đã gửi / Tổng số Byte) để đẩy StateFlow lên ProgressBar ở UI của cả người gửi và người nhận.
+     Bổ sung cơ chế lưu file vào Scoped Storage của Android.
+
+PHASE 4: CHẠY NGẦM & BẢO MẬT (System Architecture)
+1.Chạy ngầm (Background Service)
+     Chuyển vòng đời của WifiDirectManager và SocketMessageTransport xuống một ForegroundService.
+     Đăng ký type trong Manifest (dataSync), đính kèm một Notification thường trực ("P2P Chat đang chạy").
+     Viết Notification cục bộ: Khi có tin nhắn đến (từ luồng Socket) mà app đang ở Background, bắn Notification hiển thị tin nhắn giống Messenger.
+2.Mã hóa đầu cuối (E2EE - End-to-End Encryption)
+     Mở rộng thuật toán Key Pair (ở Phase 1) để chạy trao đổi khóa Diffie-Hellman, sinh ra Session Symmetric Key (AES-256).
+     Mọi nội dung text trước khi đóng gói gửi đi đều được mã hóa bằng AES Cipher, bên kia nhận phải qua bước giải mã AES trước khi bung ra JSON.
+
+PHASE 5: TÍNH NĂNG NÂNG CAO (Tuỳ chọn cấu hình cấu trúc sau cùng)
+1.Chat Nhóm (Group Chat)
+     Viết logic Router trên thiết bị đóng vai trò Group Owner (Khi nhận vào tin nhắn -> Quét danh sách các Client đang kết nối -> broadcast gửi đi lại cho tất cả ngoại trừ người gửi).
+     UI quản lý thành viên: Hiển thị danh sách thiết bị LAN. Lên phương án bắt Auto-Reconnect nếu GO bị rớt.
+2.WebRTC Streaming
+     Tích hợp lib tải WebRTC. Cấu trúc luồng Signaling thông qua chính kết nối Socket đã làm ở Phase 2 (gởi các gói SDP, ICE Candidate thay vì gửi văn bản).
+     Thiết kế UI bắt máy gọi điện / video call. Xin quyền Camera, Audio.
+
+
+Khuyến nghị triển khai: Bạn bắt buộc nên bắt đầu từ Phase 1 (App Lock + Key & Giao thức Bắt tay Socket) và Phase 2 (Định dạng lại gói tin DataProtocol), bởi vì đây là khung xương sống. Nếu vội vã làm chức năng "Gửi Ảnh" hay "Chat Nhóm" trên mã nguồn hiện tại, sau này sẽ phải rã toàn bộ logic để đập đi làm lại.

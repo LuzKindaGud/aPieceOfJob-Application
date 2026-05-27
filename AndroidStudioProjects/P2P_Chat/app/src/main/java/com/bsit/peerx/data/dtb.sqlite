@@ -1,0 +1,390 @@
+-- ============================================================
+--  P2P WiFi Direct Chat App — SQLite Schema
+--  Mỗi thiết bị Android giữ một bản local database này
+--  Đồng bộ trực tiếp giữa các peer, không cần server
+-- ============================================================
+
+PRAGMA journal_mode = WAL;       -- Ghi nhanh hơn, hỗ trợ đọc song song
+PRAGMA foreign_keys = ON;        -- Bật ràng buộc khóa ngoại
+PRAGMA synchronous = NORMAL;     -- Cân bằng giữa tốc độ và an toàn dữ liệu
+PRAGMA cache_size = -8000;       -- 8MB cache
+
+
+-- ============================================================
+-- 1. DEVICES — Thông tin thiết bị (bao gồm thiết bị của chính mình)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS devices (
+    device_id       TEXT PRIMARY KEY,           -- UUID v4, tự sinh lần đầu cài app
+    device_name     TEXT NOT NULL,              -- Tên hiển thị do user đặt
+    mac_address     TEXT,                       -- MAC WiFi Direct (Android 10+ hạn chế)
+    public_key      TEXT,                       -- Public key cho mã hóa E2E (Base64)
+    avatar_path     TEXT,                       -- Đường dẫn ảnh đại diện local
+    is_self         INTEGER NOT NULL DEFAULT 0, -- 1 = thiết bị của chính mình
+    is_trusted      INTEGER NOT NULL DEFAULT 0, -- 1 = đã xác nhận kết nối
+    last_seen_at    INTEGER,                    -- Unix timestamp ms
+    created_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000)
+);
+
+-- Device của chính mình luôn tồn tại (khởi tạo khi cài app)
+-- INSERT OR IGNORE INTO devices (device_id, device_name, is_self) VALUES (?, ?, 1);
+
+
+-- ============================================================
+-- 2. CONVERSATIONS — Cuộc trò chuyện (direct hoặc group)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS conversations (
+    conversation_id TEXT PRIMARY KEY,           -- UUID v4
+    type            TEXT NOT NULL               -- 'direct' | 'group'
+                        CHECK (type IN ('direct', 'group')),
+    name            TEXT,                       -- NULL nếu là direct chat
+    avatar_path     TEXT,                       -- Ảnh nhóm (chỉ dùng cho group)
+    created_by      TEXT NOT NULL,              -- device_id của người tạo
+    last_message_id TEXT,                       -- Tin nhắn mới nhất (để hiển thị preview)
+    last_activity_at INTEGER,                   -- Để sort danh sách cuộc trò chuyện
+    created_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+    updated_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+
+    FOREIGN KEY (created_by) REFERENCES devices(device_id) ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 3. CONVERSATION_MEMBERS — Thành viên của cuộc trò chuyện
+-- ============================================================
+CREATE TABLE IF NOT EXISTS conversation_members (
+    conversation_id TEXT NOT NULL,
+    device_id       TEXT NOT NULL,
+    role            TEXT NOT NULL DEFAULT 'member'
+                        CHECK (role IN ('admin', 'member')),
+    joined_at       INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+    left_at         INTEGER,                    -- NULL = vẫn còn trong nhóm
+    is_active       INTEGER NOT NULL DEFAULT 1, -- 0 = đã rời nhóm
+
+    PRIMARY KEY (conversation_id, device_id),
+    FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id) ON DELETE CASCADE,
+    FOREIGN KEY (device_id)       REFERENCES devices(device_id) ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 4. MESSAGES — Tin nhắn (bảng quan trọng nhất)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS messages (
+    message_id      TEXT PRIMARY KEY,           -- UUID v4 do sender tạo
+    conversation_id TEXT NOT NULL,
+    sender_id       TEXT NOT NULL,              -- device_id của người gửi
+    type            TEXT NOT NULL DEFAULT 'text'
+                        CHECK (type IN ('text','image','video','audio','file','location','system')),
+
+    -- Nội dung tin nhắn
+    content         TEXT,                       -- Văn bản (với type=text) hoặc caption
+    encrypted_content TEXT,                     -- Nội dung đã mã hóa E2E (Base64)
+
+    -- File đính kèm (với type=image/video/audio/file)
+    file_path       TEXT,                       -- Đường dẫn local sau khi nhận xong
+    file_name       TEXT,
+    file_size       INTEGER,                    -- Bytes
+    file_mime_type  TEXT,
+    file_checksum   TEXT,                       -- SHA-256 để verify tính toàn vẹn
+    thumbnail_path  TEXT,                       -- Ảnh preview (cho image/video)
+    duration_ms     INTEGER,                    -- Thời lượng (audio/video)
+
+    -- Location (với type=location)
+    latitude        REAL,
+    longitude       REAL,
+
+    -- Quan hệ
+    reply_to_id     TEXT,                       -- Trả lời tin nhắn nào
+
+    -- Trạng thái
+    status          TEXT NOT NULL DEFAULT 'pending'
+                        CHECK (status IN ('pending','sending','sent','delivered','read','failed')),
+    is_deleted      INTEGER NOT NULL DEFAULT 0, -- Soft delete
+    deleted_at      INTEGER,
+    is_edited       INTEGER NOT NULL DEFAULT 0,
+    edited_at       INTEGER,
+
+    -- Timestamps
+    sent_at         INTEGER NOT NULL,           -- Timestamp của sender (dùng để sort)
+    created_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+
+    FOREIGN KEY (conversation_id) REFERENCES conversations(conversation_id) ON DELETE CASCADE,
+    FOREIGN KEY (sender_id)       REFERENCES devices(device_id) ON DELETE CASCADE,
+    FOREIGN KEY (reply_to_id)     REFERENCES messages(message_id) ON DELETE SET NULL
+);
+
+
+-- ============================================================
+-- 5. MESSAGE_RECEIPTS — Trạng thái đọc/nhận của từng thành viên
+-- ============================================================
+CREATE TABLE IF NOT EXISTS message_receipts (
+    message_id      TEXT NOT NULL,
+    device_id       TEXT NOT NULL,              -- Thiết bị đã nhận/đọc
+    status          TEXT NOT NULL
+                        CHECK (status IN ('delivered', 'read')),
+    timestamp       INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+
+    PRIMARY KEY (message_id, device_id),
+    FOREIGN KEY (message_id) REFERENCES messages(message_id) ON DELETE CASCADE,
+    FOREIGN KEY (device_id)  REFERENCES devices(device_id)  ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 6. FILE_TRANSFERS — Theo dõi tiến trình truyền file lớn
+-- ============================================================
+CREATE TABLE IF NOT EXISTS file_transfers (
+    transfer_id     TEXT PRIMARY KEY,           -- UUID v4
+    message_id      TEXT NOT NULL,
+    peer_device_id  TEXT NOT NULL,              -- Đang truyền với thiết bị nào
+    direction       TEXT NOT NULL
+                        CHECK (direction IN ('upload', 'download')),
+    status          TEXT NOT NULL DEFAULT 'pending'
+                        CHECK (status IN ('pending','in_progress','completed','failed','cancelled')),
+    total_chunks    INTEGER NOT NULL DEFAULT 0,
+    received_chunks INTEGER NOT NULL DEFAULT 0,
+    chunk_size      INTEGER NOT NULL DEFAULT 65536, -- 64KB mỗi chunk
+    bytes_transferred INTEGER NOT NULL DEFAULT 0,
+    error_message   TEXT,
+    started_at      INTEGER,
+    completed_at    INTEGER,
+    created_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+
+    FOREIGN KEY (message_id)     REFERENCES messages(message_id) ON DELETE CASCADE,
+    FOREIGN KEY (peer_device_id) REFERENCES devices(device_id)  ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 7. SYNC_LOG — Nhật ký thay đổi để đồng bộ P2P (cốt lõi của hệ thống)
+-- ============================================================
+CREATE TABLE IF NOT EXISTS sync_log (
+    log_id          TEXT PRIMARY KEY,           -- UUID v4
+    entity_type     TEXT NOT NULL
+                        CHECK (entity_type IN ('message','conversation','receipt','device','member')),
+    entity_id       TEXT NOT NULL,              -- ID của record bị thay đổi
+    operation       TEXT NOT NULL
+                        CHECK (operation IN ('INSERT','UPDATE','DELETE')),
+    payload         TEXT NOT NULL,              -- JSON snapshot đầy đủ của record
+    origin_device_id TEXT NOT NULL,             -- Thiết bị tạo ra thay đổi này
+    sequence_no     INTEGER NOT NULL,           -- Lamport timestamp (tăng dần, duy nhất trên mỗi device)
+    synced_to       TEXT NOT NULL DEFAULT '[]', -- JSON array ["device_id_1", "device_id_2"]
+    created_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+
+    FOREIGN KEY (origin_device_id) REFERENCES devices(device_id) ON DELETE CASCADE
+);
+
+-- Sequence counter riêng cho mỗi thiết bị
+CREATE TABLE IF NOT EXISTS local_sequence (
+    device_id       TEXT PRIMARY KEY,
+    current_seq     INTEGER NOT NULL DEFAULT 0
+);
+
+
+-- ============================================================
+-- 8. SYNC_STATE — Trạng thái đồng bộ với từng peer
+-- ============================================================
+CREATE TABLE IF NOT EXISTS sync_state (
+    peer_device_id  TEXT PRIMARY KEY,
+    last_received_seq INTEGER NOT NULL DEFAULT 0, -- Sequence cuối đã nhận từ peer
+    last_sent_seq   INTEGER NOT NULL DEFAULT 0,   -- Sequence cuối đã gửi cho peer
+    last_sync_at    INTEGER,
+    sync_status     TEXT NOT NULL DEFAULT 'idle'
+                        CHECK (sync_status IN ('idle','syncing','error')),
+
+    FOREIGN KEY (peer_device_id) REFERENCES devices(device_id) ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 9. BLOCKED_DEVICES — Danh sách chặn
+-- ============================================================
+CREATE TABLE IF NOT EXISTS blocked_devices (
+    device_id         TEXT NOT NULL,            -- Thiết bị thực hiện chặn (chính mình)
+    blocked_device_id TEXT NOT NULL,            -- Thiết bị bị chặn
+    blocked_at        INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000),
+    reason            TEXT,
+
+    PRIMARY KEY (device_id, blocked_device_id),
+    FOREIGN KEY (device_id)         REFERENCES devices(device_id) ON DELETE CASCADE,
+    FOREIGN KEY (blocked_device_id) REFERENCES devices(device_id) ON DELETE CASCADE
+);
+
+
+-- ============================================================
+-- 10. APP_SETTINGS — Cài đặt ứng dụng
+-- ============================================================
+CREATE TABLE IF NOT EXISTS app_settings (
+    key             TEXT PRIMARY KEY,
+    value           TEXT,
+    updated_at      INTEGER NOT NULL DEFAULT (strftime('%s','now') * 1000)
+);
+
+-- Dữ liệu mặc định
+INSERT OR IGNORE INTO app_settings (key, value) VALUES
+    ('theme', 'system'),
+    ('notification_enabled', '1'),
+    ('auto_download_images', '1'),
+    ('auto_download_max_mb', '10'),
+    ('encryption_enabled', '1'),
+    ('wifi_direct_auto_connect', '1');
+
+
+-- ============================================================
+-- INDEXES — Tối ưu hiệu suất truy vấn phổ biến
+-- ============================================================
+
+-- Lấy tin nhắn theo cuộc trò chuyện (query phổ biến nhất)
+CREATE INDEX IF NOT EXISTS idx_messages_conversation
+    ON messages(conversation_id, sent_at DESC);
+
+-- Lọc tin nhắn chưa xóa
+CREATE INDEX IF NOT EXISTS idx_messages_active
+    ON messages(conversation_id, is_deleted, sent_at DESC);
+
+-- Tìm tin nhắn theo người gửi
+CREATE INDEX IF NOT EXISTS idx_messages_sender
+    ON messages(sender_id, sent_at DESC);
+
+-- Truy vấn receipts theo message
+CREATE INDEX IF NOT EXISTS idx_receipts_message
+    ON message_receipts(message_id);
+
+-- Lấy sync log chưa gửi cho một peer cụ thể
+CREATE INDEX IF NOT EXISTS idx_sync_log_origin_seq
+    ON sync_log(origin_device_id, sequence_no);
+
+-- Lấy các cuộc trò chuyện đã sắp xếp theo hoạt động gần nhất
+CREATE INDEX IF NOT EXISTS idx_conversations_activity
+    ON conversations(last_activity_at DESC);
+
+-- Lấy thành viên của cuộc trò chuyện
+CREATE INDEX IF NOT EXISTS idx_members_conversation
+    ON conversation_members(conversation_id, is_active);
+
+-- Theo dõi tiến trình file transfer
+CREATE INDEX IF NOT EXISTS idx_file_transfers_message
+    ON file_transfers(message_id, status);
+
+
+-- ============================================================
+-- TRIGGERS — Tự động cập nhật dữ liệu liên quan
+-- ============================================================
+
+-- Cập nhật last_activity_at của conversation khi có tin nhắn mới
+CREATE TRIGGER IF NOT EXISTS trg_update_conversation_on_message
+AFTER INSERT ON messages
+BEGIN
+    UPDATE conversations
+    SET last_message_id  = NEW.message_id,
+        last_activity_at = NEW.sent_at,
+        updated_at       = strftime('%s','now') * 1000
+    WHERE conversation_id = NEW.conversation_id;
+END;
+
+-- Tự động ghi vào sync_log khi INSERT tin nhắn mới
+CREATE TRIGGER IF NOT EXISTS trg_sync_log_message_insert
+AFTER INSERT ON messages
+BEGIN
+    INSERT INTO sync_log (
+        log_id, entity_type, entity_id, operation,
+        payload, origin_device_id, sequence_no
+    )
+    VALUES (
+        lower(hex(randomblob(16))),
+        'message',
+        NEW.message_id,
+        'INSERT',
+        json_object(
+            'message_id',      NEW.message_id,
+            'conversation_id', NEW.conversation_id,
+            'sender_id',       NEW.sender_id,
+            'type',            NEW.type,
+            'content',         NEW.content,
+            'file_name',       NEW.file_name,
+            'file_size',       NEW.file_size,
+            'reply_to_id',     NEW.reply_to_id,
+            'status',          NEW.status,
+            'sent_at',         NEW.sent_at
+        ),
+        NEW.sender_id,
+        (SELECT COALESCE(MAX(sequence_no), 0) + 1 FROM sync_log WHERE origin_device_id = NEW.sender_id)
+    );
+END;
+
+-- Tự động ghi vào sync_log khi DELETE tin nhắn (soft delete)
+CREATE TRIGGER IF NOT EXISTS trg_sync_log_message_delete
+AFTER UPDATE OF is_deleted ON messages
+WHEN NEW.is_deleted = 1
+BEGIN
+    INSERT INTO sync_log (
+        log_id, entity_type, entity_id, operation,
+        payload, origin_device_id, sequence_no
+    )
+    VALUES (
+        lower(hex(randomblob(16))),
+        'message',
+        NEW.message_id,
+        'DELETE',
+        json_object('message_id', NEW.message_id, 'deleted_at', NEW.deleted_at),
+        NEW.sender_id,
+        (SELECT COALESCE(MAX(sequence_no), 0) + 1 FROM sync_log WHERE origin_device_id = NEW.sender_id)
+    );
+END;
+
+
+-- ============================================================
+-- VIEWS — Truy vấn tiện lợi hay dùng
+-- ============================================================
+
+-- Danh sách cuộc trò chuyện kèm thông tin tin nhắn cuối
+CREATE VIEW IF NOT EXISTS v_conversation_list AS
+SELECT
+    c.conversation_id,
+    c.type,
+    c.name,
+    c.last_activity_at,
+    m.content         AS last_message_content,
+    m.type            AS last_message_type,
+    m.sender_id       AS last_message_sender_id,
+    d.device_name     AS last_message_sender_name,
+    (
+        SELECT COUNT(*) FROM messages msg
+        LEFT JOIN message_receipts mr
+            ON mr.message_id = msg.message_id
+            AND mr.device_id = (SELECT device_id FROM devices WHERE is_self = 1 LIMIT 1)
+        WHERE msg.conversation_id = c.conversation_id
+          AND msg.is_deleted = 0
+          AND msg.sender_id != (SELECT device_id FROM devices WHERE is_self = 1 LIMIT 1)
+          AND mr.message_id IS NULL
+    )                 AS unread_count
+FROM conversations c
+LEFT JOIN messages m ON m.message_id = c.last_message_id
+LEFT JOIN devices d  ON d.device_id  = m.sender_id
+ORDER BY c.last_activity_at DESC;
+
+
+-- Tin nhắn kèm thông tin người gửi và trạng thái đọc
+CREATE VIEW IF NOT EXISTS v_messages_detail AS
+SELECT
+    m.*,
+    d.device_name     AS sender_name,
+    d.avatar_path     AS sender_avatar,
+    rm.content        AS reply_message_content,
+    rd.device_name    AS reply_sender_name
+FROM messages m
+LEFT JOIN devices d  ON d.device_id  = m.sender_id
+LEFT JOIN messages rm ON rm.message_id = m.reply_to_id
+LEFT JOIN devices rd  ON rd.device_id  = rm.sender_id
+WHERE m.is_deleted = 0;
+
+
+-- Sync log chưa gửi (để gửi cho peer khi kết nối lại)
+CREATE VIEW IF NOT EXISTS v_pending_sync AS
+SELECT
+    sl.*,
+    d.device_name AS origin_device_name
+FROM sync_log sl
+JOIN devices d ON d.device_id = sl.origin_device_id
+WHERE json_array_length(sl.synced_to) = 0
+   OR sl.synced_to = '[]';

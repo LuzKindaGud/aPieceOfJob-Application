@@ -1,0 +1,138 @@
+CHỨC NĂNG CHƯA HOÀN THÀNH :
+Chức năng Chat & Truyền nhận dữ liệu (Core Chat Features)
+Truyền dữ liệu dưới dạng mảng byte (byte array) :
+    •	Gửi tin nhắn văn bản (Text Messaging): Mã hóa chuỗi text thành byte (Dùng UTF-8) để gửi qua luồng xuất (OutputStream) và giải mã ở luồng nhập (InputStream).
+    •	Truyền nhận File (File Transfer): Wi-Fi Direct có băng thông rất lớn (lên tới 250 Mbps), rất lý tưởng để gửi ảnh, video hoặc tài liệu mà không lo tốn dung lượng mạng. Bạn cần xử lý chia nhỏ file thành các gói byte nhỏ để truyền ổn định.
+    •	Định dạng gói tin (Data Protocol): Bạn nên thiết lập một cấu trúc dữ liệu chung (Protocol Buffers (Protobuf) hoặc FlatBuffers , chúng mã hóa nhị phân rất nhanh, an toàn và dung lượng cực nhỏ.) để máy nhận biết được gói tin vừa tới là Văn bản, Hình ảnh, hay Lệnh hệ thống (ví dụ: lệnh báo đối phương đang gõ chữ).
+    •	Tách luồng (Multiplexing): Không nên dùng chung 1 cổng Socket (port) cho cả việc gửi Text và nhận File. Nếu dùng chung, khi bạn gửi 1 file video 1GB, toàn bộ tin nhắn Text, trạng thái Typing hay hiệu ứng "Đã xem" (ACK) sẽ bị kẹt (block) phía sau file video đó cho đến khi truyền xong. Nên dùng 1 Socket (Port 8988) cho Control/Text và mở 1 Socket phụ (Port 8989) riêng cho File Transfer.
+Rủi ro/Bug tiềm ẩn:
+    •	Tràn bộ nhớ (OutOfMemory - OOM): Nếu bạn "Mã hóa chuỗi / file thành byte" bằng cách nạp toàn bộ file 1GB vào RAM (ByteArray) rồi mới đẩy vào OutputStream, app chắc chắn sẽ crash vì OOM. Phải dùng FileInputStream đọc từng chunk (ví dụ 4KB/8KB) và ghi thẳng vào Socket OutputStream.
+    •	Lỗi phân mảnh gói tin TCP: Mạng có thể gộp 2 tin nhắn JSON nhỏ thành 1 lần đọc (read), hoặc cắt đôi 1 JSON lớn. Nếu chỉ dùng bufferedReader.readLine() mà không có ký tự định dạng kích thước (Length-prefix framing - ví dụ: 4 byte đầu tiên báo kích thước gói tin) thì máy nhận sẽ không thể parse tách bạch dữ liệu được. 
+Nâng cấp Luồng Tin nhắn Hiện tại (Messaging Optimization)
+Trong sơ đồ nhắn tin hiện tại, luồng dữ liệu mới chỉ dừng lại ở sendMessage(text) và cập nhật trạng thái SENT ngay sau khi ghi vào Socket thành công. Một ứng dụng nhắn tin hiện đại cần nhiều hơn thế:
+    •	Trạng thái tin nhắn nâng cao (Delivery & Read Receipts): * Hiện tại: Thiết bị gửi tự chuyển trạng thái thành SENT khi ghi vào Socket thành công.
+        o	Bổ sung: Cần thiết lập gói tin phản hồi ngược (ACK - Acknowledgment). Khi thiết bị nhận ghi thành công vào DB (status=RECEIVED), SocketTransport của máy nhận phải gửi ngược lại một gói lệnh ACK. Khi máy gửi nhận được ACK này, trạng thái tin nhắn trong DB mới cập nhật thành DELIVERED (Đã phát) và READ (Đã xem khi người dùng mở màn hình chat).
+    •	Định nghĩa giao thức gói tin dữ liệu (Data Packet Protocol): Thay vì chỉ truyền mỗi chuỗi text, cấu trúc dữ liệu truyền qua SocketTransport cần được đóng gói dạng JSON hoặc ByteArray có Header để phân loại loại tin nhắn (Text, Media, System Command).
+    •	Trạng thái thời gian thực (Typing Indicator & Online Status): Gửi các gói tin hệ thống cực nhẹ qua Socket khi người dùng đang gõ chữ (isTyping = true/false) để hiển thị hiệu ứng "đối phương đang nhập..." trên ChatScreen.
+    •	Nên gom chung các gói tin hệ thống lại (Sync). Avatar ở lúc Handshake chỉ nên gửi dạng Hash (Mã băm) trước. Nếu máy nhận chưa có Avatar hash đó thì mới yêu cầu máy gửi bắn file Avatar sang, để tiết kiệm băng thông lúc vừa kết nối.
+Rủi ro/Bug tiềm ẩn:
+    •	Vòng lặp vô hạn (Infinite Loop): Máy A gửi tin -> Máy B nhận và gửi ACK -> Nếu code sai, Máy A lại parse ACK thành 1 tin nhắn thường và lại trả về 1... ACK khác -> DDoS sập kết nối socket.
+    •	Đồng bộ DB (Race Condition): Socket đọc dữ liệu ở background thread, trong khi UI/ViewModel đang truy xuất DB. Cần quản lý transaction an toàn bằng coroutine mutex hoặc cơ chế Room DB Queue. 
+Các Chức năng Đa phương tiện (Rich Media & File Sharing)
+Lợi thế lớn nhất của Wi-Fi Direct là băng thông rộng (lên tới 250 Mbps). Hãy tận dụng tối đa điều này để biến ứng dụng thành một công cụ chia sẻ mạnh mẽ:
+    •	Gửi tin nhắn đa phương tiện (Rich Media): Hỗ trợ gửi hình ảnh, video, tin nhắn thoại (Voice Message), danh bạ (vCard) và vị trí hiện tại (Tọa độ GPS).
+    •	Truyền file dung lượng lớn cực tốc (High-speed File Transfer): * Xây dựng luồng truyền dữ liệu theo dạng stream riêng biệt hoặc cơ chế chia nhỏ file (Chunking) trong SocketTransport để không làm nghẽn luồng tin nhắn text thông thường.
+        o	Hiển thị thanh tiến trình (Progress Bar) theo thời gian thực trên giao diện ChatScreen cho cả người gửi lẫn người nhận.
+ 
+Khởi tạo và Quản lý Danh tính (Identity Exchange)
+Vì không có server lưu trữ tài khoản thông tin người dùng, việc nhận diện danh tính giữa các peer là rất quan trọng:
+    •	Hồ sơ cá nhân cục bộ (Local Profile): Người dùng tự cài đặt Tên hiển thị (Display Name), Ảnh đại diện (Avatar), và ghi chú trạng thái ngay trên thiết bị của họ.
+    •	Bắt tay trao đổi thông tin (Profile Handshake): Ngay sau bước kết nối thành công (groupFormed == true) và thiết lập Socket thành công , hai thiết bị phải tự động gửi gói tin chứa thông tin Profile (Tên, Ảnh dạng Base64 hoặc byte) cho nhau trước khi cho phép người dùng chat, giúp giao diện hiển thị đúng tên và avatar thay vì chỉ hiển thị địa chỉ MAC thô kệch của thiết bị.
+
+ 
+Chức năng Chat nhóm (Multi-peer / Group Chat)
+Cơ chế Wi-Fi Direct hỗ trợ mô hình 1 Group Owner (GO) và nhiều Client cùng kết nối vào. Hãy tận dụng cấu trúc này để làm tính năng Chat Nhóm:
+    •	Điều phối tin nhắn qua Group Owner (GO Routing): * Khi Client A muốn gửi tin nhắn nhóm, Client A gửi gói tin đến GO.
+        o	GO (đóng vai trò như một mini-server tại chỗ) nhận gói tin, lưu vào DB của GO, rồi tự động chuyển tiếp (broadcast) gói tin đó đến toàn bộ các Client khác (Client B, C, D) đang tham gia trong Group.
+    •	Quản lý thành viên nhóm: Hiển thị danh sách các thiết bị đang kết nối trong mạng LAN P2P đó.
+P2P Wi-Fi Direct có kiến trúc mạng hình sao (Star Topology) xoay quanh Group Owner (GO). GO là Server, các máy khác là Client.
+Rủi ro/Bug tiềm ẩn:
+    •	Nút thắt cổ chai (Bottleneck / Battery Drain): Máy đóng vai trò GO sẽ phải chịu gánh nặng định tuyến toàn bộ traffic của nhóm. Pin sẽ hao rất nhanh và máy sẽ nóng nực.
+    •	Disconnection domino: Đặc thù của Wi-Fi Direct: Nếu GO ngắt kết nối (hoặc tắt app, sập nguồn), TẤT CẢ các Client trong mảng đều bị rớt ra ngoài. Hệ thống cần có logic "bầu lại GO" (re-election) hoặc tự động discovery lại mạng. 
+Cuộc gọi Thoại và Video P2P (P2P Voice & Video Call)
+Băng thông Wi-Fi Direct hoàn toàn đáp ứng được truyền tải dữ liệu thời gian thực (Real-time Streaming).
+    •	Luồng truyền âm thanh/hình ảnh (Audio/Video Streaming): Sử dụng các thư viện như WebRTC (chạy chế độ không server, trao đổi SDP thông qua kết nối Socket có sẵn) hoặc tự cấu hình luồng dữ liệu RTP/RTSP qua Socket để thiết lập cuộc gọi voice/video trực tiếp giữa 2 máy mà không cần internet.
+Trong mạng LAN (Wi-Fi Direct), bạn vẫn có thể dùng WebRTC cực kì tối ưu. Bạn chỉ cần dùng luồng Socket hiện tại làm Signaling Channel để trao đổi cấu hình SDP (Session Description Protocol) và ICE Candidates. Sau khi trao đổi xong, WebRTC sẽ tự động kết nối peer-to-peer hình ảnh/âm thanh mà không cần STUN/TURN Server.
+Rủi ro/Bug tiềm ẩn:
+    •	Xử lý xin cấp quyền cho Camera/Mic (Dangerous Permissions).
+    •	Thread quản lý Video Stream rất phức tạp, dễ gây Memory leak nếu không release bộ giải mã (Codec) khi ngắt kết nối. 
+Kiến trúc Hệ thống Bảo mật & Trải nghiệm (System & UX Architecture)
+Để ứng dụng vận hành mượt mà như các app nhắn tin thương mại (Zalo, Telegram), bạn cần bổ sung các chức năng chạy ngầm và bảo mật sau:
+1.Quản lý Chạy ngầm (Background Service)
+    •	Foreground Service & Duy trì Socket: Hiện tại hệ thống hoạt động tốt khi màn hình đang mở. Bạn cần đưa WifiDirectManager và kết nối Socket vào một Foreground Service (Android) kèm theo một Notification cố định. Điều này đảm bảo khi người dùng thoát ứng dụng hoặc khóa màn hình, kết nối Socket không bị Android kill và vẫn có thể nhận tin nhắn.
+    •	Thông báo cục bộ (Local Notifications): Khi có dữ liệu đến SocketTransport ở background, hệ thống sẽ đẩy ra một thông báo Notification của Android để người dùng biết có tin nhắn mới.
+Rủi ro/Bug tiềm ẩn:
+    •	Android 14 (API 34) Foreground Service Restrictions: Từ Android 14, nếu bạn chạy Foreground service có Socket/Mạng, bạn bắt buộc phải khai báo foregroundServiceType rõ ràng trong Manifest (như dataSync hay connectedDevice) và giải trình khi đẩy lên Google Play.
+    •	Bị kill bởi OEM: Các hãng như Xiaomi, Samsung, Oppo có trình quản lý pin tự động can thiệp rất sâu. Dù bạn dùng Foreground Service, nếu máy ở Doze Mode, hệ điều hành vẫn có thể đóng băng WifiP2pManager khiến socket rớt.
+    •	Android 10+ Scoped Storage (Lưu trữ ranh giới): Không thể dùng file path như /sdcard/P2PChat/ được nữa, bạn phải quản lý File qua URI và bộ nhớ đệm (Cache) của app cục bộ, kết hợp MediaStore API.
+2.Bảo mật dữ liệu (Security)
+    •	Mã hóa đầu cuối (End-to-End Encryption - E2EE): Wi-Fi Direct có mã hóa WPA2 tầng vật lý, nhưng để đảm bảo an toàn tuyệt đối ở tầng ứng dụng, ngay khi kết nối Socket vừa thông suốt, hai thiết bị nên thực hiện thuật toán trao đổi khóa (ví dụ: Diffie-Hellman) để sinh ra một khóa đối xứng tạm thời (Session Key). Toàn bộ tin nhắn trước khi đưa vào luồng ghi Socket sẽ được mã hóa AES, máy nhận đọc từ Socket ra phải giải mã rồi mới lưu vào ChatLocalDataSource.
+    •	Đừng tự viết thuật toán mã hóa thủ công. Hãy dùng các thư viện chuẩn hóa như Google Tink cho Java/Kotlin để sinh khóa Diffie-Hellman và mã hóa AES-GCM chuyên nghiệp.
+Rủi ro/Bug tiềm ẩn:
+Mất đồng bộ Session Key: Nếu một thiết bị rớt mạng tạm thời và tạo lại khóa mới, trong khi thiết bị kia chưa update -> Dữ liệu gửi sang sẽ ném ra lỗi mã hóa (Decryption Exception) và bị drop.
+
+3.Nâng cấp Kho lưu trữ (Local DB)
+    •	Tìm kiếm tin nhắn (Full-Text Search): Hỗ trợ tìm kiếm từ khóa trong bảng tin nhắn của ChatLocalDataSource.
+    •	Quản lý bộ nhớ đệm (Media Gallery & Cache Management): Chức năng dọn dẹp các file ảnh, video tạm thời nhận từ các peer khác để tránh làm đầy bộ nhớ thiết bị của người dùng.
+
+THIẾT KẾ LOCAL IDENTITY & PEER AUTHENTICATION (XÁC THỰC THIẾT BỊ)
+Hệ thống sẽ áp dụng mô hình Xác thực bằng cặp khóa (Key-pair Authentication) tương tự như cách thức hoạt động của SSH Key.
+1. Cơ chế lưu trữ và Khởi tạo Định danh (Local Identity)
+    •	Tạo cặp khóa: Ngay trong lần đầu tiên cài đặt ứng dụng, hệ thống tự động sinh ra một cặp khóa bất đối xứng (khuyên dùng ECC - Elliptic Curve Cryptography như cụm thuật toán Ed25519 vì kích thước khóa nhỏ, xử lý nhanh, rất hợp cho thiết bị di động).
+    •	Android Keystore System: Khóa Bí mật (Private Key) bắt buộc phải được lưu trữ trong Android Keystore với cấu hình bảo mật phần cứng (Hardware-backed). Ứng dụng không bao giờ có quyền đọc trực tiếp khóa này dưới dạng văn bản thô, chỉ có quyền yêu cầu Keystore ký (Sign) dữ liệu.
+    •	Khóa Công khai (Public Key) làm ID: Khóa Công khai sẽ được trích xuất ra và đóng vai trò là Định danh duy nhất (Unique Peer ID) của người dùng đó trong mạng lưới, thay thế hoàn toàn cho ID kiểu Server-increment truyền thống.
+2. Luồng Xác thực Bắt tay (Cryptographic Handshake Flow)
+Khi hai thiết bị kết nối thành công qua Wi-Fi Direct (sau bước groupFormed == true), luồng xác thực qua SocketTransport sẽ diễn ra trước khi cho phép vào màn hình ChatScreen:
+@startuml
+skinparam BoxPadding 10
+skinparam ParticipantPadding 10
+skinparam NoteBackgroundColor #LightYellow
+skinparam NoteBorderColor #Orange
+
+autonumber "<b>[0]</b>"
+
+participant "Thiết Bị A\n(Client)" as A
+participant "Thiết Bị B\n(Group Owner)" as B
+
+== Giai đoạn 1: Trao đổi Public Key & Profile ==
+
+A -> B: Gửi Public Key A + Profile
+note right B: B lưu PK_A
+
+B -> A: Gửi Public Key B + Profile
+note left A: A lưu PK_B
+
+== Giai đoạn 2: Client xác thực Group Owner ==
+
+A -> B: Thử thách: Gửi chuỗi ngẫu nhiên (Nonce_A)
+note right B: B dùng Private Key B\nđể ký lên Nonce_A
+
+B -> A: Trả về: Chữ ký số (Signature_B)
+note left A: A dùng PK_B để xác thực Chữ ký số\nNếu Hợp lệ -> B đúng là chủ nhân PK_B
+
+== Giai đoạn 3: Group Owner xác thực ngược Client ==
+
+B -> A: Thử thách ngược: B gửi Nonce_B
+note left A: A dùng Private Key A\nđể ký Nonce_B
+
+A -> B: Trả về: Chữ ký số (Signature_A)
+note right B: B dùng PK_A để xác thực\nNếu Hợp lệ -> Thành công
+
+@enduml
+
+Lợi ích: Qua luồng này, cả hai thiết bị kiểm tra được tính chính danh của nhau mà không bao giờ bị lộ Khóa Bí mật. Nếu một kẻ xấu cố tình giả mạo địa chỉ MAC hoặc Profile của người dùng B, kẻ đó sẽ thất bại ở bước [4] vì không có Khóa Bí mật tương ứng để ký chuỗi thử thách.
+Cơ sở dữ liệu cục bộ (ChatLocalDataSource):
+    •	Bảng PeerEntity cần bổ sung thêm trường public_key (Kiểu text/blob) để lưu trữ khóa của những người đã từng kết nối. Khóa này sẽ làm khóa chính (Primary Key) thay vì địa chỉ MAC (vì địa chỉ MAC có thể bị thay đổi/fake trên Android).
+    Lớp điều phối dữ liệu (ChatRepository):
+    •	Khi nhận được tin nhắn qua SocketTransport, ChatRepository phải lấy senderId (chính là Public Key của người gửi) để đối chiếu với bảng PeerEntity. Nếu chữ ký số của gói tin không khớp với Public Key đã lưu, tin nhắn sẽ bị loại bỏ hoàn toàn để tránh các cuộc tấn công tiêm nhập dữ liệu (Message Injection).
+ 
+
+THIẾT KẾ CHỨC NĂNG APP LOCK (KHÓA ỨNG DỤNG)
+Mục tiêu của App Lock là đóng vai trò như một "Cánh cổng kiểm soát" (Gatekeeper) ở tầng giao diện của thư viện, chặn đứng việc Recompose (vẽ lại UI) của Jetpack Compose cho đến khi điều kiện xác thực thỏa mãn.
+1. Kiến trúc Đánh chặn Vòng đời (Lifecycle Interception)
+Để ứng dụng biết khi nào cần khóa lại, hệ thống cần theo dõi trạng thái đóng/mở của app:
+    •	ProcessLifecycleOwner: Sử dụng thành phần này của Jetpack Lifecycle để lắng nghe sự kiện toàn cục của ứng dụng.
+    •	Sự kiện ON_STOP (App vào Background): Khi người dùng bấm Home hoặc chuyển sang app khác, hệ thống sẽ ghi nhận thời gian bắt đầu rời đi (backgroundTimestamp).
+    •	Sự kiện ON_START (App quay lại Foreground): Hệ thống tính toán thời gian chênh lệch: Thời gian hiện tại - backgroundTimestamp.
+        o	Nếu khoảng thời gian này vượt quá cấu hình (ví dụ: quá 30 giây hoặc khóa ngay lập tức), biến trạng thái toàn cục isAppUnlocked sẽ lập tức bị chuyển thành false.
+2. Thành phần Xác thực Hệ thống (BiometricPrompt API)
+Ứng dụng sẽ gọi lên BiometricPrompt của Android Jetpack. Đây là giải pháp chuẩn hóa mang lại tính bảo mật tối đa:
+    •	Hỗ trợ đa dạng: Tự động điều phối giữa Vân tay (Fingerprint), Nhận diện khuôn mặt (Face Unlock) tùy theo phần cứng máy. Nếu thiết bị không có sinh trắc học hoặc người dùng từ chối, nó tự động hạ cấp xuống yêu cầu nhập PIN/Pattern khóa máy của Android.
+    •	Tính Zero-Knowledge: Ứng dụng của bạn không lưu trữ, không xử lý và không có quyền biết mã PIN hay dữ liệu vân tay của người dùng. Hệ thống Android sẽ đảm nhận việc này trong môi trường bảo mật riêng và chỉ trả về cho ứng dụng kết quả: Xác thực Thành công hoặc Xác thực Thất bại.
+3. Thiết kế Điều hướng UI trong Jetpack Compose (Navigation Guard)
+Vì bạn đang xây dựng bằng Jetpack Compose, giao diện app nên được quản lý tập trung thông qua một trạng thái gốc (State-driven UI):
+    •	Lớp trạng thái bảo mật (Security State): Tạo một đối tượng quản lý trạng thái luồng như AppLockState(isLocked: Boolean, dynamicAttempts: Int).
+    •	Lớp phủ Đánh chặn (Compose Overlay Guard): Thay vì đặt đoạn check khóa ở từng màn hình (DiscoveryScreen , ChatScreen ), hãy bọc toàn bộ NavHost của ứng dụng vào bên trong một cấu trúc điều kiện:
+        o	Nếu isLocked == true: Chỉ hiển thị một màn hình duy nhất là LockScreen (Màn hình trống kèm logo app và nút "Kích hoạt xác thực sinh trắc học"). Mọi thao tác vuốt, bấn nút back đều bị vô hiệu hóa tại đây.
+        o	Nếu isLocked == false: Cho phép hiển thị nội dung NavHost thực sự của ứng dụng bên dưới.
+

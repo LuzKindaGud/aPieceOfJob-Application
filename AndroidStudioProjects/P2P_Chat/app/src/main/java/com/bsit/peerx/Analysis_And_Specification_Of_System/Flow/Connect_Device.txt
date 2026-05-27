@@ -1,0 +1,143 @@
+1. UI (Màn hình khám phá): Hiển thị danh sách các thiết bị ngang hàng (WifiP2pDevice) mà discoverPeers() tìm thấy.
+2. User Action: Người dùng nhấn vào một thiết bị trong danh sách.
+3. Initiate Connection: Ứng dụng của bạn gọi hàm manager.connect() với thông tin cấu hình của thiết bị được chọn.
+4. Invitation: Hệ thống Android sẽ hiển thị một hộp thoại trên thiết bị đích, hỏi người dùng có muốn chấp nhận kết nối không.
+5. Connection Result: BroadcastReceiver của bạn sẽ nhận được một Intent WIFI_P2P_CONNECTION_CHANGED_ACTION.
+6. Get Connection Info: Nếu kết nối thành công, bạn sẽ gọi manager.requestConnectionInfo() để lấy thông tin chi tiết, quan trọng nhất là địa chỉ IP của Group Owner.
+7. Establish Socket: Dựa vào thông tin ai là Group Owner, một thiết bị sẽ đóng vai trò ServerSocket (lắng nghe) và thiết bị kia sẽ là ClientSocket (kết nối tới). Khi socket được thiết lập, địa chỉ IP của peer sẽ được phát ra để định danh cuộc trò chuyện.
+
+Đặc tả USE CASE :
+ID: UC-01
+Mô tả tóm tắt: Use case này mô tả cách người dùng (User) tìm và khởi tạo một kết nối trực tiếp (P2P) với một người dùng khác thông qua Wi-Fi Direct để chuẩn bị cho việc trò chuyện.
+Tác nhân (Actor): Người dùng (User)
+Điều kiện tiên quyết (Preconditions):
+    1.Người dùng đã cấp các quyền cần thiết cho ứng dụng (ACCESS_FINE_LOCATION, NEARBY_WIFI_DEVICES).
+    2.Wi-Fi trên thiết bị của người dùng đã được bật.
+
+Luồng sự kiện chính (Main Flow):
+    1.Người dùng mở màn hình "Peer Discovery".
+    2.Hệ thống (DiscoveryViewModel) kiểm tra và thông báo nếu Wi-Fi P2P chưa được bật. Người dùng nhấn nút "Wi-Fi On" (onWifiToggle). Hệ thống (WifiDirectManager) mở cài đặt Wi-Fi của thiết bị. Người dùng bật Wi-Fi và quay lại ứng dụng.
+    3.Người dùng nhấn nút "Discover" (onDiscoverClick).
+    4.Hệ thống (DiscoveryViewModel) yêu cầu WifiDirectManager bắt đầu quá trình tìm kiếm thiết bị (discoverPeers).
+    5.WifiDirectManager sử dụng WifiP2pManager của Android để quét các thiết bị xung quanh.
+    6.Khi WiFiDirectBroadcastReceiver nhận được sự kiện WIFI_P2P_PEERS_CHANGED_ACTION, nó thông báo cho WifiDirectManager.
+    7.WifiDirectManager yêu cầu danh sách các thiết bị (requestPeers) và cập nhật danh sách này vào peersFlow.
+    8.Giao diện người dùng (DiscoveryScreen) nhận danh sách thiết bị mới và hiển thị chúng.
+    9.Người dùng chọn một thiết bị từ danh sách (onPeerClick).
+    10.Hệ thống (DiscoveryViewModel) gọi hàm connectToPeer với địa chỉ của thiết bị được chọn.
+    11.WifiDirectManager tạo một WifiP2pConfig và gọi hàm manager.connect().
+    12.Hệ thống Android hiển thị một hộp thoại mời kết nối trên thiết bị đích.
+    13.Người dùng trên thiết bị đích chấp nhận lời mời.
+    14.WiFiDirectBroadcastReceiver trên cả hai thiết bị nhận được sự kiện WIFI_P2P_CONNECTION_CHANGED_ACTION với thông tin kết nối đã thành công.
+    15.WifiDirectManager lấy thông tin kết nối (requestConnectionInfo) và khởi động SocketMessageTransport theo vai trò Group Owner/Client.
+    16.SocketMessageTransport thiết lập kết nối socket và phát ra connectedPeerAddress.
+    17.DiscoveryViewModel lắng nghe connectedPeerAddress và phát ra sự kiện điều hướng _navigateToChat.
+    18.Hệ thống điều hướng người dùng đến màn hình trò chuyện (ChatScreen).
+
+Luồng sự kiện thay thế (Alternative Flows):
+    5a. Tìm kiếm thất bại: Nếu discoverPeers thất bại, WifiDirectManager ghi log lỗi. DiscoveryViewModel hiển thị thông báo lỗi cho người dùng. Use case kết thúc.
+    11a. Gửi yêu cầu kết nối thất bại: Nếu manager.connect() thất bại, WifiDirectManager ghi log lỗi. DiscoveryViewModel hiển thị thông báo lỗi. Use case kết thúc.
+    13a. Người dùng đích từ chối kết nối: WiFiDirectBroadcastReceiver nhận được thông tin kết nối không thành công. DiscoveryViewModel có thể hiển thị thông báo "Kết nối bị từ chối". Use case kết thúc.
+
+Điều kiện kết thúc (Postconditions):
+    Thành công: Một kết nối Wi-Fi Direct P2P được thiết lập giữa hai thiết bị. Người dùng được chuyển đến màn hình trò chuyện.
+    Thất bại: Không có kết nối nào được thiết lập. Người dùng vẫn ở màn hình "Peer Discovery" và nhận được thông báo lỗi (nếu có).
+
+2. Biểu đồ tuần tự (Sequence Diagram) bằng PlantUML:
+
+@startuml
+!theme vibrant
+
+title Sequence Diagram: Connect to Peer Device
+
+actor User
+participant DiscoveryScreen as "UI: DiscoveryScreen"
+participant DiscoveryViewModel as "VM: DiscoveryViewModel"
+participant WifiDirectPeerDiscoveryDataSource as "DS: DataSource"
+participant WifiDirectManager as "Manager"
+participant AndroidFramework as "Android: WifiP2pManager"
+participant WiFiDirectBroadcastReceiver as "Receiver"
+participant SocketMessageTransport as "Socket"
+
+skinparam sequence {
+    ParticipantBorderColor #2E86C1
+    ParticipantBackgroundColor #D6EAF8
+    ActorBorderColor #B03A2E
+    ActorBackgroundColor #FADBD8
+    ArrowColor #1E8449
+    LifeLineBorderColor #5D6D7E
+}
+
+autonumber "<b>[0]"
+
+== User Initiates Discovery ==
+User -> DiscoveryScreen: onDiscoverClick()
+DiscoveryScreen -> DiscoveryViewModel: discoverPeers()
+DiscoveryViewModel -> DS: discoverPeers()
+DS -> Manager: discoverPeers()
+Manager -> AndroidFramework: discoverPeers()
+activate AndroidFramework
+
+AndroidFramework --> Manager: onSuccess()
+deactivate AndroidFramework
+
+== System Finds Peers ==
+... some time later ...
+AndroidFramework -> Receiver: onReceive(WIFI_P2P_PEERS_CHANGED_ACTION)
+activate Receiver
+Receiver -> Manager: onPeersChanged() callback
+deactivate Receiver
+
+activate Manager
+Manager -> AndroidFramework: requestPeers()
+AndroidFramework --> Manager: onPeersAvailable(peerList)
+Manager -> Manager: onPeersUpdated(peerList)
+note right: Update peersFlow
+deactivate Manager
+
+activate DiscoveryViewModel
+DS -> DiscoveryViewModel: (observes peersFlow)
+DiscoveryViewModel -> DiscoveryScreen: (updates uiState.peers)
+deactivate DiscoveryViewModel
+
+DiscoveryScreen -> User: Displays list of peers
+
+== User Selects a Peer to Connect ==
+User -> DiscoveryScreen: onPeerClick(deviceAddress)
+DiscoveryScreen -> DiscoveryViewModel: connectToPeer(deviceAddress)
+activate DiscoveryViewModel
+DiscoveryViewModel -> DS: connectToPeer(device)
+DS -> Manager: connectToPeer(device)
+activate Manager
+Manager -> AndroidFramework: connect(config)
+deactivate Manager
+note right of AndroidFramework: System shows connection\ninvitation on target device
+deactivate DiscoveryViewModel
+
+== Connection is Established ==
+... target user accepts ...
+AndroidFramework -> Receiver: onReceive(WIFI_P2P_CONNECTION_CHANGED_ACTION)
+activate Receiver
+Receiver -> Manager: onConnectionChanged(p2pInfo) callback
+deactivate Receiver
+
+activate Manager
+Manager -> AndroidFramework: requestConnectionInfo()
+AndroidFramework --> Manager: onConnectionInfoAvailable(info)
+Manager -> Socket: startCommunicationFrom(info)
+note right: Socket decides server/client
+deactivate Manager
+
+activate Socket
+Socket -> Socket: socket connected
+Socket -> Socket: connectedPeerAddress emitted
+deactivate Socket
+
+activate DiscoveryViewModel
+DiscoveryViewModel -> DiscoveryViewModel: (observes connectedPeerAddress)
+DiscoveryViewModel -> DiscoveryScreen: emit navigateToChat event
+deactivate DiscoveryViewModel
+
+DiscoveryScreen -> User: Navigates to Chat Screen
+
+@enduml
