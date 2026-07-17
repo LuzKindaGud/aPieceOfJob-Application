@@ -1,0 +1,364 @@
+/* Custom CSS for unit.html (Unit Detail Page) */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #cfc2d7;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7e7386;
+}
+
+/* Tooltip bubble for Vocabulary Highlights in Reading */
+.vocab-highlight {
+    font-weight: 700;
+    color: #bc0b36;
+    border-bottom: 2px dashed #bc0b36;
+    cursor: pointer;
+    position: relative;
+    padding: 0 2px;
+    transition: all 0.2s ease;
+}
+
+.vocab-highlight:hover {
+    background: rgba(188, 11, 54, 0.08);
+}
+
+.vocab-highlight::after {
+    content: attr(data-meaning);
+    position: absolute;
+    bottom: 130%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: #000000;
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 0.5rem;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    font-weight: 500;
+}
+
+.vocab-highlight::before {
+    content: '';
+    position: absolute;
+    bottom: 115%;
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #000000 transparent transparent transparent;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    z-index: 100;
+}
+
+.vocab-highlight:hover::after,
+.vocab-highlight.active-tooltip::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.vocab-highlight:hover::before,
+.vocab-highlight.active-tooltip::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+/* Vocabulary Cards Hover */
+.vocab-card-item {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vocab-card-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(188, 11, 54, 0.05);
+}
+
+/* Tab button styling */
+.tab-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #5b4041; /* on-surface-variant */
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background: transparent;
+    outline: none;
+}
+
+.tab-btn:hover {
+    color: #bc0b36; /* primary */
+    background-color: rgba(188, 11, 54, 0.04);
+    border-bottom-color: #e4bdbe; /* outline-variant */
+    border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.tab-btn.active {
+    color: #bc0b36; /* primary */
+    border-bottom-color: #bc0b36; /* primary */
+    font-weight: 700;
+}
+
+/* Active tab content */
+.tab-content {
+    display: none;
+}
+
+.tab-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Matching game connection lines animation */
+@keyframes dash {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Matching Game Layout & Item Styling */
+#matching-game-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    margin-top: 24px;
+    min-height: 380px;
+}
+
+.matching-column {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 45%;
+    z-index: 10;
+}
+
+.matching-item {
+    background: #ffffff;
+    border: 2px solid #cfc2d7;
+    border-radius: 1rem;
+    padding: 16px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-height: 80px; /* Đảm bảo đủ chiều cao cho nghĩa tiếng Việt 2-3 dòng */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    word-break: break-word;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+}
+
+#matching-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.user-matches-area {
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px dashed #cfc2d7;
+}
+
+.user-matches-title {
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #1a1c1c;
+}
+
+#user-matches-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.match-pair-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    border: 1px solid #cfc2d7;
+    padding: 10px 16px;
+    border-radius: 0.75rem;
+    font-size: 14px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.01);
+}
+
+.match-pair-row.correct {
+    border-color: #22c55e;
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.match-pair-row.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+.matching-item.selected {
+    border-color: #bc0b36;
+    background: rgba(188, 11, 54, 0.06);
+    box-shadow: 0 0 0 2px rgba(188, 11, 54, 0.2);
+}
+
+.matching-item.matched {
+    opacity: 0.65;
+    background: #eeeeee;
+    border-color: #cfc2d7;
+    cursor: default;
+}
+
+.matching-item.correct {
+    opacity: 1;
+    background: #e8f5e9;
+    border-color: #22c55e;
+    color: #15803d;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.1);
+}
+
+.matching-item.incorrect {
+    opacity: 1;
+    background: #ffebee;
+    border-color: #ef4444;
+    color: #b91c1c;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+/* Remove match button */
+.btn-remove-match {
+    transition: all 0.2s ease;
+}
+
+.btn-remove-match:hover {
+    color: #ba1a1a;
+    background: rgba(186, 26, 26, 0.08);
+}
+
+/* Fill in the Blank input checks */
+.fib-input {
+    transition: all 0.2s ease;
+}
+
+.fib-input.correct {
+    border-color: #22c55e;
+    background: #f0fdf4;
+    color: #15803d;
+}
+
+.fib-input.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #b91c1c;
+}
+
+/* MCQ Question Layout */
+.mcq-question-block {
+    background: #ffffff;
+    border: 1.5px solid #e4bdbe;
+    border-radius: 1.5rem;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+}
+
+.mcq-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #271718;
+    margin-bottom: 16px;
+}
+
+.mcq-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* MCQ Option Labels states */
+.mcq-option-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    background: #ffffff;
+    border: 1.5px solid #e4bdbe;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #5b4041;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mcq-option-label:hover {
+    border-color: #bc0b36;
+    background: #ffe9e9;
+    color: #bc0b36;
+}
+
+.mcq-option-label.selected {
+    border-color: #bc0b36;
+    background: #ffe1e2;
+    color: #bc0b36;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(188, 11, 54, 0.08);
+}
+
+.mcq-option-label.correct {
+    border-color: #22c55e;
+    background: #f0fdf4;
+    color: #15803d;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.08);
+}
+
+.mcq-option-label.incorrect {
+    border-color: #ef4444;
+    background: #fef2f2;
+    color: #b91c1c;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.08);
+}
+
+/* Exercise overall results boxes */
+.exercise-result {
+    transition: all 0.3s ease;
+}
+
+.exercise-result.correct {
+    background: #e8f5e9;
+    color: #15803d;
+    border: 1px solid #a5d6a7;
+}
+
+.exercise-result.incorrect {
+    background: #ffebee;
+    color: #b91c1c;
+    border: 1px solid #ef9a9a;
+}

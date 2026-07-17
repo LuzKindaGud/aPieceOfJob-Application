@@ -1,0 +1,65 @@
+/* Custom CSS for index.html (Home Page) */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f9f9f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cfc2d7;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7e7386;
+}
+
+/* Floating Animations for Bento Cards */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Bento card hover micro-interactions */
+.bento-card {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bento-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(188, 11, 54, 0.1);
+}
+
+/* Text gradient styling */
+.text-gradient {
+    background: linear-gradient(135deg, #bc0b36 0%, #a13c45 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.pill-shadow {
+    box-shadow: 0 10px 25px rgba(188, 11, 54, 0.25);
+}
+
+/* Feature cards custom enhancements */
+.feature-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.feature-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
+}

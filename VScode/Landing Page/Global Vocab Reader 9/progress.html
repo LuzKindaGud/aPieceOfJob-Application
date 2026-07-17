@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" sizes="32x32 48x48 96x96 192x192 512x512" href="assets/logos/Adobe%20Express%20-%20file.png"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                            "surface": "#fff8f7",
+                            "surface-dim": "#f1d3d4",
+                            "surface-bright": "#fff8f7",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-container-low": "#fff0f0",
+                            "surface-container": "#ffe9e9",
+                            "surface-container-high": "#ffe1e2",
+                            "surface-container-highest": "#fadbdc",
+                            "on-surface": "#271718",
+                            "on-surface-variant": "#5b4041",
+                            "inverse-surface": "#3e2c2d",
+                            "inverse-on-surface": "#ffeced",
+                            "outline": "#8f6f70",
+                            "outline-variant": "#e4bdbe",
+                            "surface-tint": "#bc0c36",
+                            "primary": "#bc0b36",
+                            "on-primary": "#ffffff",
+                            "primary-container": "#e02f4c",
+                            "on-primary-container": "#140002",
+                            "inverse-primary": "#ffb3b5",
+                            "secondary": "#a13c45",
+                            "on-secondary": "#ffffff",
+                            "secondary-container": "#fb8188",
+                            "on-secondary-container": "#721925",
+                            "tertiary": "#006b54",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-container": "#00876a",
+                            "on-tertiary-container": "#000604",
+                            "error": "#ba1a1a",
+                            "on-error": "#ffffff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "primary-fixed": "#ffdada",
+                            "primary-fixed-dim": "#ffb3b5",
+                            "on-primary-fixed": "#40000c",
+                            "on-primary-fixed-variant": "#920026",
+                            "secondary-fixed": "#ffdada",
+                            "secondary-fixed-dim": "#ffb3b5",
+                            "on-secondary-fixed": "#40000b",
+                            "on-secondary-fixed-variant": "#82242f",
+                            "tertiary-fixed": "#63fbcf",
+                            "tertiary-fixed-dim": "#3edeb3",
+                            "on-tertiary-fixed": "#002117",
+                            "on-tertiary-fixed-variant": "#00513e",
+                            "background": "#fff8f7",
+                            "on-background": "#271718",
+                            "surface-variant": "#fadbdc"
+                        },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-lg": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8">
+<script src="js/data.js"></script>
+<script src="js/progress-tracker.js"></script>
+<link rel="stylesheet" href="css/progress.css">
+</head>
+<body class="bg-background text-on-surface font-body-md overflow-x-hidden">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<nav class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+    <img src="assets/logos/Adobe%20Express%20-%20file.png" alt="Logo" class="h-20 w-auto object-contain">
+    <div class="flex flex-col justify-center">
+        <span class="text-4xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#bc0b36] to-[#a13c45]">Global Success 9</span>
+        <span class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mt-1">Language Learning Suite</span>
+    </div>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-home" href="index.html">Home</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-units" href="units.html">Units</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-practice" href="unit.html?unit=1">Practice</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-progress" href="progress.html">Progress</a>
+</div>
+<div class="flex items-center gap-4">
+</div>
+</nav>
+</header>
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-24 bg-surface-container-low p-4 gap-2 border-r border-outline-variant/20 shadow-sm z-40">
+<div class="px-4 py-6 mb-4 bg-white/50 rounded-2xl border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK4x8yk2AHfYGzdrDsMlhqPJpxPA54D_-_GwC1cXAk5QUTQWpczp9Uw1tyfMdwcdIM_bNJrXAxrHPTUsL7yNqT1Y-QTOPTrUKMcI7nmj8-qNJi7cytf9-NHFo240_8C2_ZPcO5ca4alGVoV4xg7KFj3qp3nyDwvH55rSiLjEI00n6dqViwMc9FswQbgmvrSN7iWCKIpzAsAGeZNPejg6veZgblIVBCoPB0tzwzen3Vki54y_A6599L">
+</div>
+<div>
+<p class="font-label-md font-bold text-[#bc0b36]">Grade 9 Student</p>
+<p class="text-[10px] text-on-surface-variant" id="profile-level">Level: Loading...</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-dashboard" href="index.html">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span> Unit List
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span> Practice
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span> My Progress
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button onclick="window.location.href='units.html'" class="w-full py-3 bg-gradient-to-r from-[#bc0b36] to-[#a13c45] text-white rounded-xl font-bold shadow-lg hover:shadow-primary/30 hover:brightness-110 active:scale-95 transition-all">
+Start Learning
+</button>
+</div>
+</aside>
+
+<main class="lg:pl-64 pt-24 min-h-screen">
+<div class="px-6 md:px-12 py-8 max-w-container-max mx-auto space-y-8">
+
+<!-- Hero Progress Banner -->
+<section class="relative overflow-hidden rounded-xl bg-dark-bg p-8 text-white shadow-xl">
+
+<div class="relative z-10 flex flex-col md:flex-row justify-between items-end md:items-center gap-6">
+<div class="space-y-2">
+<h1 class="font-display-lg text-display-lg md:text-display-lg leading-tight text-[#40000B]">Mastery in Progress</h1>
+<p class="font-body-lg text-body-lg text-[#40000B]">You're doing great! Keep the momentum going.</p>
+</div>
+<div class="text-right">
+<div class="text-5xl font-extrabold text-primary " id="progress-count-text">0 <span class="text-2xl font-medium opacity-70">/ 12</span></div>
+<div class="font-label-lg text-label-lg uppercase tracking-wider opacity-70 text-[#40000B]">Units Completed</div>
+</div>
+</div>
+<div class="relative z-10 mt-8">
+<div class="w-full h-4 bg-white/10 rounded-full overflow-hidden">
+<div class="h-full progress-gradient transition-all duration-1000 ease-out shadow-[0_0_15px_rgba(59,185,255,0.5)]" id="progress-bar-el" style="width: 0%;"></div>
+</div>
+<div class="mt-2 flex justify-between font-label-sm text-label-sm ">
+<span class="text-black">Beginner</span>
+<span class="text-[#00A481]">Intermediate</span>
+<span class="text-primary">Expert</span>
+</div>
+</div>
+</section>
+</section>
+<!-- Unit Checklist Grid -->
+<section class="bg-white rounded-lg shadow-sm border border-outline-variant overflow-hidden">
+<div class="p-6 border-b border-outline-variant flex justify-between items-center bg-surface-bright">
+<h2 class="font-headline-sm text-headline-sm">Unit Progress Tracker</h2>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">verified</span> Verified Syllabus
+                        </span>
+</div>
+</div>
+<div id="progress-units-container" class="grid grid-cols-1 md:grid-cols-2 gap-px bg-outline-variant">
+    <!-- Checkbox rows will be dynamically populated here -->
+</div>
+<div class="p-6 bg-surface-container-low border-t border-outline-variant flex justify-between items-center">
+    <button onclick="resetAllProgress()" class="text-red-500 font-bold hover:text-red-700 transition-colors flex items-center gap-2">
+        <span class="material-symbols-outlined text-sm">restart_alt</span> Restart the entire process
+    </button>
+    <button onclick="window.location.href='units.html'" class="flex items-center gap-2 text-primary font-bold hover:gap-4 transition-all">
+        Return to Unit List<span class="material-symbols-outlined">arrow_forward</span>
+    </button>
+</div>
+</section>
+
+</div>
+</main>
+
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl flex justify-around items-center py-3 border-t border-outline-variant/10 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-home" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Units</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span>
+<span>Practice</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Progress</span>
+</a>
+</nav>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Highlight active navigation links
+    const progressNav = document.getElementById('nav-progress');
+    if (progressNav) progressNav.className = "text-[#bc0b36] font-bold font-label-lg border-b-2 border-[#bc0b36] pb-1";
+
+    const sideProgress = document.getElementById('side-progress');
+    if (sideProgress) {
+        sideProgress.className = "flex items-center gap-3 px-4 py-3 bg-[#bc0b36]/10 text-[#bc0b36] rounded-lg font-bold transition-all font-label-md text-label-md";
+    }
+
+    const mobProgress = document.getElementById('mob-progress');
+    if (mobProgress) {
+        mobProgress.className = "flex flex-col items-center gap-1 text-[10px] text-[#bc0b36] font-bold";
+        mobProgress.querySelector('span').style.fontVariationSettings = "'FILL' 1";
+    }
+
+    // 2. Checklist dynamic render
+    const container = document.getElementById('progress-units-container');
+    if (!container) return;
+    
+    function renderChecklist() {
+        const progress = window.getProgress ? window.getProgress() : Array(12).fill(false);
+        const ratings = window.getRatings ? window.getRatings() : {};
+        
+        container.innerHTML = window.UNITS_DATA.map(unit => {
+            const isCompleted = progress[unit.id - 1];
+            const unitRating = ratings[unit.id];
+            
+            let ratingHtml = '';
+            if (unitRating) {
+                let stars = '';
+                for (let i = 0; i < 5; i++) {
+                    if (i < unitRating.rating) {
+                        stars += `<span class="material-symbols-outlined text-yellow-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>`;
+                    } else {
+                        stars += `<span class="material-symbols-outlined text-outline-variant text-[16px]">star</span>`;
+                    }
+                }
+                ratingHtml = `
+                    <div class="flex items-center gap-1.5 mt-2 bg-surface-container-lowest px-2.5 py-1 rounded-full w-max border border-outline-variant/35 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                        <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider">Feedback:</span>
+                        <div class="flex gap-0.5">${stars}</div>
+                        ${unitRating.tags && unitRating.tags.length > 0 ? `<span class="text-[10px] text-on-surface-variant font-bold bg-[#bc0b36]/5 px-2 py-0.5 rounded-full border border-[#bc0b36]/10">${unitRating.tags.slice(0, 2).join(', ')}</span>` : ''}
+                    </div>
+                `;
+            }
+
+            return `
+                <div class="p-6 bg-white group hover:bg-surface-container-low transition-colors duration-200 ${isCompleted ? 'bg-[#bc0b36]/5' : ''}">
+                    <div class="flex items-start justify-between">
+                        <div class="flex gap-4">
+                            <label class="relative flex items-center cursor-pointer">
+                                <input ${isCompleted ? 'checked' : ''} class="checkbox-custom" type="checkbox" data-unit-id="${unit.id}">
+                                <span class="checkbox-mark"></span>
+                            </label>
+                            <div>
+                                <h3 class="font-label-lg text-label-lg font-bold text-ink">${unit.title}</h3>
+                                <p class="text-label-sm font-label-sm text-on-surface-variant mt-1">${unit.topic}</p>
+                                ${ratingHtml}
+                            </div>
+                        </div>
+                        <span class="material-symbols-outlined ${isCompleted ? 'text-[#bc0b36]' : 'text-outline'}" data-weight="fill">
+                            ${isCompleted ? 'check_circle' : 'radio_button_unchecked'}
+                        </span>
+                    </div>
+                </div>
+            `;
+        }).join('');
+        
+        // Bind change listeners to checkboxes
+        container.querySelectorAll('.checkbox-custom').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const unitId = parseInt(e.target.getAttribute('data-unit-id'), 10);
+                const isChecked = e.target.checked;
+                
+                if (window.saveProgress) {
+                    window.saveProgress(unitId, isChecked);
+                }
+            });
+        });
+        
+        updateOverallStats();
+    }
+    
+    function updateOverallStats() {
+        const progress = window.getProgress ? window.getProgress() : Array(12).fill(false);
+        const checkedCount = progress.filter(Boolean).length;
+        const progressPercentage = (checkedCount / 12) * 100;
+        
+        const progressBar = document.getElementById('progress-bar-el');
+        const progressText = document.getElementById('progress-count-text');
+        
+        if (progressBar) progressBar.style.width = `${progressPercentage}%`;
+        if (progressText) progressText.innerHTML = `${checkedCount} <span class="text-2xl font-medium opacity-70">/ 12</span>`;
+    }
+    
+    // Listen to changes from custom event
+    window.addEventListener('progressUpdated', () => {
+        renderChecklist();
+    });
+
+    window.addEventListener('ratingsUpdated', () => {
+        renderChecklist();
+    });
+    
+    // Initial render
+    renderChecklist();
+});
+
+function resetAllProgress() {
+    if (confirm('Are you sure you want to delete all your progress and start over?')) {
+        if (window.resetProgress) {
+            window.resetProgress();
+        }
+    }
+}
+</script>
+</body>
+</html>

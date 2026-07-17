@@ -1,0 +1,294 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" sizes="32x32 48x48 96x96 192x192 512x512" href="assets/logos/Adobe%20Express%20-%20file.png"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                            "surface": "#fff8f7",
+                            "surface-dim": "#f1d3d4",
+                            "surface-bright": "#fff8f7",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-container-low": "#fff0f0",
+                            "surface-container": "#ffe9e9",
+                            "surface-container-high": "#ffe1e2",
+                            "surface-container-highest": "#fadbdc",
+                            "on-surface": "#271718",
+                            "on-surface-variant": "#5b4041",
+                            "inverse-surface": "#3e2c2d",
+                            "inverse-on-surface": "#ffeced",
+                            "outline": "#8f6f70",
+                            "outline-variant": "#e4bdbe",
+                            "surface-tint": "#bc0c36",
+                            "primary": "#bc0b36",
+                            "on-primary": "#ffffff",
+                            "primary-container": "#e02f4c",
+                            "on-primary-container": "#140002",
+                            "inverse-primary": "#ffb3b5",
+                            "secondary": "#a13c45",
+                            "on-secondary": "#ffffff",
+                            "secondary-container": "#fb8188",
+                            "on-secondary-container": "#721925",
+                            "tertiary": "#006b54",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-container": "#00876a",
+                            "on-tertiary-container": "#000604",
+                            "error": "#ba1a1a",
+                            "on-error": "#ffffff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "primary-fixed": "#ffdada",
+                            "primary-fixed-dim": "#ffb3b5",
+                            "on-primary-fixed": "#40000c",
+                            "on-primary-fixed-variant": "#920026",
+                            "secondary-fixed": "#ffdada",
+                            "secondary-fixed-dim": "#ffb3b5",
+                            "on-secondary-fixed": "#40000b",
+                            "on-secondary-fixed-variant": "#82242f",
+                            "tertiary-fixed": "#63fbcf",
+                            "tertiary-fixed-dim": "#3edeb3",
+                            "on-tertiary-fixed": "#002117",
+                            "on-tertiary-fixed-variant": "#00513e",
+                            "background": "#fff8f7",
+                            "on-background": "#271718",
+                            "surface-variant": "#fadbdc"
+                        },
+            "borderRadius": {
+                    "DEFAULT": "1rem",
+                    "lg": "2rem",
+                    "xl": "3rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "section-gap": "80px",
+                    "gutter": "24px",
+                    "container-max": "1200px",
+                    "unit": "8px",
+                    "margin-mobile": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "display-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-sm": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                    "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-lg": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"><script src="js/data.js"></script>
+<script src="js/progress-tracker.js"></script>
+<link rel="stylesheet" href="css/units.css">
+</head><body class="bg-background text-on-background font-body-md custom-scrollbar">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<nav class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+    <img src="assets/logos/Adobe%20Express%20-%20file.png" alt="Logo" class="h-20 w-auto object-contain">
+    <div class="flex flex-col justify-center">
+        <span class="text-4xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#bc0b36] to-[#a13c45]">Global Success 9</span>
+        <span class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mt-1">Language Learning Suite</span>
+    </div>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-home" href="index.html">Home</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-units" href="units.html">Units</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-practice" href="unit.html?unit=1">Practice</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-progress" href="progress.html">Progress</a>
+</div>
+<div class="flex items-center gap-4">
+</div>
+</nav>
+</header>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-24 bg-surface-container-low p-4 gap-2 border-r border-outline-variant/20 shadow-sm z-40">
+<div class="px-4 py-6 mb-4 bg-white/50 rounded-2xl border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK4x8yk2AHfYGzdrDsMlhqPJpxPA54D_-_GwC1cXAk5QUTQWpczp9Uw1tyfMdwcdIM_bNJrXAxrHPTUsL7yNqT1Y-QTOPTrUKMcI7nmj8-qNJi7cytf9-NHFo240_8C2_ZPcO5ca4alGVoV4xg7KFj3qp3nyDwvH55rSiLjEI00n6dqViwMc9FswQbgmvrSN7iWCKIpzAsAGeZNPejg6veZgblIVBCoPB0tzwzen3Vki54y_A6599L">
+</div>
+<div>
+<p class="font-label-md font-bold text-[#bc0b36]">Grade 9 Student</p>
+<p class="text-[10px] text-on-surface-variant" id="profile-level">Level: Loading...</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-dashboard" href="index.html">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span> Unit List
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span> Practice
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span> My Progress
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button onclick="window.location.href='units.html'" class="w-full py-3 bg-gradient-to-r from-[#bc0b36] to-[#a13c45] text-white rounded-xl font-bold shadow-lg hover:shadow-primary/30 hover:brightness-110 active:scale-95 transition-all">
+Start Learning
+</button>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="lg:pl-64 pt-24 min-h-screen">
+<div class="px-6 md:px-12 py-8 max-w-container-max mx-auto">
+<!-- Hero Header Section -->
+<header class="mb-12 relative overflow-hidden rounded-[2.5rem] bg-gradient-to-br from-primary to-tertiary p-10 text-white shadow-2xl">
+<div class="relative z-10 max-w-2xl">
+<span class="inline-block px-4 py-1 bg-white/20 backdrop-blur-md rounded-full text-label-sm font-label-sm mb-4 uppercase tracking-widest">Curriculum 2024</span>
+<h1 class="font-display-lg text-display-lg mb-4 leading-tight">Master Your Grade 9 English Journey</h1>
+<p class="text-body-lg font-body-lg opacity-90 mb-8">Dive into 12 comprehensive units designed to build fluency, confidence, and global communication skills through systematic and interactive learning.</p>
+<div class="flex flex-wrap gap-4">
+<div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="font-label-md">12 Units</span>
+</div>
+<div class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-secondary-fixed-dim" style="font-variation-settings: 'FILL' 1;">schedule</span>
+<span class="font-label-md">60+ Hours</span>
+</div>
+</div>
+</div>
+<!-- Background Decoration -->
+<div class="absolute -right-20 -bottom-20 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute right-10 top-10 w-40 h-40 bg-secondary-fixed-dim/20 rounded-full blur-2xl"></div>
+</header>
+<!-- Unit Grid -->
+<div id="units-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Highlight active nav links
+    const unitsNav = document.getElementById('nav-units');
+    if (unitsNav) unitsNav.className = "text-[#bc0b36] font-bold font-label-lg border-b-2 border-[#bc0b36] pb-1";
+    
+    const sideUnits = document.getElementById('side-units');
+    if (sideUnits) {
+        sideUnits.className = "flex items-center gap-3 px-4 py-3 bg-[#bc0b36]/10 text-[#bc0b36] rounded-lg font-bold transition-all font-label-md text-label-md";
+    }
+
+    const mobUnits = document.getElementById('mob-units');
+    if (mobUnits) {
+        mobUnits.className = "flex flex-col items-center gap-1 text-[10px] text-[#bc0b36] font-bold";
+        mobUnits.querySelector('span').style.fontVariationSettings = "'FILL' 1";
+    }
+
+    const grid = document.getElementById('units-grid');
+    if (!grid) return;
+    
+    const progress = window.getProgress ? window.getProgress() : Array(12).fill(false);
+    const ratings = window.getRatings ? window.getRatings() : {};
+
+    grid.innerHTML = window.UNITS_DATA.map(unit => {
+        const isCompleted = progress[unit.id - 1];
+        const progressPercent = isCompleted ? 100 : 0;
+        const unitRating = ratings[unit.id];
+        
+        let ratingBadgeHtml = '';
+        if (unitRating) {
+            ratingBadgeHtml = `
+                <div class="flex items-center gap-0.5 text-xs text-yellow-600 font-bold bg-yellow-500/5 px-2 py-0.5 rounded-full border border-yellow-500/10 shadow-[0_1px_2px_rgba(0,0,0,0.01)]">
+                    <span class="material-symbols-outlined text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+                    <span>${unitRating.rating}/5</span>
+                </div>
+            `;
+        }
+        
+        return `
+            <div class="unit-card-hover group bg-white border border-outline-variant/30 rounded-[2rem] overflow-hidden flex flex-col h-full shadow-sm hover:shadow-md transition-all duration-300">
+                <div class="relative h-48 overflow-hidden bg-surface-container-highest">
+                    <img class="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" src="${unit.thumbnail}" alt="${unit.title}">
+                    <div class="absolute inset-0 bg-black/10 group-hover:bg-black/25 transition-colors duration-300"></div>
+                    <div class="absolute top-4 left-4 z-20">
+                        <div class="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-[#bc0b36] font-bold text-[12px] flex items-center gap-1 shadow-sm">
+                            <span class="material-symbols-outlined text-[16px]">bookmark</span>
+                            Unit ${unit.id}
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex justify-between items-start mb-3">
+                        <h3 class="font-headline-sm text-headline-sm text-primary group-hover:text-tertiary transition-colors">${unit.title}</h3>
+                        <div class="w-10 h-10 rounded-full bg-secondary-container/20 flex items-center justify-center text-secondary">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-on-surface-variant font-body-md mb-6 line-clamp-2">Topic: ${unit.topic}. Learn key vocabulary, read the main passage, and complete interactive practice exercises.</p>
+                    
+                    <div class="mt-auto">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="text-label-sm font-label-sm text-outline flex items-center gap-1.5">${isCompleted ? 'Completed (100%)' : 'Not Started'} ${ratingBadgeHtml}</span>
+                            <span class="text-label-sm font-label-sm text-primary">Core Lesson</span>
+                        </div>
+                        <div class="w-full h-2 bg-surface-container-high rounded-full overflow-hidden mb-6">
+                            <div class="h-full bg-gradient-to-r from-gradient-start to-gradient-end transition-all duration-1000" style="width: ${progressPercent}%"></div>
+                        </div>
+                        
+                        <button onclick="window.location.href='unit.html?unit=${unit.id}'" class="w-full py-3 ${isCompleted ? 'bg-primary text-white' : 'bg-surface-container-highest text-on-surface'} hover:bg-primary hover:text-white rounded-xl font-bold transition-all flex items-center justify-center gap-2 group/btn">
+                            ${isCompleted ? 'Review Lesson' : 'Start Learning'}
+                            <span class="material-symbols-outlined transition-transform group-hover/btn:translate-x-1">arrow_forward</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+    
+    // Stagger entry animations
+    const cards = grid.children;
+    Array.from(cards).forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        card.style.transition = 'opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+        setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+        }, 60 * index);
+    });
+});
+</script>
+</div>
+<!-- Footer -->
+</main>
+<!-- FAB (Suppressed as per rules for Details/List screens, but included if needed for primary action) -->
+<!-- Not rendered as it's a "Unit List" destination -->
+
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl flex justify-around items-center py-3 border-t border-outline-variant/10 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-home" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Units</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span>
+<span>Practice</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Progress</span>
+</a>
+</nav>
+</body></html>

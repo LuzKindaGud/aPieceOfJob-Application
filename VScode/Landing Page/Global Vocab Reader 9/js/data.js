@@ -1,0 +1,1155 @@
+const UNITS_DATA = [
+  {
+    id: 1,
+    title: "Unit 1: Local Community",
+    topic: "Cộng đồng địa phương",
+    thumbnail: "assets/images/unit-1-thumb.jpg",
+    readingImages: [
+      "assets/images/unit-1-reading-1.jpg",
+      "assets/images/unit-1-reading-2.jpg"
+    ],
+    reading: {
+      title: "Local Communities & Artisans",
+      content: "Vong, a small village in Ha Noi, is famous for a speciality food: com (young sticky rice flakes). To make com, artisans follow a series of steps. They <span class=\"vocab-highlight\" data-meaning=\"Bảo tồn, giữ gìn\">preserve</span> the techniques by passing them down to their sons. In the past, people made com by hand, but now they use machines for some steps to <span class=\"vocab-highlight\" data-meaning=\"Rút ngắn, làm ngắn đi\">shorten</span> the process. They wrap the final product in two layers of leaves to preserve its <span class=\"vocab-highlight\" data-meaning=\"Hương thơm, mùi hương dễ chịu\">fragrance</span> before selling it to consumers. Com Lang Vong is well known in Viet Nam as a speciality of Ha Noi autumn.<br><br>Denby is a village in the county of Derbyshire, England. It is the home of the famous Denby Pottery, which is made from the finest local clay. Going around the village, we can see artisans hand-craft pottery collections. They still use some of the <span class=\"vocab-highlight\" data-meaning=\"Ban đầu, nguyên bản\">original</span> techniques passed down through generations. In Denby products, we can see their beauty and <span class=\"vocab-highlight\" data-meaning=\"Công dụng, chức năng\">function</span> which make them world-famous. Today Denby is also a tourist attraction. Visitors can make pottery in workshops or find out about the history of pottery in the museum.",
+      highlightedWords: ["preserve", "shorten", "fragrance", "original", "function"]
+    },
+    vocabulary: [
+      {
+        word: "preserve",
+        partOfSpeech: "v",
+        pronunciation: "/prɪˈzɜːv/",
+        meaning: "Bảo tồn, giữ gìn",
+        example: "They preserve the techniques by passing them down to their sons.",
+        image: "assets/images/preserve.jpg"
+      },
+      {
+        word: "shorten",
+        partOfSpeech: "v",
+        pronunciation: "/hɔːtn/",
+        meaning: "Rút ngắn, làm ngắn đi",
+        example: "They use machines for some steps to shorten the process.",
+        image: "assets/images/shorten.jpg"
+      },
+      {
+        word: "fragrance",
+        partOfSpeech: "n",
+        pronunciation: "/ˈfreɪɡrəns/",
+        meaning: "Hương thơm, mùi hương",
+        example: "They wrap the com in leaves to preserve its fragrance.",
+        image: "assets/images/fragrance.jpg"
+      },
+      {
+        word: "original",
+        partOfSpeech: "adj",
+        pronunciation: "/əˈrɪdʒənl/",
+        meaning: "Ban đầu, nguyên bản",
+        example: "They still use some of the original techniques passed down through generations.",
+        image: "assets/images/original.jpg"
+      },
+      {
+        word: "function",
+        partOfSpeech: "n",
+        pronunciation: "/ˈfʌŋkʃn/",
+        meaning: "Công dụng, chức năng",
+        example: "In Denby products, we can see their beauty and function.",
+        image: "assets/images/function.jpg"
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "preserve", meaning: "Bảo tồn, giữ gìn" },
+          { word: "shorten", meaning: "Rút ngắn, làm ngắn đi" },
+          { word: "fragrance", meaning: "Hương thơm, mùi hương" },
+          { word: "original", meaning: "Ban đầu, nguyên bản" },
+          { word: "function", meaning: "Công dụng, chức năng" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "Factories use machines to ________ the production process.",
+          answer: "shorten"
+        },
+        {
+          sentence: "We need to ________ our traditional crafts and culture.",
+          answer: "preserve"
+        },
+        {
+          sentence: "The rose gave off a lovely and sweet ________.",
+          answer: "fragrance"
+        },
+        {
+          sentence: "What is the primary ________ of this new electronic device?",
+          answer: "function"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "What does the word 'original' mean in the passage?",
+          options: ["New and modern", "Existing since the beginning", "Beautiful and expensive", "Useful and functional"],
+          correctIndex: 1
+        },
+        {
+          question: "How do artisans in Vong village keep their com making techniques alive?",
+          options: ["By writing books", "By keeping them secret", "By passing them down to their sons", "By showing them in museums"],
+          correctIndex: 2
+        },
+        {
+          question: "Which word means 'a pleasant sweet smell'?",
+          options: ["fragrance", "pottery", "clay", "artisan"],
+          correctIndex: 0
+        },
+        {
+          question: "Complete the sentence: 'This tool has many useful ________.'",
+          options: ["preserves", "shortens", "fragrances", "functions"],
+          correctIndex: 3
+        }
+      ]
+    }
+  },
+  {
+    id: 2,
+    title: "Unit 2: City Life",
+    topic: "Cuộc sống thành thị",
+    thumbnail: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "The Teenovator Competition",
+      content: "Teenovator is an annual <span class=\"vocab-highlight\" data-meaning=\"Cuộc thi, sự cạnh tranh\">competition</span> by the City Teen Council. We ask teens to find problems of the city and suggest solutions. Here are this year's winners.<br><br>First place: The waste-free city by Central School. They see that the more developed a city is, the more food people throw away. They suggest carrying out a project which turns food waste into energy. Students would sort their <span class=\"vocab-highlight\" data-meaning=\"Thức ăn thừa\">leftovers</span> at school canteens. A nearby farm would come to take the food waste and process it into biogas.<br><br>Second place: The teen-friendly city by Bookworm Team. This team feels that many public <span class=\"vocab-highlight\" data-meaning=\"Các tiện ích công cộng, tiện nghi\">amenities</span>, particularly the city library, are not teen-friendly. They suggest a list of changes so that the library can attract more teens. Some of them include designing lively learning spaces for teens and having teen's favourite desserts in the cafeteria.<br><br>Third place: The street-safe city by Helena Wilson. Helena realises that there are too many vehicles around school gates. This is unsafe for children who walk to school. She suggests that the city <span class=\"vocab-highlight\" data-meaning=\"Các nhà chức trách, chính quyền\">authorities</span> not allow cars at school gates at drop-off and pick-up times. In addition, they should not let motorbikes park on the pavement near school gates.",
+      highlightedWords: ["competition", "leftovers", "amenities", "authorities"]
+    },
+    vocabulary: [
+      {
+        word: "competition",
+        partOfSpeech: "n",
+        pronunciation: "/ˌkɒmpəˈtɪʃn/",
+        meaning: "Cuộc thi, sự cạnh tranh",
+        example: "Teenovator is an annual competition by the City Teen Council."
+      },
+      {
+        word: "leftovers",
+        partOfSpeech: "n",
+        pronunciation: "/ˈleftəʊvəz/",
+        meaning: "Thức ăn thừa",
+        example: "Students would sort their leftovers at school canteens."
+      },
+      {
+        word: "amenities",
+        partOfSpeech: "n",
+        pronunciation: "/əˈmiːnətiz/",
+        meaning: "Tiện ích công cộng, tiện nghi",
+        example: "This team feels that many public amenities are not teen-friendly."
+      },
+      {
+        word: "authorities",
+        partOfSpeech: "n",
+        pronunciation: "/ɔːˈθɒrətiz/",
+        meaning: "Các nhà chức trách, chính quyền",
+        example: "She suggests that the city authorities do not allow cars at school gates."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "competition", meaning: "Cuộc thi, sự cạnh tranh" },
+          { word: "leftovers", meaning: "Thức ăn thừa" },
+          { word: "amenities", meaning: "Tiện ích công cộng" },
+          { word: "authorities", meaning: "Các nhà chức trách" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "The local ________ decided to build a new playground.",
+          answer: "authorities"
+        },
+        {
+          sentence: "Don't throw away your food; we can eat the ________ tomorrow.",
+          answer: "leftovers"
+        },
+        {
+          sentence: "She won first prize in the national writing ________.",
+          answer: "competition"
+        },
+        {
+          sentence: "The park has many good ________ like benches and toilets.",
+          answer: "amenities"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "What is 'Teenovator'?",
+          options: ["A city library", "A local farm", "An annual competition", "A type of biogas"],
+          correctIndex: 2
+        },
+        {
+          question: "Central School's project turns what into energy?",
+          options: ["Paper waste", "Food waste and leftovers", "Old books", "Motorbikes"],
+          correctIndex: 1
+        },
+        {
+          question: "Which team suggested changes for the city library?",
+          options: ["Central School", "Bookworm Team", "Helena Wilson", "City Teen Council"],
+          correctIndex: 1
+        },
+        {
+          question: "What does Helena Wilson suggest regarding school gates?",
+          options: ["Opening a new library", "Reusing cafeteria leftovers", "Banning cars during drop-off/pick-up times", "Building more park amenities"],
+          correctIndex: 2
+        }
+      ]
+    }
+  },
+  {
+    id: 3,
+    title: "Unit 3: Healthy Living For Teens",
+    topic: "Lối sống lành mạnh cho thiếu niên",
+    thumbnail: "https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Having a Well-Balanced Life",
+      content: "When I was at school, I had to learn how to have a well-balanced life in order to reduce stress and <span class=\"vocab-highlight\" data-meaning=\"Mối lo âu, lo ngại\">anxiety</span>. Below are some of the typical things I did.<br><br>Firstly, I managed my time properly. I started to plan my schedule, made a weekly work list and gave priority to some of my work. This helped me <span class=\"vocab-highlight\" data-meaning=\"Tập trung (nỗ lực, suy nghĩ)\">concentrate</span> my efforts on my most important tasks.<br><br>In addition, I communicated with my family, friends, and teachers about my busy schedule and problems, so they would offer me <span class=\"vocab-highlight\" data-meaning=\"Thêm vào, bổ sung\">additional</span> support.<br><br>I also took breaks <span class=\"vocab-highlight\" data-meaning=\"Một cách thích hợp, phù hợp\">appropriately</span> because they helped me keep away from stress and anxiety, gave my brain a rest, and improved my mood.<br><br>Finally, I looked after my physical health. I got at least eight hours of sleep a day. I played football with my classmates twice a week. Besides, I also tried to avoid <span class=\"vocab-highlight\" data-meaning=\"Dễ làm béo, chứa nhiều calo\">fattening</span> foods like chips, cookies, and pizza.",
+      highlightedWords: ["anxiety", "concentrate", "additional", "appropriately", "fattening"]
+    },
+    vocabulary: [
+      {
+        word: "anxiety",
+        partOfSpeech: "n",
+        pronunciation: "/æŋˈzaɪəti/",
+        meaning: "Mối lo âu, sự lo lắng",
+        example: "I had to learn how to have a well-balanced life in order to reduce stress and anxiety."
+      },
+      {
+        word: "concentrate",
+        partOfSpeech: "v",
+        pronunciation: "/ˈkɒnsntreɪt/",
+        meaning: "Tập trung",
+        example: "This helped me concentrate my efforts on my most important tasks."
+      },
+      {
+        word: "additional",
+        partOfSpeech: "adj",
+        pronunciation: "/əˈdɪʃənl/",
+        meaning: "Bổ sung, thêm vào",
+        example: "They offered me additional support when I was busy."
+      },
+      {
+        word: "appropriately",
+        partOfSpeech: "adv",
+        pronunciation: "/əˈprəʊpriətli/",
+        meaning: "Một cách thích hợp, phù hợp",
+        example: "I took breaks appropriately because they helped me relax."
+      },
+      {
+        word: "fattening",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈfætənɪŋ/",
+        meaning: "Dễ làm béo, chứa nhiều chất béo",
+        example: "I avoided fattening foods like chips, cookies, and pizza."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "anxiety", meaning: "Mối lo âu, sự lo lắng" },
+          { word: "concentrate", meaning: "Tập trung" },
+          { word: "additional", meaning: "Bổ sung, thêm vào" },
+          { word: "appropriately", meaning: "Một cách thích hợp" },
+          { word: "fattening", meaning: "Dễ làm béo" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "Noise makes it difficult for me to ________ on my homework.",
+          answer: "concentrate"
+        },
+        {
+          sentence: "He felt a lot of ________ before the final exam results came out.",
+          answer: "anxiety"
+        },
+        {
+          sentence: "Eating too much ________ food can lead to weight gain.",
+          answer: "fattening"
+        },
+        {
+          sentence: "If you need ________ help, please ask the teacher.",
+          answer: "additional"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "What is the main topic of the passage?",
+          options: ["How to play sports", "How to manage school exams", "How to have a well-balanced life", "How to cook healthy food"],
+          correctIndex: 2
+        },
+        {
+          question: "Which of the following helped the author keep away from stress?",
+          options: ["Eating junk foods", "Taking breaks appropriately", "Sleeping only four hours", "Working without stopping"],
+          correctIndex: 1
+        },
+        {
+          question: "What does 'additional' mean in the sentence 'additional support'?",
+          options: ["Less", "Extra or more", "No", "Hard"],
+          correctIndex: 1
+        },
+        {
+          question: "Which food should be avoided if you want to stay healthy?",
+          options: ["Fruits", "Vegetables", "Fattening foods", "Fish"],
+          correctIndex: 2
+        }
+      ]
+    }
+  },
+  {
+    id: 4,
+    title: "Unit 4: Remembering The Past",
+    topic: "Nhớ về quá khứ",
+    thumbnail: "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "English Traditions & Cuisine",
+      content: "England's traditions have been around for hundreds, even thousands of years. English cuisine is among the <span class=\"vocab-highlight\" data-meaning=\"Lâu đời, ăn sâu bén rễ\">deep-rooted</span> traditions that English people are proud to keep alive.<br><br>Typical English cuisine has developed over many centuries, and people say that fish and chips is the most English dish of all. It is believed that fish and chips <span class=\"vocab-highlight\" data-meaning=\"Xuất hiện\">appeared</span> in England in the 19th century. The earliest fish and chip shop opened in London during the 1860s. Since then people have considered fish and chips to be England's national dish, and it is now a common <span class=\"vocab-highlight\" data-meaning=\"Món ăn mang đi\">takeaway</span> in the United Kingdom.<br><br>The <span class=\"vocab-highlight\" data-meaning=\"Cơ bản\">basic</span> ingredients of the dish are fried fish served with chips. People in different places may add peas, vinegar, lemon, or ketchup. Fish and chips is served hot as the main dish in England. Preserving and promoting fish and chips is the way English people keep themselves <span class=\"vocab-highlight\" data-meaning=\"Gắn liền, liên kết\">associated</span> with the past.",
+      highlightedWords: ["deep-rooted", "appeared", "takeaway", "basic", "associated"]
+    },
+    vocabulary: [
+      {
+        word: "deep-rooted",
+        partOfSpeech: "adj",
+        pronunciation: "/ˌdiːp ˈruːtɪd/",
+        meaning: "Lâu đời, ăn sâu bén rễ",
+        example: "English cuisine is among the deep-rooted traditions of England."
+      },
+      {
+        word: "appeared",
+        partOfSpeech: "v",
+        pronunciation: "/əˈpɪəd/",
+        meaning: "Xuất hiện",
+        example: "It is believed that fish and chips appeared in England in the 19th century."
+      },
+      {
+        word: "takeaway",
+        partOfSpeech: "n",
+        pronunciation: "/ˈteɪkəweɪ/",
+        meaning: "Món ăn mang đi, mua mang về",
+        example: "Fish and chips is now a common takeaway in the UK."
+      },
+      {
+        word: "basic",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈbeɪsɪk/",
+        meaning: "Cơ bản",
+        example: "The basic ingredients of the dish are fried fish and chips."
+      },
+      {
+        word: "associated",
+        partOfSpeech: "adj",
+        pronunciation: "/əˈsəʊʃieɪtɪd/",
+        meaning: "Gắn liền, liên kết",
+        example: "Preserving this dish is a way to keep themselves associated with the past."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "deep-rooted", meaning: "Lâu đời, ăn sâu bén rễ" },
+          { word: "appeared", meaning: "Xuất hiện" },
+          { word: "takeaway", meaning: "Món ăn mang đi" },
+          { word: "basic", meaning: "Cơ bản" },
+          { word: "associated", meaning: "Gắn liền, liên kết" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "The sun ________ from behind the clouds.",
+          answer: "appeared"
+        },
+        {
+          sentence: "Let's buy some ________ food for dinner instead of cooking.",
+          answer: "takeaway"
+        },
+        {
+          sentence: "These old beliefs are very ________ in our rural community.",
+          answer: "deep-rooted"
+        },
+        {
+          sentence: "Learning the ________ vocabulary is the first step to master English.",
+          answer: "basic"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "When did fish and chips first appear in England?",
+          options: ["In the 18th century", "In the 19th century", "In the 20th century", "In the 16th century"],
+          correctIndex: 1
+        },
+        {
+          question: "What are the two basic ingredients of England's national dish?",
+          options: ["Beef and potatoes", "Fish and rice", "Fried fish and chips", "Chicken and peas"],
+          correctIndex: 2
+        },
+        {
+          question: "Why do English people protect and promote fish and chips?",
+          options: ["Because it is very cheap", "To keep themselves associated with the past", "To attract foreign farms", "To make it healthier than other dishes"],
+          correctIndex: 1
+        },
+        {
+          question: "Which word is closest in meaning to 'appeared'?",
+          options: ["Disappeared", "Shown up / came into view", "Fattened", "Preserved"],
+          correctIndex: 1
+        }
+      ]
+    }
+  },
+  {
+    id: 5,
+    title: "Unit 5: Our Experiences",
+    topic: "Những trải nghiệm của chúng ta",
+    thumbnail: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Memorable Summer Courses",
+      content: "Duong: I had a hard 10-day course in an army camp in Son Tay last summer. Everything was different from my life at home. We had to wake up at 5 a.m. and attended classes which were like training courses for soldiers. In the evening, we read books or worked in teams. The team leaders walked us through many exciting activities. We also joined a performance that had the environment protection <span class=\"vocab-highlight\" data-meaning=\"Chủ đề, đề tài\">theme</span>. We could only call our parents once a day. I have never attended such a <span class=\"vocab-highlight\" data-meaning=\"Nghiêm khắc, nghiêm ngặt\">strict</span> but exciting course like this.<br><br>Akiko: I have been on an unforgettable summer course in America. I stayed in Thornwood <span class=\"vocab-highlight\" data-meaning=\"Khuôn viên trường (Đại học/Trung học)\">campus</span> on the outskirts of New York City for three weeks. We had an enjoyable campus tour, attended English classes, and joined team activities. The most special <span class=\"vocab-highlight\" data-meaning=\"Trải nghiệm\">experience</span> was my visit to the top of Rockefeller Centre. From there, I could view the whole city below. That was the first time I travelled without my parents, so I felt like I grew up a lot after the trip.",
+      highlightedWords: ["theme", "strict", "campus", "experience"]
+    },
+    vocabulary: [
+      {
+        word: "theme",
+        partOfSpeech: "n",
+        pronunciation: "/θiːm/",
+        meaning: "Chủ đề, đề tài",
+        example: "We joined a performance that had the environment protection theme."
+      },
+      {
+        word: "strict",
+        partOfSpeech: "adj",
+        pronunciation: "/strɪkt/",
+        meaning: "Nghiêm khắc, nghiêm ngặt",
+        example: "I have never attended such a strict but exciting course like this."
+      },
+      {
+        word: "campus",
+        partOfSpeech: "n",
+        pronunciation: "/ˈkæmpəs/",
+        meaning: "Khuôn viên trường",
+        example: "I stayed in Thornwood campus on the outskirts of New York City."
+      },
+      {
+        word: "experience",
+        partOfSpeech: "n",
+        pronunciation: "/ɪkˈspɪəriəns/",
+        meaning: "Trải nghiệm",
+        example: "The most special experience was my visit to the top of Rockefeller Centre."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "theme", meaning: "Chủ đề, đề tài" },
+          { word: "strict", meaning: "Nghiêm khắc" },
+          { word: "campus", meaning: "Khuôn viên trường" },
+          { word: "experience", meaning: "Trải nghiệm" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "The university ________ has many old trees and modern buildings.",
+          answer: "campus"
+        },
+        {
+          sentence: "Traveling to Japan was an unforgettable ________ for me.",
+          answer: "experience"
+        },
+        {
+          sentence: "Our school has very ________ rules about wearing uniforms.",
+          answer: "strict"
+        },
+        {
+          sentence: "The ________ of this year's science exhibition is space exploration.",
+          answer: "theme"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "Where did Duong spend his 10-day course last summer?",
+          options: ["In New York City", "In a school library", "In an army camp in Son Tay", "In Derbyshire"],
+          correctIndex: 2
+        },
+        {
+          question: "How long did Akiko stay in America?",
+          options: ["10 days", "Three weeks", "One month", "Two years"],
+          correctIndex: 1
+        },
+        {
+          question: "What does Duong say about his course rules?",
+          options: ["It was very easy", "It was strict but exciting", "It was boring", "It allowed them to call parents anytime"],
+          correctIndex: 1
+        },
+        {
+          question: "Who did Akiko travel with during her trip to America?",
+          options: ["With her grandparents", "With her parents", "She travelled without her parents", "With Duong"],
+          correctIndex: 2
+        }
+      ]
+    }
+  },
+  {
+    id: 6,
+    title: "Unit 6: Vietnamese Lifestyle: Then and Now",
+    topic: "Lối sống của người Việt: xưa và nay",
+    thumbnail: "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Learning Styles: Grandfather vs Granddaughter",
+      content: "Mr Nam, grandfather, a 70-year-old farmer: I was one of the few children in my village who was still at school at the age of 15. Every day, I got up early and walked to school. Learning then depended mostly on our teachers and textbooks. We had no library or lab. I learned simply by taking notes during class, <span class=\"vocab-highlight\" data-meaning=\"Ghi nhớ, học thuộc lòng\">memorising</span> them, and doing the homework. We rarely travelled outside our village, so we didn't know much about the world around us.<br><br>Mai, granddaughter, a 15-year-old student: Learning today is very different from my grandfather's time. It is easier and more <span class=\"vocab-highlight\" data-meaning=\"Thuận tiện, tiện lợi\">convenient</span>. Besides learning from teachers, we use the Internet. It provides us with <span class=\"vocab-highlight\" data-meaning=\"Nhiều, đa dạng\">various</span> online sources. Google helps us find the answers to almost any questions we have. The Internet also allows us to <span class=\"vocab-highlight\" data-meaning=\"Theo đuổi\">pursue</span> our own interests. Learning has become more <span class=\"vocab-highlight\" data-meaning=\"Độc lập, tự chủ\">independent</span>. We have TVs at home, and a library and computers at school.",
+      highlightedWords: ["memorising", "convenient", "various", "pursue", "independent"]
+    },
+    vocabulary: [
+      {
+        word: "memorising",
+        partOfSpeech: "v",
+        pronunciation: "/ˈmeməraɪzɪŋ/",
+        meaning: "Ghi nhớ, học thuộc",
+        example: "I learned simply by taking notes and memorising them."
+      },
+      {
+        word: "convenient",
+        partOfSpeech: "adj",
+        pronunciation: "/kənˈviːniənt/",
+        meaning: "Thuận tiện, tiện lợi",
+        example: "Learning today is easier and more convenient."
+      },
+      {
+        word: "various",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈveəriəs/",
+        meaning: "Nhiều, đa dạng",
+        example: "The Internet provides us with various online sources."
+      },
+      {
+        word: "pursue",
+        partOfSpeech: "v",
+        pronunciation: "/pəˈsjuː/",
+        meaning: "Theo đuổi",
+        example: "The Internet allows us to pursue our own interests."
+      },
+      {
+        word: "independent",
+        partOfSpeech: "adj",
+        pronunciation: "/ˌɪndɪˈpendənt/",
+        meaning: "Độc lập, tự lập",
+        example: "Learning has become more independent today."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "memorising", meaning: "Ghi nhớ, học thuộc" },
+          { word: "convenient", meaning: "Thuận tiện, tiện lợi" },
+          { word: "various", meaning: "Nhiều, đa dạng" },
+          { word: "pursue", meaning: "Theo đuổi" },
+          { word: "independent", meaning: "Độc lập, tự lập" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "Students need to become more ________ and study on their own.",
+          answer: "independent"
+        },
+        {
+          sentence: "The online library has ________ books on science and history.",
+          answer: "various"
+        },
+        {
+          sentence: "Is it ________ for you to meet me at 5 p.m. today?",
+          answer: "convenient"
+        },
+        {
+          sentence: "He wants to ________ a career in software engineering.",
+          answer: "pursue"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "How did Mr Nam learn when he was 15?",
+          options: ["By using Google", "By studying online with a computer", "By taking notes, memorising, and doing homework", "By reading in the school lab"],
+          correctIndex: 2
+        },
+        {
+          question: "According to Mai, what helps modern students find answers to almost any question?",
+          options: ["A television", "Google and the Internet", "A six-kilometre walk", "Their school lab"],
+          correctIndex: 1
+        },
+        {
+          question: "What does the word 'independent' describe in Mai's passage?",
+          options: ["The old village life", "Her grandfather's travel style", "Modern learning", "The school rules"],
+          correctIndex: 2
+        },
+        {
+          question: "Choose the word that fits: 'There are _____ ways to solve this math problem.'",
+          options: ["convenient", "independent", "various", "memorising"],
+          correctIndex: 2
+        }
+      ]
+    }
+  },
+  {
+    id: 7,
+    title: "Unit 7: Natural Wonders of the World",
+    topic: "Kỳ quan thiên nhiên thế giới",
+    thumbnail: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "The Dolomites - Paradise at Your Feet",
+      content: "The Dolomites are a mountain range in Italy. It was recognised as a UNESCO World Heritage Site in 2009. The Dolomites are part of the Alps, <span class=\"vocab-highlight\" data-meaning=\"Trải dài\">stretching</span> from the Adige River to the Piave River valley. It covers an area of about 141,900 hectares. It has 18 <span class=\"vocab-highlight\" data-meaning=\"Đỉnh núi\">peaks</span> which rise above 3,000 metres. The mountain range is famous for its natural beauty, with steep rocky cliffs, sharp peaks, and narrow and deep valleys.<br><br>The area is a popular <span class=\"vocab-highlight\" data-meaning=\"Điểm đến\">destination</span> for tourists throughout the year. Visitors can enjoy winter sports such as skiing and mountain climbing, hiking, and cycling. There is also an annual bicycle race in the first week of July which covers seven mountain passes. This race <span class=\"vocab-highlight\" data-meaning=\"Xảy ra, diễn ra\">occurs</span> every year, attracting cyclists from all over the world to admire this <span class=\"vocab-highlight\" data-meaning=\"Hùng vĩ, tráng lệ\">majestic</span> landscape.",
+      highlightedWords: ["stretching", "peaks", "destination", "occurs", "majestic"]
+    },
+    vocabulary: [
+      {
+        word: "stretching",
+        partOfSpeech: "v",
+        pronunciation: "/ˈstretʃɪŋ/",
+        meaning: "Trải dài, kéo dài",
+        example: "The Dolomites are part of the Alps, stretching from the Adige to the Piave."
+      },
+      {
+        word: "peaks",
+        partOfSpeech: "n",
+        pronunciation: "/piːks/",
+        meaning: "Đỉnh núi, chóp",
+        example: "The mountain range has 18 peaks which rise above 3,000 metres."
+      },
+      {
+        word: "destination",
+        partOfSpeech: "n",
+        pronunciation: "/ˌdestɪˈneɪʃn/",
+        meaning: "Điểm đến",
+        example: "The area is a popular destination for tourists throughout the year."
+      },
+      {
+        word: "occurs",
+        partOfSpeech: "v",
+        pronunciation: "/əˈkɜːz/",
+        meaning: "Xảy ra, diễn ra",
+        example: "An annual bicycle race occurs in the first week of July."
+      },
+      {
+        word: "majestic",
+        partOfSpeech: "adj",
+        pronunciation: "/məˈdʒestɪk/",
+        meaning: "Hùng vĩ, tráng lệ",
+        example: "Cyclists come to admire this majestic landscape."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "stretching", meaning: "Trải dài, kéo dài" },
+          { word: "peaks", meaning: "Đỉnh núi" },
+          { word: "destination", meaning: "Điểm đến" },
+          { word: "occurs", meaning: "Xảy ra, diễn ra" },
+          { word: "majestic", meaning: "Hùng vĩ, tráng lệ" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "Vung Tau is a popular weekend ________ for people from Ho Chi Minh City.",
+          answer: "destination"
+        },
+        {
+          sentence: "The view from the top of the mountain was absolutely ________.",
+          answer: "majestic"
+        },
+        {
+          sentence: "Mt. Everest has one of the highest ________ in the world.",
+          answer: "peaks"
+        },
+        {
+          sentence: "Earthquake is a natural event that ________ without warning.",
+          answer: "occurs"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "When were the Dolomites recognised as a UNESCO World Heritage Site?",
+          options: ["In 1860", "In 2009", "In 1985", "In 2026"],
+          correctIndex: 1
+        },
+        {
+          question: "How many peaks in the Dolomites rise above 3,000 metres?",
+          options: ["10 peaks", "12 peaks", "18 peaks", "7 peaks"],
+          correctIndex: 2
+        },
+        {
+          question: "What kind of sports can visitors enjoy in the Dolomites?",
+          options: ["Football and basketball", "Biogas production", "Skiing, climbing, hiking, and cycling", "Pottery making in museums"],
+          correctIndex: 2
+        },
+        {
+          question: "Which word means 'happens'?",
+          options: ["stretches", "occurs", "preserves", "shortens"],
+          correctIndex: 1
+        }
+      ]
+    }
+  },
+  {
+    id: 8,
+    title: "Unit 8: Tourism",
+    topic: "Du lịch",
+    thumbnail: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Package Tours vs Self-guided Tours",
+      content: "Travelling has become a major part of modern life, with millions of <span class=\"vocab-highlight\" data-meaning=\"Du khách, người đi du lịch\">travellers</span> visiting new destinations every year. There are two primary ways people plan their journeys: package holidays and self-guided tours.<br><br>A <span class=\"vocab-highlight\" data-meaning=\"Trọn gói (chuyến du lịch)\">package</span> holiday is a pre-arranged trip where a travel agency organizes the <span class=\"vocab-highlight\" data-meaning=\"Lịch trình chuyến đi\">itinerary</span>, transport, and accommodation. This option is popular because it is convenient and reduces the stress of planning. The agency handles any problems that occur during the trip, which is helpful for older travellers or those who are not tech-savvy.<br><br>On the other hand, <span class=\"vocab-highlight\" data-meaning=\"Tự hướng dẫn, tự túc\">self-guided</span> tours require travellers to work out everything on their own. They must search for a destination, <span class=\"vocab-highlight\" data-meaning=\"Ước lượng, đánh giá sơ bộ\">estimate</span> the cost, and buy their own tickets. For accommodation, they often hunt for cheap homestays. Although it requires more time and effort, this type of holiday is cheaper and gives travellers the freedom to change their schedule whenever they want.",
+      highlightedWords: ["travellers", "package", "itinerary", "self-guided", "estimate"]
+    },
+    vocabulary: [
+      {
+        word: "travellers",
+        partOfSpeech: "n",
+        pronunciation: "/ˈtrævələz/",
+        meaning: "Du khách, người đi du lịch",
+        example: "Millions of travellers visit new places every year."
+      },
+      {
+        word: "package",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈpækɪdʒ/",
+        meaning: "Trọn gói (chuyến du lịch)",
+        example: "A package holiday is a pre-arranged trip organized by an agency."
+      },
+      {
+        word: "itinerary",
+        partOfSpeech: "n",
+        pronunciation: "/aɪˈtɪnərəri/",
+        meaning: "Lịch trình chuyến đi",
+        example: "The travel agency organizes the itinerary and accommodation."
+      },
+      {
+        word: "self-guided",
+        partOfSpeech: "adj",
+        pronunciation: "/ˌself ˈɡaɪdɪd/",
+        meaning: "Tự túc, tự hướng dẫn",
+        example: "Self-guided tours require travellers to plan everything on their own."
+      },
+      {
+        word: "estimate",
+        partOfSpeech: "v",
+        pronunciation: "/ˈestɪmeɪt/",
+        meaning: "Ước lượng, tính toán sơ bộ",
+        example: "They must search for a destination and estimate the cost."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "travellers", meaning: "Du khách" },
+          { word: "package", meaning: "Trọn gói" },
+          { word: "itinerary", meaning: "Lịch trình" },
+          { word: "self-guided", meaning: "Tự túc" },
+          { word: "estimate", meaning: "Ước lượng" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "We should ________ the total cost before booking the flights.",
+          answer: "estimate"
+        },
+        {
+          sentence: "The travel agency sent us a detailed ________ for our trip to Italy.",
+          answer: "itinerary"
+        },
+        {
+          sentence: "Some ________ prefer staying in local homestays to learn about the culture.",
+          answer: "travellers"
+        },
+        {
+          sentence: "I prefer a ________ tour because I love planning my own timetable.",
+          answer: "self-guided"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "Who is a package holiday especially helpful for?",
+          options: ["Tech-savvy people", "Older travellers or those not good with technology", "Students who want to save money", "Artisans in traditional villages"],
+          correctIndex: 1
+        },
+        {
+          question: "What accommodation do self-guided travellers often look for?",
+          options: ["Biogas canteens", "Expensive hotels", "Cheap homestays", "Pottery workshops"],
+          correctIndex: 2
+        },
+        {
+          question: "Which of the following is an advantage of self-guided tours?",
+          options: ["The agency does all the work", "They are more expensive", "They give travellers flexibility to change their schedule", "They have fixed itineraries"],
+          correctIndex: 2
+        },
+        {
+          question: "Which word means 'a planned route or journey plan'?",
+          options: ["destination", "itinerary", "leftover", "amenity"],
+          correctIndex: 1
+        }
+      ]
+    }
+  },
+  {
+    id: 9,
+    title: "Unit 9: World Englishes",
+    topic: "Tiếng Anh trên thế giới",
+    thumbnail: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "The Three Circles of World Englishes",
+      content: "English has become the global language of communication, spoken by billions of people worldwide. To explain the different uses of English, linguist Braj Kachru proposed a model of three <span class=\"vocab-highlight\" data-meaning=\"Đồng tâm\">concentric</span> circles in 1985.<br><br>The Inner Circle contains countries where English is spoken as a <span class=\"vocab-highlight\" data-meaning=\"Bản xứ, tiếng mẹ đẻ\">native</span> or first language, such as the UK, the USA, Canada, Australia, and New Zealand. In this circle, English is the primary language used in government, education, and daily life, and it provides the standards for other speakers.<br><br>The Outer Circle includes countries where English is not the native language but has <span class=\"vocab-highlight\" data-meaning=\"Chính thức\">official</span> status as a second language, such as India, Singapore, and Nigeria. In these countries, English is used alongside local languages.<br><br>The Expanding Circle consists of countries where English is learned as a <span class=\"vocab-highlight\" data-meaning=\"Nước ngoài (ngoại ngữ)\">foreign</span> language, such as Viet Nam, Japan, and Brazil. In this circle, English is used mainly for international communication, and speakers follow the standards of the Inner Circle. Because of the spread of English, there are now many <span class=\"vocab-highlight\" data-meaning=\"Các biến thể, sự đa dạng\">varieties</span> of English spoken worldwide.",
+      highlightedWords: ["concentric", "native", "official", "foreign", "varieties"]
+    },
+    vocabulary: [
+      {
+        word: "concentric",
+        partOfSpeech: "adj",
+        pronunciation: "/kənˈsentrɪk/",
+        meaning: "Đồng tâm (chung một tâm)",
+        example: "Braj Kachru proposed a model of three concentric circles."
+      },
+      {
+        word: "native",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈneɪtɪv/",
+        meaning: "Bản xứ, tiếng mẹ đẻ",
+        example: "The Inner Circle contains countries where English is the native language."
+      },
+      {
+        word: "official",
+        partOfSpeech: "adj",
+        pronunciation: "/əˈfɪʃl/",
+        meaning: "Chính thức",
+        example: "English has official status as a second language in India."
+      },
+      {
+        word: "foreign",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈfɒrən/",
+        meaning: "Nước ngoài (ngoại ngữ)",
+        example: "In the Expanding Circle, English is learned as a foreign language."
+      },
+      {
+        word: "varieties",
+        partOfSpeech: "n",
+        pronunciation: "/vəˈraɪətiz/",
+        meaning: "Các biến thể, sự đa dạng",
+        example: "There are now many varieties of English spoken worldwide."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "concentric", meaning: "Đồng tâm" },
+          { word: "native", meaning: "Bản xứ, tiếng mẹ đẻ" },
+          { word: "official", meaning: "Chính thức" },
+          { word: "foreign", meaning: "Nước ngoài (ngoại ngữ)" },
+          { word: "varieties", meaning: "Các biến thể, sự đa dạng" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "French is a ________ language in Vietnamese high schools.",
+          answer: "foreign"
+        },
+        {
+          sentence: "Singlish is one of the local ________ of English in Singapore.",
+          answer: "varieties"
+        },
+        {
+          sentence: "Is English an ________ language in India?",
+          answer: "official"
+        },
+        {
+          sentence: "My cousin is a ________ English speaker from Canada.",
+          answer: "native"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "Who proposed the three concentric circles model of English?",
+          options: ["Helena Wilson", "Braj Kachru", "Mr Nam", "Akiko"],
+          correctIndex: 1
+        },
+        {
+          question: "Which circle contains countries like the USA and the UK?",
+          options: ["The Outer Circle", "The Expanding Circle", "The Inner Circle", "The Special Circle"],
+          correctIndex: 2
+        },
+        {
+          question: "How is English used in the Expanding Circle?",
+          options: ["As a native language", "As an official second language", "As a foreign language for international communication", "It is not used at all"],
+          correctIndex: 2
+        },
+        {
+          question: "What does the word 'varieties' mean in this text?",
+          options: ["Different kinds or forms", "Hard rules", "Grammar books", "Original techniques"],
+          correctIndex: 0
+        }
+      ]
+    }
+  },
+  {
+    id: 10,
+    title: "Unit 10: Planet Earth",
+    topic: "Hành tinh Trái Đất",
+    thumbnail: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: " Flora, Fauna & Ecological Balance",
+      content: "Earth is home to a rich variety of flora and fauna, which work together to maintain the <span class=\"vocab-highlight\" data-meaning=\"Cân bằng sinh thái\">ecological balance</span>. Plants, or <span class=\"vocab-highlight\" data-meaning=\"Hệ thực vật\">flora</span>, absorb carbon dioxide and release oxygen through photosynthesis, which is essential for human and animal survival. Animals, or <span class=\"vocab-highlight\" data-meaning=\"Hệ động vật\">fauna</span>, consume plants and other animals, and their waste acts as fertilizer to enrich the soil.<br><br>However, human activities like deforestation, pollution, and climate change are threatening this ecological balance. Many species of plants and animals are now endangered.<br><br>Fortunately, there are several <span class=\"vocab-highlight\" data-meaning=\"Sự bảo tồn\">conservation</span> success stories around the world. In the USA, the bald eagle was saved from extinction by banning harmful chemicals and protecting its habitat. In Rwanda, mountain gorilla populations have recovered due to local community efforts. In India, wild tiger numbers have increased through strict anti-poaching laws. These stories prove that we can protect our planet if we take action to preserve our flora and fauna.",
+      highlightedWords: ["ecological balance", "flora", "fauna", "conservation"]
+    },
+    vocabulary: [
+      {
+        word: "ecological balance",
+        partOfSpeech: "n",
+        pronunciation: "/ˌiːkəˈlɒdʒɪkl ˈbæləns/",
+        meaning: "Cân bằng sinh thái",
+        example: "Flora and fauna work together to maintain the ecological balance."
+      },
+      {
+        word: "flora",
+        partOfSpeech: "n",
+        pronunciation: "/ˈflɔːrə/",
+        meaning: "Hệ thực vật (tất cả các loài thực vật)",
+        example: "We must study the local flora of this mountain forest."
+      },
+      {
+        word: "fauna",
+        partOfSpeech: "n",
+        pronunciation: "/ˈfɔːnə/",
+        meaning: "Hệ động vật (tất cả các loài động vật)",
+        example: "The island is home to a rich and unique desert fauna."
+      },
+      {
+        word: "conservation",
+        partOfSpeech: "n",
+        pronunciation: "/ˌkɒnsəˈveɪʃn/",
+        meaning: "Sự bảo tồn",
+        example: "Fortunately, there are several conservation success stories around the world."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "ecological balance", meaning: "Cân bằng sinh thái" },
+          { word: "flora", meaning: "Hệ thực vật" },
+          { word: "fauna", meaning: "Hệ động vật" },
+          { word: "conservation", meaning: "Sự bảo tồn" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "The Amazon rainforest is famous for its diverse ________ and fauna.",
+          answer: "flora"
+        },
+        {
+          sentence: "Wildlife ________ projects help protect endangered tigers and pandas.",
+          answer: "conservation"
+        },
+        {
+          sentence: "Cutting down forests disrupts the local ________.",
+          answer: "ecological balance"
+        },
+        {
+          sentence: "Scientists are cataloguing the unique ________ of the deep ocean.",
+          answer: "fauna"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "What is the primary role of flora (plants) in the atmosphere?",
+          options: ["They eat other animals", "They release carbon dioxide", "They absorb carbon dioxide and release oxygen", "They pollute the soil"],
+          correctIndex: 2
+        },
+        {
+          question: "Which chemical ban helped save the bald eagle in the USA?",
+          options: ["Biogas", "Harmful chemical pesticides", "Carbohydrates", "Pottery clay"],
+          correctIndex: 1
+        },
+        {
+          question: "How did mountain gorillas in Rwanda recover their population?",
+          options: ["By moving them to America", "Through local community conservation efforts", "By using machines to shorten processes", "By keeping them in museums"],
+          correctIndex: 1
+        },
+        {
+          question: "What is 'fauna'?",
+          options: ["All the plants of an area", "All the animals of an area", "The study of rocks", "A type of weather"],
+          correctIndex: 1
+        }
+      ]
+    }
+  },
+  {
+    id: 11,
+    title: "Unit 11: Electronic Devices",
+    topic: "Các thiết bị điện tử",
+    thumbnail: "https://images.unsplash.com/photo-1468495244123-6c6c332eeece?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Technology in Modern Classrooms",
+      content: "In modern classrooms, electronic devices have changed the way students learn and interact. Leaflets from schools recommend several tools to make studying more effective.<br><br>An <span class=\"vocab-highlight\" data-meaning=\"Máy đọc sách điện tử\">e-reader</span> is a <span class=\"vocab-highlight\" data-meaning=\"Xách tay, dễ dàng mang theo\">portable</span> electronic device designed specifically for reading digital books. It is lightweight, can store thousands of books, and has a screen that is easy on the eyes. Students no longer have to carry heavy textbooks to school.<br><br>A <span class=\"vocab-highlight\" data-meaning=\"Máy chiếu thông minh\">smart projector</span> is another useful device. It allows teachers to display high-quality images, interactive presentations, and videos directly from their laptops. This makes lessons more visual and interesting.<br><br>Finally, many schools use 3D printers in science and design classes. A 3D printer allows students to create physical objects from digital models, helping them understand complex engineering concepts. While these devices are expensive, they offer great benefits for education.",
+      highlightedWords: ["e-reader", "portable", "smart projector"]
+    },
+    vocabulary: [
+      {
+        word: "e-reader",
+        partOfSpeech: "n",
+        pronunciation: "/ˈiː riːdə(r)/",
+        meaning: "Máy đọc sách điện tử",
+        example: "An e-reader is designed specifically for reading digital books."
+      },
+      {
+        word: "portable",
+        partOfSpeech: "adj",
+        pronunciation: "/ˈpɔːtəbl/",
+        meaning: "Dễ dàng mang theo, di động",
+        example: "The e-reader is a portable device that fits in a small bag."
+      },
+      {
+        word: "smart projector",
+        partOfSpeech: "n",
+        pronunciation: "/smɑːt prəˈdʒektə(r)/",
+        meaning: "Máy chiếu thông minh",
+        example: "A smart projector displays slides directly from the laptop."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "e-reader", meaning: "Máy đọc sách điện tử" },
+          { word: "portable", meaning: "Dễ dàng mang theo" },
+          { word: "smart projector", meaning: "Máy chiếu thông minh" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "I bought an ________ because I love reading but hate carrying heavy books.",
+          answer: "e-reader"
+        },
+        {
+          sentence: "A laptop is ________, so you can easily work in a cafe or on a train.",
+          answer: "portable"
+        },
+        {
+          sentence: "The teacher turned on the ________ to show a video of a volcanic eruption.",
+          answer: "smart projector"
+        },
+        {
+          sentence: "My new ________ can store over five thousand novels.",
+          answer: "e-reader"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "Why is an e-reader good for students' eyes?",
+          options: ["It has a colorful flash", "It has a screen designed specifically for comfortable reading", "It works like a television", "It prints physical papers"],
+          correctIndex: 1
+        },
+        {
+          question: "What does a 3D printer allow students to do?",
+          options: ["Cook food in school canteens", "Create physical objects from digital models", "Translate English to Vietnamese", "Record video calls"],
+          correctIndex: 1
+        },
+        {
+          question: "Which word means 'able to be easily carried or moved'?",
+          options: ["strict", "deep-rooted", "portable", "fattening"],
+          correctIndex: 2
+        },
+        {
+          question: "How does a smart projector connect to show slides?",
+          options: ["Directly from the teacher's laptop", "It doesn't need to connect", "Using pottery clay", "Via an army camp"],
+          correctIndex: 0
+        }
+      ]
+    }
+  },
+  {
+    id: 12,
+    title: "Unit 12: Career Choices",
+    topic: "Lựa chọn nghề nghiệp",
+    thumbnail: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=600&q=80",
+    reading: {
+      title: "Changes in the World of Work",
+      content: "The world of work is changing rapidly due to technological developments, creating new challenges and <span class=\"vocab-highlight\" data-meaning=\"Sự lựa chọn sự nghiệp\">career choices</span> for the future. Many <span class=\"vocab-highlight\" data-meaning=\"Mang tính lặp đi lặp lại\">repetitive</span> jobs that involve simple, routine tasks are being replaced by smart machines and software.<br><br>For example, some <span class=\"vocab-highlight\" data-meaning=\"Nhân viên lễ tân\">receptionist</span> and cashier jobs are now automated, as customers can use self-service screens. However, this shift does not mean there will be no jobs. Instead, technology is creating new career opportunities.<br><br>There is a high demand for <span class=\"vocab-highlight\" data-meaning=\"Lập trình viên\">programmers</span>, data analysts, and digital marketers who can build and manage these new systems. Additionally, personal service jobs that require human empathy, like nail artists, hairdressers, and therapists, are growing. When choosing a career, young people should focus on developing skills that machines cannot copy, such as critical thinking, creativity, and communication.",
+      highlightedWords: ["career choices", "repetitive", "receptionist", "programmers"]
+    },
+    vocabulary: [
+      {
+        word: "career choices",
+        partOfSpeech: "n",
+        pronunciation: "/kəˈrɪə(r) tʃɔɪsɪz/",
+        meaning: "Lựa chọn nghề nghiệp",
+        example: "Modern technology creates new challenges and career choices for the future."
+      },
+      {
+        word: "repetitive",
+        partOfSpeech: "adj",
+        pronunciation: "/rɪˈpetətɪv/",
+        meaning: "Lặp đi lặp lại (gây nhàm chán)",
+        example: "Many repetitive jobs that involve routine tasks are being replaced by machines."
+      },
+      {
+        word: "receptionist",
+        partOfSpeech: "n",
+        pronunciation: "/rɪˈsepʃənɪst/",
+        meaning: "Nhân viên lễ tân",
+        example: "Some receptionist and cashier jobs are now automated."
+      },
+      {
+        word: "programmers",
+        partOfSpeech: "n",
+        pronunciation: "/ˈprəʊɡræməz/",
+        meaning: "Lập trình viên",
+        example: "There is a high demand for programmers who can build these new systems."
+      }
+    ],
+    exercises: {
+      matching: {
+        pairs: [
+          { word: "career choices", meaning: "Lựa chọn nghề nghiệp" },
+          { word: "repetitive", meaning: "Lặp đi lặp lại" },
+          { word: "receptionist", meaning: "Nhân viên lễ tân" },
+          { word: "programmers", meaning: "Lập trình viên" }
+        ]
+      },
+      fillInTheBlank: [
+        {
+          sentence: "Writing code is a core skill for computer ________.",
+          answer: "programmers"
+        },
+        {
+          sentence: "Young people face many difficult ________ after graduating from high school.",
+          answer: "career choices"
+        },
+        {
+          sentence: "The ________ welcomed the visitors at the office front desk.",
+          answer: "receptionist"
+        },
+        {
+          sentence: "Factory assembly line work can be highly ________ and boring.",
+          answer: "repetitive"
+        }
+      ],
+      multipleChoice: [
+        {
+          question: "Why are some cashier and receptionist jobs being replaced?",
+          options: ["Because they are too expensive", "Because they can be automated by smart machines", "Because people don't want to work them anymore", "Because they are associated with the past"],
+          correctIndex: 1
+        },
+        {
+          question: "Which of the following fields has a high demand for jobs in the future?",
+          options: ["Repetitive cashier work", "Programmers and data analysts", "Traditional pottery clay makers", "Com packaging by hand"],
+          correctIndex: 1
+        },
+        {
+          question: "What skills should young people focus on developing?",
+          options: ["Skills that machines can easily copy", "Repetitive routine tasks", "Critical thinking, creativity, and communication", "Walking long distances"],
+          correctIndex: 2
+        },
+        {
+          question: "Which word means 'doing the same thing over and over again'?",
+          options: ["strict", "repetitive", "portable", "associated"],
+          correctIndex: 1
+        }
+      ]
+    }
+  }
+];
+
+if (typeof window !== 'undefined') {
+  window.UNITS_DATA = UNITS_DATA;
+}

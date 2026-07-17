@@ -1,0 +1,89 @@
+/* Custom CSS for progress.html (Progress Tracker Page) */
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #cfc2d7;
+    border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #7e7386;
+}
+
+/* Hide default checkbox */
+.checkbox-custom {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Custom checkbox wrapper styling */
+.checkbox-mark {
+    position: relative;
+    display: inline-block;
+    height: 22px;
+    width: 22px;
+    background-color: #ffffff;
+    border: 2px solid #7e7386;
+    border-radius: 0.375rem;
+    transition: all 0.2s ease;
+}
+
+label:hover input ~ .checkbox-mark {
+    border-color: #bc0b36;
+}
+
+input:checked ~ .checkbox-mark {
+    background-color: #bc0b36;
+    border-color: #bc0b36;
+}
+
+.checkbox-mark::after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid #ffffff;
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+    transition: all 0.2s ease;
+}
+
+input:checked ~ .checkbox-mark::after {
+    display: block;
+}
+
+/* Checklist items animations and status classes */
+.checklist-item-card {
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.checklist-item-card.completed {
+    background-color: rgba(188, 11, 54, 0.05) !important;
+}
+
+/* Gradient background for progress bar */
+.progress-gradient {
+    background: linear-gradient(90deg, #bc0b36 0%, #a13c45 100%);
+}
+
+/* Bento Stats Hover effects */
+.stat-card-hover {
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.stat-card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+}

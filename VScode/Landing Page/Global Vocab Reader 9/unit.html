@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" sizes="32x32 48x48 96x96 192x192 512x512" href="assets/logos/Adobe%20Express%20-%20file.png"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface": "#fff8f7",
+                            "surface-dim": "#f1d3d4",
+                            "surface-bright": "#fff8f7",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-container-low": "#fff0f0",
+                            "surface-container": "#ffe9e9",
+                            "surface-container-high": "#ffe1e2",
+                            "surface-container-highest": "#fadbdc",
+                            "on-surface": "#271718",
+                            "on-surface-variant": "#5b4041",
+                            "inverse-surface": "#3e2c2d",
+                            "inverse-on-surface": "#ffeced",
+                            "outline": "#8f6f70",
+                            "outline-variant": "#e4bdbe",
+                            "surface-tint": "#bc0c36",
+                            "primary": "#bc0b36",
+                            "on-primary": "#ffffff",
+                            "primary-container": "#e02f4c",
+                            "on-primary-container": "#140002",
+                            "inverse-primary": "#ffb3b5",
+                            "secondary": "#a13c45",
+                            "on-secondary": "#ffffff",
+                            "secondary-container": "#fb8188",
+                            "on-secondary-container": "#721925",
+                            "tertiary": "#006b54",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-container": "#00876a",
+                            "on-tertiary-container": "#000604",
+                            "error": "#ba1a1a",
+                            "on-error": "#ffffff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "primary-fixed": "#ffdada",
+                            "primary-fixed-dim": "#ffb3b5",
+                            "on-primary-fixed": "#40000c",
+                            "on-primary-fixed-variant": "#920026",
+                            "secondary-fixed": "#ffdada",
+                            "secondary-fixed-dim": "#ffb3b5",
+                            "on-secondary-fixed": "#40000b",
+                            "on-secondary-fixed-variant": "#82242f",
+                            "tertiary-fixed": "#63fbcf",
+                            "tertiary-fixed-dim": "#3edeb3",
+                            "on-tertiary-fixed": "#002117",
+                            "on-tertiary-fixed-variant": "#00513e",
+                            "background": "#fff8f7",
+                            "on-background": "#271718",
+                            "surface-variant": "#fadbdc"
+                        },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    }catch(_e){}</script><meta charset="utf-8">
+<script src="js/data.js"></script>
+<script src="js/progress-tracker.js"></script>
+<script src="js/vocab-exercises.js"></script>
+<script src="js/ratings.js"></script>
+<script src="js/router.js"></script>
+<script src="js/ui-effects.js"></script>
+<link rel="stylesheet" href="css/unit.css">
+</head>
+<body class="bg-surface text-on-surface font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<nav class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+    <img src="assets/logos/Adobe%20Express%20-%20file.png" alt="Logo" class="h-20 w-auto object-contain">
+    <div class="flex flex-col justify-center">
+        <span class="text-4xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#bc0b36] to-[#a13c45]">Global Success 9</span>
+        <span class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mt-1">Language Learning Suite</span>
+    </div>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-home" href="index.html">Home</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-units" href="units.html">Units</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-practice" href="unit.html?unit=1">Practice</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-progress" href="progress.html">Progress</a>
+</div>
+<div class="flex items-center gap-4">
+</div>
+</nav>
+</header>
+<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-24 bg-surface-container-low p-4 gap-2 border-r border-outline-variant/20 shadow-sm z-40">
+<div class="px-4 py-6 mb-4 bg-white/50 rounded-2xl border border-outline-variant/30">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary/20 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK4x8yk2AHfYGzdrDsMlhqPJpxPA54D_-_GwC1cXAk5QUTQWpczp9Uw1tyfMdwcdIM_bNJrXAxrHPTUsL7yNqT1Y-QTOPTrUKMcI7nmj8-qNJi7cytf9-NHFo240_8C2_ZPcO5ca4alGVoV4xg7KFj3qp3nyDwvH55rSiLjEI00n6dqViwMc9FswQbgmvrSN7iWCKIpzAsAGeZNPejg6veZgblIVBCoPB0tzwzen3Vki54y_A6599L">
+</div>
+<div>
+<p class="font-label-md font-bold text-[#bc0b36]">Grade 9 Student</p>
+<p class="text-[10px] text-on-surface-variant" id="profile-level">Level: Loading...</p>
+</div>
+</div>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-dashboard" href="index.html">
+<span class="material-symbols-outlined">dashboard</span> Dashboard
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span> Unit List
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span> Practice
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant rounded-lg transition-all font-label-md text-label-md" id="side-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span> My Progress
+</a>
+</nav>
+<div class="mt-auto p-4">
+<button onclick="window.location.href='units.html'" class="w-full py-3 bg-gradient-to-r from-[#bc0b36] to-[#a13c45] text-white rounded-xl font-bold shadow-lg hover:shadow-primary/30 hover:brightness-110 active:scale-95 transition-all">
+Start Learning
+</button>
+</div>
+</aside>
+
+<main class="lg:pl-64 pt-24 min-h-screen">
+<div class="px-6 md:px-12 py-8 max-w-container-max mx-auto space-y-12">
+
+<!-- Hero / Header Section -->
+<header class="space-y-4 animate-fade-in">
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined" data-icon="local_library">local_library</span>
+<span class="uppercase tracking-widest text-label-sm">Unit 1</span>
+</div>
+<h1 class="font-display-lg text-display-lg text-on-surface-tight text-on-surface leading-tight" id="unit-title">Loading Unit...</h1>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-2xl" id="unit-topic"></p>
+</header>
+<!-- 1. Reading Section -->
+<section id="reading" class="animate-fade-in" style="animation-delay: 0.1s;">
+<div class="bg-surface-container-lowest rounded-lg p-8 md:p-12 shadow-sm border border-outline-variant/30">
+<div class="flex items-center justify-between mb-8">
+<h2 class="font-headline-md text-headline-md text-primary">Reading Passage</h2>
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full text-label-sm font-bold uppercase" id="unit-reading-topic">Sách Giáo Khoa</span>
+</div>
+<div class="flex flex-col md:flex-row gap-8 items-start">
+<div id="reading-block" class="flex-1 space-y-6 text-on-surface leading-relaxed text-body-lg font-body-lg">
+    <!-- Injected dynamically by router.js -->
+</div>
+<div class="w-full md:w-80 flex-shrink-0 rounded-2xl overflow-hidden shadow-xl" id="reading-image-div">
+    <div id="unit-cover-decor" class="w-full h-64 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white">
+        <span class="material-symbols-outlined text-7xl">menu_book</span>
+    </div>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. Vocabulary Section -->
+<section class="animate-fade-in" id="vocabulary" style="animation-delay: 0.2s;">
+<div class="mb-6 flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="menu_book">menu_book</span>
+<h2 class="font-headline-md text-headline-md">Key Vocabulary</h2>
+</div>
+<!-- Bento Grid Layout for Vocabulary -->
+<div id="vocab-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <!-- Injected dynamically by router.js -->
+</div>
+</section>
+<!-- 3. Exercises Section -->
+<section class="animate-fade-in space-y-8" id="exercises" style="animation-delay: 0.3s;">
+<div class="mb-6 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="quiz">quiz</span>
+<h2 class="font-headline-md text-headline-md">Interactive Exercises</h2>
+</div>
+<div class="flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="history_edu">history_edu</span>
+<span class="text-primary font-bold" id="sidebar-progress-text">Exercise Progress</span>
+</div>
+</div>
+
+<!-- Tabs Navigation -->
+<div class="flex border-b border-outline-variant/30 mb-6 gap-2 md:gap-4 overflow-x-auto no-scrollbar">
+  <button class="tab-btn active" data-tab="matching">Matching</button>
+  <button class="tab-btn" data-tab="fib">Fill Blank</button>
+  <button class="tab-btn" data-tab="mcq">MCQ</button>
+</div>
+
+<!-- A. Matching Tab content -->
+<div class="tab-content active" id="matching-tab">
+    <div class="bg-surface-container-low rounded-lg p-6 md:p-8 shadow-sm">
+        <h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+            <span class="bg-primary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">A</span>
+            Matching: Match the vocabulary word with its correct meaning.
+        </h3>
+        <p class="text-on-surface-variant text-sm mb-6">Choose a word from the left column, then select a matching meaning from the right column to complete the matching pair.</p>
+        <div id="matching-game-container" class="relative flex justify-between gap-6 md:gap-12 min-h-[300px] bg-white p-4 rounded-xl border border-outline-variant/30 overflow-hidden">
+            <div id="matching-left" class="flex flex-col gap-3 w-5/12 z-10"></div>
+            <div id="matching-right" class="flex flex-col gap-3 w-5/12 z-10"></div>
+            <svg id="matching-svg" class="absolute inset-0 pointer-events-none w-full h-full z-0"></svg>
+        </div>
+        
+        <div class="mt-6 pt-4 border-t border-outline-variant/30">
+            <h4 class="font-bold text-sm mb-3">The paired words :</h4>
+            <div id="user-matches-list" class="flex flex-col gap-2 mb-6"></div>
+        </div>
+
+        <div class="flex flex-wrap justify-between items-center gap-4 mt-6">
+            <button id="check-matching" class="bg-primary text-white px-8 py-3 rounded-full font-bold hover:brightness-110 active:scale-95 transition-all shadow-md">Check the results</button>
+            <div id="matching-result" class="exercise-result"></div>
+        </div>
+    </div>
+</div>
+
+<!-- B. Fill Blank Tab content -->
+<div class="tab-content" id="fib-tab">
+    <div class="bg-surface-container-low rounded-lg p-6 md:p-8 shadow-sm">
+        <h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+            <span class="bg-secondary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">B</span>
+            Fill in the Blanks
+        </h3>
+        <div id="fib-questions-container" class="space-y-4 mb-6"></div>
+        
+        <div class="flex flex-wrap justify-between items-center gap-4 mt-8">
+            <button id="check-fib" class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:brightness-110 active:scale-95 transition-all shadow-md">Check the results</button>
+            <div id="fib-result" class="exercise-result"></div>
+        </div>
+    </div>
+</div>
+
+<!-- C. MCQ Tab content -->
+<div class="tab-content" id="mcq-tab">
+    <div class="bg-surface-container-low rounded-lg p-6 md:p-8 shadow-sm">
+        <h3 class="font-headline-sm text-headline-sm mb-6 flex items-center gap-2">
+            <span class="bg-tertiary text-white w-8 h-8 rounded-full flex items-center justify-center text-sm">C</span>
+            Multiple Choice
+        </h3>
+        <div id="mcq-questions-container" class="space-y-6 mb-6"></div>
+        
+        <div class="flex flex-wrap justify-between items-center gap-4 mt-8">
+            <button id="check-mcq" class="bg-tertiary text-white px-8 py-3 rounded-full font-bold hover:brightness-110 active:scale-95 transition-all shadow-md">Check the results</button>
+            <div id="mcq-result" class="exercise-result"></div>
+        </div>
+    </div>
+</section>
+
+<!-- 4. Overall Experience Rating Section -->
+<section class="animate-fade-in" id="rating-section" style="animation-delay: 0.4s;">
+    <div class="bg-surface-container-lowest rounded-lg p-6 md:p-8 shadow-sm border border-outline-variant/30">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div class="space-y-2">
+                <h2 class="font-headline-sm text-headline-sm text-primary flex items-center gap-2">
+                    <span class="material-symbols-outlined text-[28px]">reviews</span>
+                    Rate Lesson Experience
+                </h2>
+                <p class="text-on-surface-variant text-sm font-medium">How was your overall study experience for this Unit? Your rating helps us improve.</p>
+            </div>
+            
+            <div id="rating-summary-container" class="flex items-center gap-4">
+                <div class="text-center bg-surface-container-low px-6 py-3 rounded-2xl border border-outline-variant/20 shadow-sm min-w-[150px]">
+                    <div id="overall-rating-display" class="text-3xl font-extrabold text-primary flex items-center justify-center gap-1">
+                        - <span class="text-outline-variant material-symbols-outlined text-[28px]">star</span>
+                    </div>
+                    <div class="text-[10px] text-on-surface-variant mt-1 font-bold uppercase tracking-wider">Your Rating</div>
+                </div>
+                <button id="btn-open-feedback" class="bg-primary text-white px-6 py-4 rounded-full font-bold hover:brightness-110 active:scale-95 transition-all shadow-md flex items-center gap-2">
+                    <span class="material-symbols-outlined">rate_review</span>
+                    <span>Rate Lesson</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+</main>
+
+
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl flex justify-around items-center py-3 border-t border-outline-variant/10 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-home" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Units</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span>
+<span>Practice</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Progress</span>
+</a>
+</nav>
+
+<!-- Rating/Feedback Modal -->
+<div id="feedback-modal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-all duration-300">
+    <div class="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full mx-4 shadow-2xl border border-outline-variant/30 transform scale-95 transition-all duration-300 relative space-y-6">
+        <button id="modal-close" class="absolute top-4 right-4 text-on-surface-variant hover:text-primary transition-colors focus:outline-none" title="Close">
+            <span class="material-symbols-outlined text-2xl">close</span>
+        </button>
+        
+        <div class="text-center space-y-2">
+            <div class="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto shadow-sm">
+                <span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-extrabold">Rate this Unit</h3>
+            <p class="text-on-surface-variant text-sm font-medium">How was your overall study experience?</p>
+        </div>
+        
+        <!-- Stars Select -->
+        <div class="flex flex-col items-center gap-2 bg-surface-container-low py-4 rounded-2xl border border-outline-variant/10">
+            <div class="flex gap-2" id="star-rating-select">
+                <button data-value="1" class="star-btn text-outline-variant hover:scale-110 active:scale-95 transition-all focus:outline-none" type="button">
+                    <span class="material-symbols-outlined text-4xl">star</span>
+                </button>
+                <button data-value="2" class="star-btn text-outline-variant hover:scale-110 active:scale-95 transition-all focus:outline-none" type="button">
+                    <span class="material-symbols-outlined text-4xl">star</span>
+                </button>
+                <button data-value="3" class="star-btn text-outline-variant hover:scale-110 active:scale-95 transition-all focus:outline-none" type="button">
+                    <span class="material-symbols-outlined text-4xl">star</span>
+                </button>
+                <button data-value="4" class="star-btn text-outline-variant hover:scale-110 active:scale-95 transition-all focus:outline-none" type="button">
+                    <span class="material-symbols-outlined text-4xl">star</span>
+                </button>
+                <button data-value="5" class="star-btn text-outline-variant hover:scale-110 active:scale-95 transition-all focus:outline-none" type="button">
+                    <span class="material-symbols-outlined text-4xl">star</span>
+                </button>
+            </div>
+            <span id="star-description" class="text-xs font-bold text-primary h-5 transition-colors duration-200">Select stars</span>
+        </div>
+        
+        <!-- Suggestion Tags -->
+        <div class="space-y-2">
+            <label class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Quick feelings</label>
+            <div class="flex flex-wrap gap-2" id="feedback-tags-container">
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="📚 Good reading">📚 Good reading</button>
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="💡 Easy to understand">💡 Easy to understand</button>
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="✍️ Useful exercises">✍️ Useful exercises</button>
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="🔊 Clear audio">🔊 Clear audio</button>
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="🎨 Beautiful UI">🎨 Beautiful UI</button>
+                <button type="button" class="tag-pill px-3.5 py-1.5 rounded-full border border-outline-variant/40 text-xs font-semibold hover:bg-surface-container-highest transition-all focus:outline-none" data-tag="🤔 Challenging">🤔 Challenging</button>
+            </div>
+        </div>
+        
+        <!-- Text feedback -->
+        <div class="space-y-2">
+            <label for="feedback-comment" class="block text-xs font-bold text-on-surface-variant uppercase tracking-wider">Detailed feedback (optional)</label>
+            <textarea id="feedback-comment" rows="3" class="w-full rounded-2xl border border-outline-variant/30 focus:border-primary focus:ring-primary/20 text-sm p-3.5 resize-none bg-surface-container-lowest focus:outline-none" placeholder="Your suggestions to help us improve this lesson..."></textarea>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="flex gap-3 pt-2">
+            <button id="btn-cancel-feedback" class="flex-1 py-3.5 border-2 border-outline-variant/30 text-on-surface-variant font-bold rounded-full hover:bg-surface-container transition-all active:scale-95 text-xs focus:outline-none" type="button">Cancel</button>
+            <button id="btn-submit-feedback" class="flex-1 py-3.5 bg-primary text-white font-bold rounded-full hover:brightness-110 transition-all active:scale-95 shadow-md hover:shadow-primary/20 text-xs focus:outline-none" type="button">Submit Rating</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Highlight active navigation links
+    const practiceNav = document.getElementById('nav-practice');
+    if (practiceNav) practiceNav.className = "text-[#bc0b36] font-bold font-label-lg border-b-2 border-[#bc0b36] pb-1";
+
+    const sidePractice = document.getElementById('side-practice');
+    if (sidePractice) {
+        sidePractice.className = "flex items-center gap-3 px-4 py-3 bg-[#bc0b36]/10 text-[#bc0b36] rounded-lg font-bold transition-all font-label-md text-label-md";
+    }
+
+    const mobPractice = document.getElementById('mob-practice');
+    if (mobPractice) {
+        mobPractice.className = "flex flex-col items-center gap-1 text-[10px] text-[#bc0b36] font-bold";
+        mobPractice.querySelector('span').style.fontVariationSettings = "'FILL' 1";
+    }
+
+    // 2. Set dynamic cover decor
+    const params = new URLSearchParams(window.location.search);
+    const unitId = parseInt(params.get('unit'), 10) || 1;
+    
+    const unitData = window.UNITS_DATA ? window.UNITS_DATA.find(u => u.id === unitId) : null;
+    const thumbnail = unitData ? unitData.thumbnail : null;
+
+    const decor = document.getElementById('unit-cover-decor');
+    if (decor) {
+        if (unitData && unitData.readingImages && unitData.readingImages.length > 0) {
+            const imgHtml = unitData.readingImages.map(imgUrl => `
+                <div class="relative w-full h-44 overflow-hidden rounded-xl shadow-md bg-surface-container-highest border border-outline-variant/30">
+                    <img class="w-full h-full object-cover" src="${imgUrl}" alt="Reading Illustration">
+                </div>
+            `).join('');
+            decor.outerHTML = `<div class="flex flex-col gap-4 w-full">${imgHtml}</div>`;
+        } else if (thumbnail) {
+            decor.outerHTML = `
+                <div class="relative w-full h-64 overflow-hidden rounded-2xl shadow-xl bg-surface-container-highest border border-outline-variant/30">
+                    <img class="w-full h-full object-cover" src="${thumbnail}" alt="Unit Cover">
+                </div>
+            `;
+        } else {
+            decor.className = 'w-full h-64 bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white rounded-2xl';
+            const iconEl = decor.querySelector('span');
+            if (iconEl) iconEl.textContent = "menu_book";
+        }
+    }
+});
+</script>
+</body>
+</html>

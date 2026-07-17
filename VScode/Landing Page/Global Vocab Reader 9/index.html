@@ -1,0 +1,390 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth" style=""><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="icon" type="image/png" sizes="32x32 48x48 96x96 192x192 512x512" href="assets/logos/Adobe%20Express%20-%20file.png"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                            "surface": "#fff8f7",
+                            "surface-dim": "#f1d3d4",
+                            "surface-bright": "#fff8f7",
+                            "surface-container-lowest": "#ffffff",
+                            "surface-container-low": "#fff0f0",
+                            "surface-container": "#ffe9e9",
+                            "surface-container-high": "#ffe1e2",
+                            "surface-container-highest": "#fadbdc",
+                            "on-surface": "#271718",
+                            "on-surface-variant": "#5b4041",
+                            "inverse-surface": "#3e2c2d",
+                            "inverse-on-surface": "#ffeced",
+                            "outline": "#8f6f70",
+                            "outline-variant": "#e4bdbe",
+                            "surface-tint": "#bc0c36",
+                            "primary": "#bc0b36",
+                            "on-primary": "#ffffff",
+                            "primary-container": "#e02f4c",
+                            "on-primary-container": "#140002",
+                            "inverse-primary": "#ffb3b5",
+                            "secondary": "#a13c45",
+                            "on-secondary": "#ffffff",
+                            "secondary-container": "#fb8188",
+                            "on-secondary-container": "#721925",
+                            "tertiary": "#006b54",
+                            "on-tertiary": "#ffffff",
+                            "tertiary-container": "#00876a",
+                            "on-tertiary-container": "#000604",
+                            "error": "#ba1a1a",
+                            "on-error": "#ffffff",
+                            "error-container": "#ffdad6",
+                            "on-error-container": "#93000a",
+                            "primary-fixed": "#ffdada",
+                            "primary-fixed-dim": "#ffb3b5",
+                            "on-primary-fixed": "#40000c",
+                            "on-primary-fixed-variant": "#920026",
+                            "secondary-fixed": "#ffdada",
+                            "secondary-fixed-dim": "#ffb3b5",
+                            "on-secondary-fixed": "#40000b",
+                            "on-secondary-fixed-variant": "#82242f",
+                            "tertiary-fixed": "#63fbcf",
+                            "tertiary-fixed-dim": "#3edeb3",
+                            "on-tertiary-fixed": "#002117",
+                            "on-tertiary-fixed-variant": "#00513e",
+                            "background": "#fff8f7",
+                            "on-background": "#271718",
+                            "surface-variant": "#fadbdc",
+                            "text-Rusty-Red" : "#dd2d4a"
+                        },
+                    "borderRadius": {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "section-gap": "80px",
+                        "gutter": "24px",
+                        "container-max": "1200px",
+                        "unit": "8px",
+                        "margin-mobile": "16px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "display-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-sm": ["Plus Jakarta Sans"],
+                        "display-lg": ["Plus Jakarta Sans"],
+                        "label-lg": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "700"}],
+                        "display-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                        "display-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-lg": ["16px", {"lineHeight": "1", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    }catch(_e){}</script><meta charset="utf-8"><link rel="stylesheet" href="css/index.css">
+</head><body class="bg-surface text-on-surface font-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-outline-variant/20 shadow-sm">
+<nav class="flex justify-between items-center px-8 py-4 max-w-container-max mx-auto">
+<div class="flex items-center gap-4 cursor-pointer" onclick="window.location.href='index.html'">
+    <img src="assets/logos/Adobe%20Express%20-%20file.png" alt="Logo" class="h-14 w-auto object-contain">
+    <div class="flex flex-col justify-center">
+        <span class=" text-2xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#bc0b36] to-[#a13c45]">Global Success 9</span>
+        <span class="text-xs uppercase tracking-widest text-on-surface-variant font-bold mt-1">Language Learning Suite</span>
+    </div>
+</div>
+<!-- Desktop Links -->
+<div class="hidden md:flex gap-8 items-center">
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-home" href="index.html">Home</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-units" href="units.html">Units</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-practice" href="unit.html?unit=1">Practice</a>
+<a class="text-on-surface-variant font-label-lg hover:text-primary transition-colors duration-200" id="nav-progress" href="progress.html">Progress</a>
+</div>
+<div class="flex items-center gap-4">
+</div>
+</nav>
+</header>
+<main class="pt-24">
+<!-- Hero Section -->
+<section class="relative min-h-[85vh] flex items-center overflow-hidden px-8 max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center w-full relative z-10">
+<div class="md:col-span-6 space-y-8">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-primary-fixed/30 text-on-primary-fixed-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px]">verified</span>
+                        Interactive English Learning Platform
+                    </div>
+<h1 class="font-display-lg text-display-lg leading-tight">
+<span class="block">Master English with</span>
+<span class="text-gradient font-extrabold block">Global Success 9</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+                        Welcome, Grade 9 students! Explore a dynamic world of interactive lessons, vocabulary challenges, and real-time progress tracking designed to make you fluent and confident.
+                    </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button onclick="window.location.href='units.html'" class="px-8 py-4 rounded-full font-label-lg text-label-lg bg-primary-container text-white pill-shadow hover:brightness-110 active:scale-95 transition-all flex items-center gap-2">
+                            View the list of Units
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="px-8 py-4 rounded-full font-label-lg text-label-lg border-2 border-primary text-primary hover:bg-primary/5 active:scale-95 transition-all">
+                            Learn More
+                        </button>
+</div>
+<div class="flex items-center gap-6 pt-6">
+<div class="flex -space-x-4">
+<img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="A close-up portrait of a cheerful diverse student in a modern educational setting, high-quality photography with soft bokeh background and warm sunlight accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxlK4Djo_8dPTGd6y_2yC9GugujavYAzakbp4zA2lRVj1IRpATfLqR60zjVDxgfkT3e9o4eTOS7zXhKjJL3Kwm4vGpdxWL4oeYfeNFUNQxb7trM4NzLuNMIbsxUBygQU7RIHztsUhOfI5Gf44DUDo5DzgG6iiQC8EfFqFseQBiCJ0LDa4U3scZbaJd2bJFxlqLwJHp3mCQBVTIq__UrdcN_0Dq4n14UjzXqkI_neNARgstCsM9ru07">
+<img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="A portrait of a young male student with glasses smiling confidently, captured in a brightly lit modern library with soft purple and blue ambient lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7gKBgRpm5f45fOiBVidwc7OFcu645dFlvVZtjotdUIALOSVrVGfjJ_MGPvLHB2Os-b4sQct4X71HxsTu5mCtfErPXFulx_ZyaXqqA6NHbfwJLTENMopwEy-dxqp3fgGujWLvL51ikv_kfxK___LgtvLzQl30GUUfL2ugry740YQr3DUG72YviI7r_nVgu4AGjTZSGwfRwhOfKhDNv3F0lIUTzU871g5P9KDW-11s4KIkmm1LqYLUW">
+<img class="w-12 h-12 rounded-full border-2 border-white object-cover" data-alt="A diverse female student laughing, set against a clean minimalist classroom with vibrant tech-inspired decorations and high-key lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAWFY1oh_qhhyQzlMcveuI8J2QKnyEyJH-ijXpoEMnWtN0blKfW_63-vpDv-XdBfGjJjvPZwIHCUfzszYYWwNEEBTz1WctWfmzHL4sy9Aun6DJnGG18Uzo0x7Ck9vMxCMcu_ZD6jnUEBjAgyiD2TPgyHxo9wOoEnN8-I7IdKoiwLbMMTn3i86BAynXnLG84YOxVI2U2iAXCWeDX0FJuRkvcVV5q5HZ0_TThkRfAw64cYq1q9B9If8J">
+</div>
+<div class="text-on-surface-variant font-label-sm text-label-sm">
+<span class="font-bold text-on-surface">100+</span> Students online now
+                        </div>
+</div>
+</div>
+<!-- Hero Visual - Bento Style Layout -->
+<div class="md:col-span-6 relative h-[600px] hidden md:block">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 rounded-[3rem] blur-3xl -z-10"></div>
+<div class="grid grid-cols-2 grid-rows-6 gap-4 h-full">
+<div class="row-span-3 bg-white p-6 rounded-xl shadow-lg border border-outline-variant/30 flex flex-col justify-between animate-float" style="animation-delay: 0s;">
+<span class="material-symbols-outlined text-primary text-4xl">translate</span>
+<div>
+<div class="font-headline-sm text-headline-sm text-primary mb-2">2.5k</div>
+<div class="text-on-surface-variant">Vocab Words</div>
+</div>
+</div>
+<div class="row-span-2 bg-gradient-to-br from-primary to-tertiary p-6 rounded-xl shadow-xl text-white flex items-center justify-center animate-float" style="animation-delay: 1s;">
+<div class="text-center">
+<span class="material-symbols-outlined text-5xl mb-2">quiz</span>
+<div class="font-label-lg">Interactive Quizzes</div>
+</div>
+</div>
+<div class="row-span-4 col-start-2 row-start-1 rounded-xl overflow-hidden shadow-2xl relative group">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A high-tech digital tablet interface showing a vibrant educational dashboard for English learning, with progress charts, unit lists, and colorful icons. Minimalist and clean aesthetic with glassmorphism elements." src="https://lh3.googleusercontent.com/aida-public/AB6AXuChcRjAE2GEBZ9HCC209w9NSnImxadSV5vch5GE0andYnMBoXwUyUBKOVI1LgT--SJD0kXruu-V5nHwe0sTI8MNsLw32lFA_Z3fBuAS21WlIUE104jVaCFeTFZXM_N68f03EAnuK7Go963gedLwUIejOkNix1G956ij1TYbdez37QFx5F40hWWrQLEysDBnw97Ph6qCaD7uy_eunOxK1fFGfbyh8tm-RB5BvyHFGbW_88yEM8Kn15k5">
+<div class="absolute bottom-6 left-6 text-white">
+<div class="font-bold">Unit 1: Local Environment</div>
+<div class="text-sm opacity-80">Continue learning...</div>
+</div>
+</div>
+<div class="row-span-3 col-start-1 row-start-4 bg-secondary-container p-6 rounded-xl shadow-lg flex flex-col justify-end animate-float" style="animation-delay: 0.5s;">
+<div class="bg-white/20 backdrop-blur-md rounded-lg p-3 mb-4">
+<div class="h-2 w-full bg-white/30 rounded-full overflow-hidden">
+<div class="h-full bg-white w-3/4"></div>
+</div>
+</div>
+<div class="text-on-secondary-container font-bold">Daily Streak: 12 Days</div>
+</div>
+<div class="row-span-2 col-start-2 row-start-5 bg-white p-6 rounded-xl shadow-lg border border-outline-variant/30 flex items-center gap-4 animate-float" style="animation-delay: 1.5s;">
+<div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">leaderboard</span>
+</div>
+<div class="text-on-surface-variant font-label-lg">Leaderboard</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Features Bento Grid -->
+<section class="py-section-gap px-8 max-w-container-max mx-auto">
+<div class="text-center mb-16 space-y-4">
+<h2 class="font-headline-md text-headline-md text-primary">Engaging Tools for Success</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto">Discover a suite of features designed to make English learning natural, fun, and highly effective for every Grade 9 student.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Feature 1 -->
+<div class="md:col-span-2 bg-white rounded-lg p-10 border border-outline-variant/20 shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-8 items-center overflow-hidden">
+<div class="space-y-4 md:w-1/2">
+<div class="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">menu_book</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Structured Units</h3>
+<p class="text-on-surface-variant">Follow the official curriculum with 12 comprehensive units, from 'Local Environment' to 'My Future Career', all enhanced with digital media.</p>
+<ul class="space-y-2">
+<li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Detailed Grammar Explanations</li>
+<li class="flex items-center gap-2 text-on-surface-variant"><span class="material-symbols-outlined text-primary text-sm">check_circle</span> Interactive Listening Audio</li>
+</ul>
+</div>
+<div class="md:w-1/2 rounded-2xl overflow-hidden shadow-inner">
+<img class="w-full h-full object-cover" data-alt="A clean UI design of an educational app's Unit List, featuring beautiful icons for environment, city life, and career paths, using a soft purple and blue color palette with glassmorphism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC35_JSBR4imOSnmzQOvMoN1nqEYeOOp_vW_LYP-by5FDcvFBMfL4ZCT_qlMx3HNigHzKG1FJZlysbItLL0YAdioXbjJciukxfx3UO2rTJ69GcWc-qzn6xnHtgzod6Aq5OLC5MUVZgI5W3IZgxDoSoxlmYz-nJg9FV2RQ24I5URRgUJPnOSuPVYVdFevKkkQs9p21YbQrWNJYqSKPyg68caHqPMinZqqjwXw3ZMtacC5cIDNIunQt5M">
+</div>
+</div>
+<!-- Feature 2 -->
+<div class="bg-gradient-to-br from-tertiary-container to-primary-container rounded-lg p-10 text-white flex flex-col justify-between group">
+<div>
+<div class="w-14 h-14 bg-white/20 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">local_library</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Interactive Guide</h3>
+<p class="opacity-80">Stuck on a grammar point? Our interactive guide provides detailed explanations and structured examples to help you understand better.</p>
+</div>
+<div class="mt-8 flex justify-end">
+<div class="p-4 bg-white/10 rounded-full group-hover:rotate-12 transition-transform">
+<span class="material-symbols-outlined text-4xl">chat_bubble</span>
+</div>
+</div>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-low rounded-lg p-10 border border-outline-variant/10 flex flex-col items-center text-center">
+<div class="w-16 h-16 bg-secondary/10 text-secondary rounded-full flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm mb-4">Smart Vocab</h3>
+<p class="text-on-surface-variant mb-6">Spaced repetition technology ensures you never forget the new words you've learned.</p>
+<button class="text-secondary font-bold flex items-center gap-2 hover:gap-3 transition-all">
+                        Try Flashcards <span class="material-symbols-outlined">trending_flat</span>
+</button>
+</div>
+<!-- Feature 4 -->
+<div class="md:col-span-2 bg-white rounded-lg p-10 border border-outline-variant/20 shadow-sm flex flex-col md:flex-row-reverse gap-8 items-center overflow-hidden">
+<div class="space-y-4 md:w-1/2">
+<div class="w-14 h-14 bg-secondary-container/20 rounded-2xl flex items-center justify-center">
+<span class="material-symbols-outlined text-secondary text-3xl">monitoring</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm">Progress Analytics</h3>
+<p class="text-on-surface-variant">See exactly where you stand with beautiful, easy-to-read charts tracking your scores across listening, speaking, reading, and writing.</p>
+<div class="grid grid-cols-2 gap-4 pt-2">
+<div class="p-3 bg-surface-container rounded-lg">
+<div class="text-secondary font-bold text-xl">85%</div>
+<div class="text-xs text-on-surface-variant">Reading Avg</div>
+</div>
+<div class="p-3 bg-surface-container rounded-lg">
+<div class="text-primary font-bold text-xl">92%</div>
+<div class="text-xs text-on-surface-variant">Vocab Mastery</div>
+</div>
+</div>
+</div>
+<div class="md:w-1/2">
+<img class="w-full h-auto" data-alt="Dynamic data visualization charts and graphs representing student learning progress, styled in a modern tech aesthetic with glowing blue and purple lines on a clean white surface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3x6jzhg6_2VSFUNnVaIjiNvSw9w0KyDr_MBb7V6Yok9o3R1hM-gZkTjHY9vDKkWQCpAlaMlnpePb0HKLiFIeTbqBLXm-62JucaLeJ4zUtTlOVK0rt-08jXHZWUpp0rNB_8wFeMdZ3V4aZ7qmyMMR8pIapcqpj730wMW2m_e1Nj5bxF_-9S3JBMh6J5YkImwQTnf1eT89YlyrrKn29C5Q6svXUPUNOs1oVxYICuRwDOpOnViijNItK">
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-section-gap px-8">
+<div class="max-w-container-max mx-auto bg-gradient-to-br from-[#270005] via-[#4a0815] to-[#1a0003] rounded-3xl p-12 md:p-20 relative overflow-hidden text-center text-white shadow-2xl border border-[#bc0b36]/20">
+<!-- Background Decoration -->
+<div class="absolute -top-32 -right-32 w-96 h-96 bg-[#bc0b36]/20 blur-[120px] rounded-full"></div>
+<div class="absolute -bottom-32 -left-32 w-96 h-96 bg-[#a13c45]/20 blur-[100px] rounded-full"></div>
+<div class="relative z-10 max-w-3xl mx-auto space-y-6">
+<h2 class="font-display-lg text-display-lg leading-tight text-white font-extrabold">Ready to boost your English grades?</h2>
+<p class="font-body-lg text-body-lg text-white/80 max-w-xl mx-auto leading-relaxed">Join thousands of Grade 9 students already using Global Success 9 to achieve their academic goals and beyond.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center pt-6">
+<button onclick="window.location.href='units.html'" class="px-10 py-5 rounded-full font-label-lg text-label-lg bg-white text-[#bc0b36] hover:bg-[#fff0f2] hover:scale-105 active:scale-95 transition-all shadow-xl font-bold">
+                            Start Learning Now
+                        </button>
+<button onclick="window.location.href='units.html'" class="px-10 py-5 rounded-full font-label-lg text-label-lg bg-white/10 text-white border border-white/20 hover:bg-white/20 hover:scale-105 active:scale-95 transition-all font-bold">
+                            Explore Unit List
+                        </button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-[#0a0a0a] text-white py-16 mt-section-gap">
+<div class="max-w-container-max mx-auto px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+<div class="space-y-4">
+<h4 class="text-2xl font-extrabold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-[#bc0b36] to-[#a13c45]">Global Success 9</h4>
+<p class="text-sm opacity-60 leading-relaxed">This application supports learning English vocabulary and reading comprehension for 9th graders according to the new general education curriculum. Learn smarter, remember longer through intuitive interaction.</p>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-lg">Navigate</h4>
+<ul class="space-y-2 text-sm opacity-60">
+<li><a href="index.html" class="hover:text-[#bc0b36] transition-colors">Home</a></li>
+<li><a href="units.html" class="hover:text-[#bc0b36] transition-colors">Unit List</a></li>
+<li><a href="unit.html?unit=1" class="hover:text-[#bc0b36] transition-colors">Vocabulary Practise</a></li>
+<li><a href="progress.html" class="hover:text-[#bc0b36] transition-colors">Progress</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-lg">Lessons</h4>
+<ul class="space-y-2 text-sm opacity-60">
+<li><a href="unit.html?unit=1" class="hover:text-[#bc0b36] transition-colors">Unit 1: Local Community</a></li>
+<li><a href="unit.html?unit=2" class="hover:text-[#bc0b36] transition-colors">Unit 2: City Life</a></li>
+<li><a href="unit.html?unit=3" class="hover:text-[#bc0b36] transition-colors">Unit 3: Teenagers</a></li>
+<li><a href="unit.html?unit=4" class="hover:text-[#bc0b36] transition-colors">Unit 4: Remember Past</a></li>
+</ul>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-lg">Contact</h4>
+<ul class="space-y-2 text-sm opacity-60">
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">mail</span> support@globalsuccess9.edu.vn</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">phone</span> 1900 6000</li>
+<li class="flex items-center gap-2"><span class="material-symbols-outlined text-sm">location_on</span> Đà Nẵng, Việt Nam</li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+<div class="text-xs opacity-40">© 2026 Global Success 9 Reader. All rights reserved.</div>
+<div class="flex gap-4">
+<a href="#" class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:text-[#bc0b36] transition-all"><span class="material-symbols-outlined text-[16px]">help</span></a>
+<a href="#" class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:text-[#bc0b36] transition-all"><span class="material-symbols-outlined text-[16px]">info</span></a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Mobile Bottom NavBar (Filter logic: Only visible on small screens for main destinations) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white/90 backdrop-blur-xl flex justify-around items-center py-3 border-t border-outline-variant/10 z-50 shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-home" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-units" href="units.html">
+<span class="material-symbols-outlined">menu_book</span>
+<span>Units</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-practice" href="unit.html?unit=1">
+<span class="material-symbols-outlined">quiz</span>
+<span>Practice</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-[10px] text-on-surface-variant" id="mob-progress" href="progress.html">
+<span class="material-symbols-outlined">leaderboard</span>
+<span>Progress</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions and subtle scroll effects
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            // Add scroll-in effects to sections
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+                observer.observe(section);
+            });
+        });
+    </script>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const homeNav = document.getElementById('nav-home');
+    if (homeNav) {
+        homeNav.className = "text-[#bc0b36] font-bold font-label-lg border-b-2 border-[#bc0b36] pb-1";
+    }
+    const mobHome = document.getElementById('mob-home');
+    if (mobHome) {
+        mobHome.className = "flex flex-col items-center gap-1 text-[10px] text-[#bc0b36] font-bold";
+        mobHome.querySelector('span').style.fontVariationSettings = "'FILL' 1";
+    }
+});
+</script>
+</body></html>
